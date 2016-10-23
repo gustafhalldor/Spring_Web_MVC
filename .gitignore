@@ -1,5 +1,7 @@
 /target/classes/application.properties
 /src/main/resources/application.properties
+*.properties
+
 # Created by https://www.gitignore.io/api/java,intellij,eclipse
 
 ### Java ###
