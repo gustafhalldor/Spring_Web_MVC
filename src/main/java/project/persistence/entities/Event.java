@@ -2,6 +2,7 @@ package project.persistence.entities;
 
 import javax.persistence.*;
 import project.persistence.entities.Location;
+import project.persistence.entities.User;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -53,11 +54,9 @@ public class Event {
         this.attendees = attendees;
     }
 
-    public Long getId() {
-        return id;
-    }
+    public int getId() { return id; }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
