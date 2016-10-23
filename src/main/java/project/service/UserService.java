@@ -34,11 +34,11 @@ public interface UserService {
     List<User> findAllReverseOrder();
 
     /**
-     * Find a {@link User} based on {@link Long id}
-     * @param id {@link Long}
-     * @return A {@link User} with {@link Long id}
+     * Find a {@link User} based on {@link Integer id}
+     * @param id {@link Integer}
+     * @return A {@link User} with {@link Integer id}
      */
-    User findOne(Long id);
+    User findOne(Integer id);
 
     /**
      * Find all {@link User}s with {@link String name}

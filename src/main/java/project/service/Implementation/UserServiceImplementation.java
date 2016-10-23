@@ -40,5 +40,23 @@ public class UserServiceImplementation implements UserService {
     }
 
     @Override
-    public List<User>
+    public List<User> findAllReverseOrder() {
+        // Get all the Postit notes
+        List<User> users = repository.findAll();
+
+        // Reverse the list
+        Collections.reverse(users);
+
+        return users;
+    }
+
+    @Override
+    public User findOne(Integer id) {
+        return repository.findOne(id);
+    }
+
+    @Override
+    public List<User> findByName(String name) {
+        return repository.findByName(name);
+    }
 }
