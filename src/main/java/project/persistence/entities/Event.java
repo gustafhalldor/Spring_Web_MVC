@@ -112,12 +112,4 @@ public class Event {
 
     public void setAttendees(ArrayList<User> attendees) { this.attendees = attendees; }
 
-
-    // This is for easier debug.
-    @Override
-    public String toString() {
-        return String.format(
-                "Postit Note[name=%s, note=%s]",
-                name,note);
-    }
 }

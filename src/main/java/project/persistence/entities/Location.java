@@ -45,13 +45,5 @@ public class Location {
     public float getLongitude() { return longitude; }
 
     public void setLongitude(float longitude) { this.longitude = longitude; }
-
-
-    // This is for easier debug.
-    @Override
-    public String toString() {
-        return String.format(
-                "Postit Note[name=%s, note=%s]",
-                name,note);
-    }
+    
 }
