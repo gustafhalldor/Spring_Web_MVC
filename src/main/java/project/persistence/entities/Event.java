@@ -91,7 +91,7 @@ public class Event {
 
     public int getAgeMax() { return ageMax; }
 
-    public void setAgeMax(int ageMax) { this.ageMax; }
+    public void setAgeMax(int ageMax) { this.ageMax = ageMax; }
 
     public Location getLocation() { return location; }
 

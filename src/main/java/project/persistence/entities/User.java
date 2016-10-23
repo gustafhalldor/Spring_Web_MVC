@@ -24,7 +24,7 @@ public class User {
 
 
     // Notice the empty constructor, because we need to be able to create an empty User to add
-    // to our model so we can use it with our form
+    // to our model so we can use it with our form 
     public User() {
     }
 
