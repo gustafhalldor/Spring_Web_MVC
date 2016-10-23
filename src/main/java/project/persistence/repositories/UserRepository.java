@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * Created by Hoai Nam Duc Tran on 23/10/2016.
  */
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends JpaRepository<User, Integer> {
 
     User save(User user);
 
@@ -35,7 +35,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     //
     List<User> findAllByOrderByIdDesc();
 
-    User findOne(Long id);
+    User findOne(Integer id);
 
     List<User> findByName(String name);
 }
