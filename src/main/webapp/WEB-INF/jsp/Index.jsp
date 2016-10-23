@@ -14,7 +14,7 @@
     <p>This skeleton of a Spring Boot Web project was made to help groups get started on their projects without to much hassle.</p>
 
     <ul>
-        <li><a href="/postit">Click here for Persistence Layer Demo</a></li>
+        <li><a href="/user">Click here for Persistence Layer Demo</a></li>
     </ul>
     </body>
     <footer>Class HBV501G, University of Iceland, Fall 2015</footer>
