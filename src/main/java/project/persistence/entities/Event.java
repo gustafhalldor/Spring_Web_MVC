@@ -1,6 +1,11 @@
 package project.persistence.entities;
 
 import javax.persistence.*;
+import project.persistence.entities.Location;
+
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * The class for the Postit Note itself.
@@ -14,7 +19,7 @@ public class Event {
     // Declare that this attribute is the id
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
     private String name;
     private String description;
@@ -26,7 +31,7 @@ public class Event {
     private Date time;
     private boolean genderRestriction;
     private Image image;
-    private User[] attendees;
+    private ArrayList<User> attendees;
 
     // Notice the empty constructor, because we need to be able to create an empty PostitNote to add
     // to our model so we can use it with our form
@@ -34,7 +39,7 @@ public class Event {
     }
 
     public Event(String name, String description, Location location, String[] type, int creatorId, int ageMin, int ageMax, Date time,
-                      boolean genderRestriction, Image image, User[] attendees) {
+                      boolean genderRestriction, Image image, ArrayList<User> attendees) {
         this.name = name;
         this.description = description;
         this.location = location;
@@ -104,7 +109,7 @@ public class Event {
 
     public void setImage(Image image) { this.image = image; }
 
-    public User[] getAttendees() { return attendees; }
+    public ArrayList<User> getAttendees() { return attendees; }
 
     public void setAttendees(User[] attendees) { this.attendees = attendees; }
 
