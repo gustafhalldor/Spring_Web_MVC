@@ -11,7 +11,7 @@ import java.util.List;
  * For detailed information, see:
  * http://docs.spring.io/spring-data/commons/docs/current/api/org/springframework/data/repository/CrudRepository.html
  * http://docs.spring.io/spring-data/data-commons/docs/1.6.1.RELEASE/reference/html/repositories.html
-
+ 
  /**
  * Created by Hoai Nam Duc Tran on 23/10/2016.
  */
