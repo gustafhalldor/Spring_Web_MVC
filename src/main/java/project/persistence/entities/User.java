@@ -1,6 +1,7 @@
 package project.persistence.entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 
 /**
  * Created by geelo on 23-Oct-16.
@@ -17,9 +18,9 @@ public class User {
     private String name;
     private int age;
     private String gender;
-    private List<Rating> ratings;
-    private List<Event> createdEvents;
-    private List<Event> attendedEvents;
+    private ArrayList<Rating> ratings;
+    private ArrayList<Event> createdEvents;
+    private ArrayList<Event> attendedEvents;
 
 
     // Notice the empty constructor, because we need to be able to create an empty User to add
@@ -27,8 +28,8 @@ public class User {
     public User() {
     }
 
-    public User(int id, String name, int age, String gender, List<Rating> ratings,
-                      List<Event> createdEvents, List<Event> attendedEvents) {
+    public User(int id, String name, int age, String gender, ArrayList<Rating> ratings,
+                ArrayList<Event> createdEvents, ArrayList<Event> attendedEvents) {
         this.id = id;
         this.name = name;
         this.age = age;
@@ -54,24 +55,16 @@ public class User {
 
     public void setGender(String gender) { this.gender = gender; }
 
-    public List<Rating> getRatings() { return ratings; }
+    public ArrayList<Rating> getRatings() { return ratings; }
 
-    public void setRatings(List<Rating> ratings) { this.ratings = ratings; }
+    public void setRatings(ArrayList<Rating> ratings) { this.ratings = ratings; }
 
-    public List<Event> getCreatedEvents() { return createdEvents; }
+    public ArrayList<Event> getCreatedEvents() { return createdEvents; }
 
-    public void setCreatedEvents(List<Event> createdEvents) { this.createdEvents = createdEvents; }
+    public void setCreatedEvents(ArrayList<Event> createdEvents) { this.createdEvents = createdEvents; }
 
-    public List<Event> getAttendedEvents() { return attendedEvents; }
+    public ArrayList<Event> getAttendedEvents() { return attendedEvents; }
 
-    public void setAttendedEvents(List<Event> attendedEvents) { this.attendedEvents = attendedEvents; }
+    public void setAttendedEvents(ArrayList<Event> attendedEvents) { this.attendedEvents = attendedEvents; }
 
-
-    // This is for easier debug.
-    @Override
-    public String toString() {
-        return String.format(
-                "Postit Note[name=%s, note=%s]",
-                name,note);
-    }
 }
