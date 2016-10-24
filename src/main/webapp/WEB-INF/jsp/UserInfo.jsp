@@ -9,7 +9,7 @@
     <head>
         <title>User pages</title>
 
-        <link rel="stylesheet" type="text/css" href="<c:url value="/css/postitnote.css"/>"/>
+        <link rel="stylesheet" type="text/css" href="<c:url value="/css/style.css"/>"/>
     </head>
     <body>
 
@@ -67,5 +67,6 @@
         </c:otherwise>
     </c:choose>
 
+    <script src="<c:url value="/js/main.js" />"></script>
     </body>
 </html>
