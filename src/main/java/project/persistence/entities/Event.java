@@ -1,8 +1,6 @@
 package project.persistence.entities;
 
 import javax.persistence.*;
-//import project.persistence.entities.Location;
-//import project.persistence.entities.User;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -24,14 +22,13 @@ public class Event {
 
     private String name;
     private String description;
-  //  private Location location;
+    private Location location;
     private String[] type;
     private int creatorId;
     private int ageMin;
     private int ageMax;
     private Date time;
     private boolean genderRestriction;
- //   private Image image;
     private ArrayList<User> attendees;
 
     // Notice the empty constructor, because we need to be able to create an empty Event to add
@@ -39,18 +36,17 @@ public class Event {
     public Event() {
     }
 
-    public Event(String name, String description, String[] type, int creatorId, int ageMin, int ageMax, Date time,
+    public Event(String name, String description, Location location, String[] type, int creatorId, int ageMin, int ageMax, Date time,
                       boolean genderRestriction, ArrayList<User> attendees) {
         this.name = name;
         this.description = description;
-     //   this.location = location;
+        this.location = location;
         this.type = type;
         this.creatorId = creatorId;
         this.ageMin = ageMin;
         this.ageMax = ageMax;
         this.time = time;
         this.genderRestriction = genderRestriction;
-     //   this.image = image;
         this.attendees = attendees;
     }
 
@@ -92,10 +88,10 @@ public class Event {
 
     public void setAgeMax(int ageMax) { this.ageMax = ageMax; }
 
- /*   public Location getLocation() { return location; }
+    public Location getLocation() { return location; }
 
     public void setLocation(Location location) { this.location = location; }
-*/
+
     public Date getTime() { return time; }
 
     public void setTime(Date time) { this.time = time; }
@@ -103,12 +99,6 @@ public class Event {
     public boolean getGenderRestriction() { return genderRestriction; }
 
     public void setGenderRestriction(boolean genderRestriction) { this.genderRestriction = genderRestriction; }
-
- /*   public Image getImage() { return image; }
-
-    public void setImage(Image image) { this.image = image; }
-
- */
 
     public ArrayList<User> getAttendees() { return attendees; }
 

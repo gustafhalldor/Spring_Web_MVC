@@ -2,6 +2,7 @@ package project.persistence.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Component;
 import project.persistence.entities.Event;
 
 import java.util.List;
@@ -15,6 +16,7 @@ import java.util.List;
  /**
  * Created by Hoai Nam Duc Tran on 23/10/2016.
  */
+@Component
 public interface EventRepository extends JpaRepository<Event, Integer> {
 
     Event save(Event event);

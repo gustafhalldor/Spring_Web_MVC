@@ -1,6 +1,7 @@
 package project.persistence.entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * The class for the Postit Note itself.
@@ -9,13 +10,13 @@ import javax.persistence.*;
  */
 
 @Entity
-@Table(name = "Locations") // If you want to specify a table name, you can do so here
-public class Location {
+@Table(name = "locations") // If you want to specify a table name, you can do so here
+public class Location implements Serializable{
 
     // Declare that this attribute is the id
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
     private float latitude;
     private float longitude;
@@ -31,11 +32,11 @@ public class Location {
         this.longitude = longitude;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
