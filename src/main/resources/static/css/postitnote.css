@@ -1,4 +1,11 @@
+#map {
+  height: 400px;
+  width: 100%;
+}
 
+body{
+    background-color: black;
+}
 table.notes {
     border: 1px black solid;
 }

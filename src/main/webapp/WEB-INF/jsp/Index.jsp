@@ -1,21 +1,33 @@
+
 <!DOCTYPE html>
+
 
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-<html lang="en">
-
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
+<html>
     <head>
-        <title>Project Title</title>
+        <title>The Event Finder</title>
+        <link rel="stylesheet" type="text/css" href="<c:url value="/css/postitnote.css"/>"/>
     </head>
-    <body>
-
-    <h1>HBV501G Project Spring Boot Skeleton</h1>
-    <p>This skeleton of a Spring Boot Web project was made to help groups get started on their projects without to much hassle.</p>
-
-    <ul>
-        <li><a href="/users">Click here for the brand new user page!!!</a></li>
-    </ul>
-    </body>
-    <footer>Class HBV501G, University of Iceland, Fall 2015</footer>
+  <body>
+    <h3>The Event Finder</h3>
+    <div id="map"></div>
+    <script>
+      function initMap() {
+        var rvkLOC = {lat: 64.1265, lng: 21.044};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: rvkLOC
+        });
+        var marker = new google.maps.Marker({
+          position: rvkLOC,
+          map: map
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDw_tl_1b0d4i3KviPUzVHvM7sFbmAz-RE&callback=initMap">
+    </script>
+  </body>
 </html>
