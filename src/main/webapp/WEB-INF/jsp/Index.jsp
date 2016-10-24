@@ -13,12 +13,16 @@
   <body>
     <h3>The Event Finder</h3>
     <div id="map"></div>
-    <script src="<c:url value="/js/main.js" />"></script>
+
     <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDw_tl_1b0d4i3KviPUzVHvM7sFbmAz-RE&callback=initMap">
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDw_tl_1b0d4i3KviPUzVHvM7sFbmAz-RE&callback=initMap">
     </script>
+<<<<<<< HEAD
 
     <h3><a href="/event">Create event</a></h3>
 
+=======
+    <script src="<c:url value="/js/main.js" />"></script>
+>>>>>>> 7a1fd7233149501e4c3a98cb8c98a63f05f6e910
   </body>
 </html>
