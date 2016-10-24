@@ -22,31 +22,32 @@ public class Event {
 
     private String name;
     private String description;
-  /*  private Location location;
-    private String[] type;
-    private int creatorId;
     private int ageMin;
     private int ageMax;
-    private Date time;
     private boolean genderRestriction;
-    private ArrayList<User> attendees;
-*/
+    private ArrayList<String> type;
+  //  private int creatorId;
+  //  private Location location;
+  //  private Date time;
+
+  //  private ArrayList<User> attendees;
+
     // Notice the empty constructor, because we need to be able to create an empty Event to add
     // to our model so we can use it with our form
     public Event() {
     }
 
-    public Event(String name, String description) {
+    public Event(String name, String description, int ageMax, int ageMin, boolean genderRestriction, ArrayList<String> type) {
         this.name = name;
         this.description = description;
-      /*  this.location = location;
-        this.type = type;
-        this.creatorId = creatorId;
         this.ageMin = ageMin;
         this.ageMax = ageMax;
-        this.time = time;
         this.genderRestriction = genderRestriction;
-        this.attendees = attendees;*/
+        this.type = type;
+      //  this.time = time;
+      //  this.attendees = attendees;
+      //  this.location = location;
+      //  this.creatorId = creatorId;
     }
 
     public int getId() { return id; }
@@ -70,14 +71,10 @@ public class Event {
     public void setDescription(String description) {
         this.description = description;
     }
-/*
-    public String[] getType() { return type; }
 
-    public void setType(String[] type) { this.type = type; }
+    public ArrayList<String>  getType() { return type; }
 
-    public int getCreatorId() { return creatorId; }
-
-    public void setCreatorId(int creatorId) { this.creatorId = creatorId; }
+    public void setType(ArrayList<String>  type) { this.type = type; }
 
     public int getAgeMin() { return ageMin; }
 
@@ -87,6 +84,14 @@ public class Event {
 
     public void setAgeMax(int ageMax) { this.ageMax = ageMax; }
 
+    public boolean getGenderRestriction() { return genderRestriction; }
+
+    public void setGenderRestriction(boolean genderRestriction) { this.genderRestriction = genderRestriction; }
+ /*
+    public int getCreatorId() { return creatorId; }
+
+    public void setCreatorId(int creatorId) { this.creatorId = creatorId; }
+
     public Location getLocation() { return location; }
 
     public void setLocation(Location location) { this.location = location; }
@@ -94,10 +99,6 @@ public class Event {
     public Date getTime() { return time; }
 
     public void setTime(Date time) { this.time = time; }
-
-    public boolean getGenderRestriction() { return genderRestriction; }
-
-    public void setGenderRestriction(boolean genderRestriction) { this.genderRestriction = genderRestriction; }
 
     public ArrayList<User> getAttendees() { return attendees; }
 

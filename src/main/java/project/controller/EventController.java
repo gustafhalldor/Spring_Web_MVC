@@ -32,13 +32,14 @@ public class EventController {
 
     // Put right value of "value" here, we just need to decide on what it should be.
     // This displays the information on a selected event.
-    @RequestMapping(value = "/eventInformation", method = RequestMethod.GET)
-    public String getEventInfo(Model model, Event event) {
+    @RequestMapping(value = "/event/{id}", method = RequestMethod.GET)
+    public String getEventInfo(@PathVariable int id, Model model, Event event) {
 
         // Puts the selected event into the "eventInfo" attribute
         model.addAttribute("eventInfo", eventService.findOne(event.getId()));
 
-        // We need to decide on the name of the .jsp file which displays the info and where to place it.
+        // We need to decide on the name of the .jsp file which displays the info and where to place it
+        // and of course create it as well :)
         return "EventInfo";
     }
 
