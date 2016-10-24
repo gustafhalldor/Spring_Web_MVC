@@ -22,7 +22,7 @@ public class Event {
 
     private String name;
     private String description;
-    private Location location;
+  /*  private Location location;
     private String[] type;
     private int creatorId;
     private int ageMin;
@@ -30,24 +30,23 @@ public class Event {
     private Date time;
     private boolean genderRestriction;
     private ArrayList<User> attendees;
-
+*/
     // Notice the empty constructor, because we need to be able to create an empty Event to add
     // to our model so we can use it with our form
     public Event() {
     }
 
-    public Event(String name, String description, Location location, String[] type, int creatorId, int ageMin, int ageMax, Date time,
-                      boolean genderRestriction, ArrayList<User> attendees) {
+    public Event(String name, String description) {
         this.name = name;
         this.description = description;
-        this.location = location;
+      /*  this.location = location;
         this.type = type;
         this.creatorId = creatorId;
         this.ageMin = ageMin;
         this.ageMax = ageMax;
         this.time = time;
         this.genderRestriction = genderRestriction;
-        this.attendees = attendees;
+        this.attendees = attendees;*/
     }
 
     public int getId() { return id; }
@@ -71,7 +70,7 @@ public class Event {
     public void setDescription(String description) {
         this.description = description;
     }
-
+/*
     public String[] getType() { return type; }
 
     public void setType(String[] type) { this.type = type; }
@@ -103,5 +102,5 @@ public class Event {
     public ArrayList<User> getAttendees() { return attendees; }
 
     public void setAttendees(ArrayList<User> attendees) { this.attendees = attendees; }
-
+*/
 }

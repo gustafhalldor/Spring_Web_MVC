@@ -3,6 +3,7 @@ package project.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,7 +27,7 @@ public class EventController {
 
     // Put right value of "value" here, we just need to decide on what it should be.
     // This displays the information on a selected event.
-  /*  @RequestMapping(value = "/event", method = RequestMethod.GET)
+    @RequestMapping(value = "/eventInformation", method = RequestMethod.GET)
     public String getEventInfo(Model model, Event event) {
 
         // Puts the selected event into the "eventInfo" attribute
@@ -35,7 +36,7 @@ public class EventController {
         // We need to decide on the name of the .jsp file which displays the info and where to place it.
         return "EventInfo";
     }
-    */
+
 
     @RequestMapping(value = "/event", method = RequestMethod.GET)
     public String createEvent(Model model) {
@@ -45,7 +46,7 @@ public class EventController {
         return "CreateEvent";
     }
 
-    /*
+
         @RequestMapping(value = "/event", method = RequestMethod.POST)
         public String saveEvent(@ModelAttribute("eventInfo") Event event, Model model) {
 
@@ -57,11 +58,11 @@ public class EventController {
             // We probably want to display the created event so the user knows it was created successfully
             // or at least some indication that the event was created successfully
             // Don't know if we do it here or in some other way... At least the line of code below looks redundant.
-            model.addAttribute("eventInfo", eventService.findOne(event.getId()));
+           // model.addAttribute("eventInfo", eventService.findOne(event.getId()));
 
             return "CreateEvent";
         }
-    */
+
     @RequestMapping(value = "/myevents", method = RequestMethod.POST)
     public String deleteEvent(Event event, User user, Model model) {
 
@@ -76,5 +77,5 @@ public class EventController {
         // display updated version of myevents page, probably best to name it MyEvents.jsp
         return "MyEvents";
     }
-    
+
 }
