@@ -17,7 +17,7 @@ function initMap() {
     });
     //The window that pops up when you click a marker.
     var infowindow = new google.maps.InfoWindow({
-      content: 'Event hjá Vr2! <br> Klukkan: 16:00 <br><img src='+imgSrc+'>'
+      content: 'Event hjá Vr2! <br> Klukkan: 16:00 <br><img src='+imgSrc+'>  <br> <button>Sign Up!</button>'
     });
      marker.addListener('click', function() {
       infowindow.open(map, marker);
