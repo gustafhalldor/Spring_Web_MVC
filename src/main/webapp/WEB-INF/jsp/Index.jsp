@@ -18,5 +18,7 @@
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDw_tl_1b0d4i3KviPUzVHvM7sFbmAz-RE&callback=initMap">
     </script>
 
+    <h3><a href="/event">Create event</a></h3>
+
   </body>
 </html>
