@@ -12,6 +12,11 @@ import project.persistence.entities.User;
 import project.service.EventService;
 import project.service.UserService;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
 /**
  * Created by geelo on 24-Oct-16.
  */
@@ -76,6 +81,35 @@ public class EventController {
 
         // display updated version of myevents page, probably best to name it MyEvents.jsp
         return "MyEvents";
+    }
+
+    @RequestMapping(value = "/tojson", method = RequestMethod.GET)
+    public void dataToJSONFile(String[] events) throws IOException{
+        //String[] events emulator
+
+        JSONObject obj = new JSONObject();
+        obj.put("EiCaramba", "crunchify.com");
+        obj.put("Author", "App Shah");
+
+        JSONArray company = new JSONArray();
+        company.add("Company: eBay");
+        company.add("company: Paupal");
+        company.add("Company: Google");
+        obj.put("CompanyList", company);
+        
+
+        String path = System.getProperty("user.dir");
+        path += "\\src\\main\\webapp\\js\\data.json";
+        FileWriter file = new FileWriter(path);
+        try {
+            file.write(obj.toJSONString());
+            System.out.println(System.getProperty("user.dir"));
+        } catch (IOException e){
+            e.printStackTrace();
+        }finally {
+            file.flush();
+            file.close();
+        }
     }
 
 }
