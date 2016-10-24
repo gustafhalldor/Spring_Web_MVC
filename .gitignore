@@ -107,3 +107,4 @@ local.properties
 # TeXlipse plugin
 .texlipse
 /target/
+src/main/resources/application.properties
