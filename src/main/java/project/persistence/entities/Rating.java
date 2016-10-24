@@ -6,6 +6,7 @@ import javax.persistence.*;
  * Created by geelo on 23-Oct-16.
  */
 
+
 @Entity
 @Table(name = "ratings") // If you want to specify a table name, you can do so here
 public class Rating {

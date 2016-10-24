@@ -2,6 +2,7 @@ package project.persistence.entities;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by geelo on 23-Oct-16.
@@ -15,7 +16,9 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     private String name;
+    private String note; //for debugging purposes, remember to delete
     private int age;
     private String gender;
     private ArrayList<Rating> ratings;
@@ -28,10 +31,12 @@ public class User {
     public User() {
     }
 
-    public User(int id, String name, int age, String gender, ArrayList<Rating> ratings,
-                ArrayList<Event> createdEvents, ArrayList<Event> attendedEvents) {
-        this.id = id;
+
+
+    public User(String name, String note, int age, String gender, ArrayList<Rating> ratings, ArrayList<Event> createdEvents,
+                ArrayList<Event> attendedEvents) {
         this.name = name;
+        this.note = note;  //for debugging purposes, remember to delete
         this.age = age;
         this.gender = gender;
         this.ratings = ratings;
@@ -46,6 +51,14 @@ public class User {
     public String getName() { return name; }
 
     public void setName(String name) { this.name = name; }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
 
     public int getAge() { return age; }
 

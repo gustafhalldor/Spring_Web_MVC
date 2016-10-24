@@ -13,6 +13,7 @@ import project.service.UserService;
 import java.util.Collections;
 import java.util.List;
 
+@Service
 public class UserServiceImplementation implements UserService {
 
     // Instance Variables

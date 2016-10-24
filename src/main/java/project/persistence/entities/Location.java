@@ -7,6 +7,7 @@ import javax.persistence.*;
  * The system generates a table schema based on this class for this entity.
  * Be sure to annotate any entities you have with the @Entity annotation.
  */
+
 @Entity
 @Table(name = "Locations") // If you want to specify a table name, you can do so here
 public class Location {
