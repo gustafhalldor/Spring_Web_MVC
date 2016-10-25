@@ -25,7 +25,7 @@ public class Event {
     private int ageMin;
     private int ageMax;
     private boolean genderRestriction;
-    private ArrayList<User> attendees;
+    //private ArrayList<User> attendees;
     private float lgt;
     private float lat;
     //private ArrayList<String> type
@@ -48,7 +48,7 @@ public class Event {
         this.genderRestriction = genderRestriction;
       //  this.type = type;
       //  this.location = location;
-        this.attendees = attendees;
+        //this.attendees = attendees;
       //  this.creatorId = creatorId;
        // this.type = type;
       //  this.time = time;

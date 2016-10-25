@@ -1,1 +1,26 @@
-["Event:{\"eventDesc\":\"eventlysing\",\"coordinates\":[\"lat:-21.94489\",\"lgt:64.14386\"],\"eventName\":\"eventnafn\"}"]
+{"Events": [
+  {
+    "coordinates":[-21.955565,64.138752],
+    "eventName":"Event hjá Daða!",
+    "eventDesc":"Ætlum að halda event hjá Vr2",
+    "imgSrc":"https://i.ytimg.com/vi/OjMiTGrCSaA/hqdefault.jpg"
+  },
+  {
+    "coordinates":[-21.94489,64.143862],
+    "eventName":"Event hjá Pedro!",
+    "eventDesc":"Ætlum að halda event hjá tjörninni",
+    "imgSrc":"https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSb0Ry8iIoe-4I_uaA0seqyGsaOoT7RZzG7ESMbU5G5L0EPKebJvjesosw"
+  },
+  {
+    "coordinates":[-21.946537,64.137497],
+    "eventName":"Event hjá Duc!",
+    "eventDesc":"Ætlum að halda event hjá Öskju",
+    "imgSrc":"http://www.happinessispets.com/wp-content/uploads/2014/09/DSCN0186.jpg"
+  },
+  {
+    "coordinates":[-21.927037,64.142027],
+    "eventName":"Event hjá Gustaf!",
+    "eventDesc":"Ætlum að halda event hjá Hallgrímskirkju",
+    "imgSrc":"http://www.alwaysmaltese.com/images/Tiny%20Male%201.jpg "
+  }]
+}
