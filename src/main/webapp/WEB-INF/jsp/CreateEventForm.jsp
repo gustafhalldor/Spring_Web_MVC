@@ -14,12 +14,10 @@
     </head>
     <body>
 
-    <h1><a href="/event">Postit Notes</a></h1>
-
     <%--Note that the `commandName` given here HAS TO MATCH the name of the attribute--%>
     <%--that is added to the model that is passed to the view.--%>
     <%--See PostitNoteController, method postitNoteViewGet(), and find where this attribute is added to the model.--%>
-    <sf:form method="POST" commandName="eventInfo" action="/event">
+    <sf:form method="POST" commandName="eventDetails" action="/eventinfo">
 
         <table>
             <tr>
@@ -41,7 +39,7 @@
             </tr>
             <tr>
                 <td>Gender restrict event?</td>
-                <td><form:checkbox path="genderRestriction" />Yes</td>
+                <td><form:checkbox path="genderRestriction"/>Yes</td>
             </tr>
             <tr>
                 <td>Type of event:</td>
@@ -49,12 +47,49 @@
                 <td><form:checkbox path="type" value="Kubb"/>Kubb</td>
                 <td><form:checkbox path="type" value="Bordspil"/>Bordspil</td>
             </tr>
+            <tr>
+                <%-- hiding this input because we want to get the data through javascript--%>
+                <td><sf:input path="location" type="hidden"/></td>
+            </tr>
+            <tr>
+                <td><sf:input path="creatorId" type="hidden"/></td>
+            </tr>
         </table>
 
         <input type="submit" VALUE="CREATE!"/>
 
     </sf:form>
 
+    <%--** STUFF BELOW SHOULD BE IN viewEvent.jsp PROBABLY **
+    <h2>Attendees:</h2>
+    &lt;%&ndash;Choose what code to generate based on tests that we implement&ndash;%&gt;
+    <c:choose>
+
+        &lt;%&ndash;If the model has an attribute with the name `listOfAttendees`&ndash;%&gt;
+        <c:when test="${not empty listOfAttendees}">
+            &lt;%&ndash;Create a table for the Postit Notes&ndash;%&gt;
+            <table class="notes">
+
+                    &lt;%&ndash;For each postit note, that is in the list that was passed in the model&ndash;%&gt;
+                    &lt;%&ndash;generate a row in the table&ndash;%&gt;
+                    &lt;%&ndash;Here we set `postit` as a singular item out of the list `postitNotes`&ndash;%&gt;
+                <c:forEach var="attendee" items="${listOfAttendees}">
+                    <tr>
+                            &lt;%&ndash;We can reference attributes of the Entity by just entering the name we gave&ndash;%&gt;
+                            &lt;%&ndash;it in the singular item var, and then just a dot followed by the attribute name&ndash;%&gt;
+
+                            &lt;%&ndash;Create a link based on the name attribute value&ndash;%&gt;
+                        <td>${attendee.name}</td>
+                    </tr>
+                </c:forEach>
+            </table>
+        </c:when>
+
+        &lt;%&ndash;If all tests are false, then do this&ndash;%&gt;
+        <c:otherwise>
+            <h3>No one is going yet!</h3>
+        </c:otherwise>
+    </c:choose>--%>
 
     </body>
 </html>

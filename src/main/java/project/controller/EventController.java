@@ -30,44 +30,30 @@ public class EventController {
         this.eventService = eventService;
     }
 
-    // Put right value of "value" here, we just need to decide on what it should be.
-    // This displays the information on a selected event.
-    @RequestMapping(value = "/event/{id}", method = RequestMethod.GET)
-    public String getEventInfo(@PathVariable int id, Model model, Event event) {
 
-        // Puts the selected event into the "eventInfo" attribute
-        model.addAttribute("eventInfo", eventService.findOne(event.getId()));
-
-        // We need to decide on the name of the .jsp file which displays the info and where to place it
-        // and of course create it as well :)
-        return "EventInfo";
-    }
-
-
+    // Allows for a new event to be created. Upon visiting /event the form to fill out is displayed.
     @RequestMapping(value = "/event", method = RequestMethod.GET)
     public String createEvent(Model model) {
 
-        model.addAttribute("eventInfo", new Event());
+        model.addAttribute("eventDetails", new Event());
 
-        return "CreateEvent";
+        return "CreateEventForm";
     }
 
+    // When user submits his event form he is taken to /eventinfo and ViewEventInfo.jsp is displayed
+    @RequestMapping(value = "/eventinfo", method = RequestMethod.POST)
+    public String saveEvent(@ModelAttribute("eventDetails") Event event, Model model) {
 
-        @RequestMapping(value = "/event", method = RequestMethod.POST)
-        public String saveEvent(@ModelAttribute("eventInfo") Event event, Model model) {
+        // Save the event data we received from the form
+        eventService.save(event);
 
-            // Save the event data we received from the form
-            eventService.save(event);
+        // TODO: Have to add the event to the user's created events
 
-            // TODO: Have to add the event to the user's created events
+        // Displays the event information through the "info" attribute, which is sent to ViewEventInfo.jsp
+        model.addAttribute("info", event);
 
-            // We probably want to display the created event so the user knows it was created successfully
-            // or at least some indication that the event was created successfully
-            // Don't know if we do it here or in some other way... At least the line of code below looks redundant.
-           // model.addAttribute("eventInfo", eventService.findOne(event.getId()));
-
-            return "CreateEvent";
-        }
+        return "ViewEventInfo";
+    }
 
     @RequestMapping(value = "/myevents", method = RequestMethod.POST)
     public String deleteEvent(Event event, User user, Model model) {

@@ -26,28 +26,30 @@ public class Event {
     private int ageMax;
     private boolean genderRestriction;
     private ArrayList<String> type;
-  //  private int creatorId;
-  //  private Location location;
+    private Location location;
+    private int creatorId;
+    private ArrayList<User> attendees;
   //  private Date time;
 
-  //  private ArrayList<User> attendees;
 
     // Notice the empty constructor, because we need to be able to create an empty Event to add
     // to our model so we can use it with our form
     public Event() {
     }
 
-    public Event(String name, String description, int ageMax, int ageMin, boolean genderRestriction, ArrayList<String> type) {
+    public Event(String name, String description, int ageMax, int ageMin, boolean genderRestriction, ArrayList<String> type,
+                 Location location, ArrayList<User> attendees, int creatorId) {
         this.name = name;
         this.description = description;
         this.ageMin = ageMin;
         this.ageMax = ageMax;
         this.genderRestriction = genderRestriction;
         this.type = type;
+        this.location = location;
+        this.attendees = attendees;
+        this.creatorId = creatorId;
       //  this.time = time;
-      //  this.attendees = attendees;
-      //  this.location = location;
-      //  this.creatorId = creatorId;
+
     }
 
     public int getId() { return id; }
@@ -87,21 +89,21 @@ public class Event {
     public boolean getGenderRestriction() { return genderRestriction; }
 
     public void setGenderRestriction(boolean genderRestriction) { this.genderRestriction = genderRestriction; }
- /*
-    public int getCreatorId() { return creatorId; }
-
-    public void setCreatorId(int creatorId) { this.creatorId = creatorId; }
 
     public Location getLocation() { return location; }
 
     public void setLocation(Location location) { this.location = location; }
 
-    public Date getTime() { return time; }
+    public int getCreatorId() { return creatorId; }
 
-    public void setTime(Date time) { this.time = time; }
+    public void setCreatorId(int creatorId) { this.creatorId = creatorId; }
 
     public ArrayList<User> getAttendees() { return attendees; }
 
     public void setAttendees(ArrayList<User> attendees) { this.attendees = attendees; }
+/*
+    public Date getTime() { return time; }
+
+    public void setTime(Date time) { this.time = time; }
 */
 }
