@@ -63,7 +63,8 @@ window.fbAsyncInit = function() {
         version    : 'v2.8' // use graph api version 2.5
     });
 
-    $('#login').click(function() {
+    $('#login').click(function(event) {
+        event.preventDefault();
         FB.login(function(response) {
                 var getInfo = $('#test');
                 if(response.authResponse) {
@@ -83,6 +84,9 @@ window.fbAsyncInit = function() {
                                 $('<ul/>').text('event id: '+response.data[0].id),
                                 $('<ul/>').text('event status: '+response.data[0].rsvp_status)
                             );
+                            $('.overlay').hide();
+                            $('.loginDiv').hide();
+                            $('#logout').show();
                         }
                     });
                 } else {
@@ -90,6 +94,18 @@ window.fbAsyncInit = function() {
                 }
         }, {
             scope: 'email,user_events'
+        });
+    });
+
+    $('#logout').click(function(event) {
+        event.preventDefault();
+        FB.logout(function(response) {
+            if(response.status !== 'connected') {
+                console.log('goodbye');
+            }
+            $('.overlay').show();
+            $('.loginDiv').show();
+            $('#logout').hide();
         });
     });
 };
