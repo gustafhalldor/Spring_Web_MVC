@@ -13,6 +13,9 @@
   <body>
     <!--<div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="true"></div>-->
     <div id="login">facebook login</div>
+    <li id="test">
+
+    </li>
     <h3>The Event Finder</h3>
 
     <div id="map"></div>

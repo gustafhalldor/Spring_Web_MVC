@@ -65,24 +65,35 @@ window.fbAsyncInit = function() {
 
     $('#login').click(function() {
         FB.login(function(response) {
-            if(response.authResponse) {
-                //this response return expiresIn, userID, accessToken and signedRequest
-                var accessToken = response.authResponse.accessToken;
-                var userId = response.authResponse.userID;
-                console.log('accessToken: ' + typeof(accessToken), 'userID :' + typeof(userId));
-                FB.api('/'+userId+'/friends', function(response) {
-                    if(response) {
+                var getInfo = $('#test');
+                if(response.authResponse) {
+                    //this response return expiresIn, userID, accessToken and signedRequest
+                    var accessToken = response.authResponse.accessToken;
+                    var userId = response.authResponse.userID;
+                    FB.api('/'+userId+'/events/', function(response) {
                         console.log(response);
-                    }
-                });
-            } else {
-                console.log("failed");
-            }
+                        if(response && !response.error) {
+                            getInfo.append(
+                                $('<ul/>').text('event description: '+response.data[0].description),
+                                $('<ul/>').text('event startTime: '+response.data[0].start_time),
+                                $('<ul/>').text('event endTime: '+response.data[0].end_time),
+                                $('<ul/>').text('event name: '+response.data[0].name),
+                                $('<ul/>').text('event lat: '+response.data[0].place.location.latitude),
+                                $('<ul/>').text('event long: '+response.data[0].place.location.longitude),
+                                $('<ul/>').text('event id: '+response.data[0].id),
+                                $('<ul/>').text('event status: '+response.data[0].rsvp_status)
+                            );
+                        }
+                    });
+                } else {
+                    window.alert("failed");
+                }
         }, {
-            scope: 'email,user_friends'
+            scope: 'email,user_events'
         });
     });
 };
+
 
 (function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
