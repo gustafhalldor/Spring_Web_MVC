@@ -52,6 +52,7 @@ function checkLoginState() {
     });
 }
 */
+
 window.fbAsyncInit = function() {
     FB.init({
         appId      : '549623305236918',
