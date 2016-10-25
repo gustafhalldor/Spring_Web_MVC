@@ -25,7 +25,9 @@ public class Event {
     private int ageMin;
     private int ageMax;
     private boolean genderRestriction;
-    private ArrayList<String> type;
+    private float lgt;
+    private float lat;
+    //private ArrayList<String> type
   //  private int creatorId;
   //  private Location location;
   //  private Date time;
@@ -43,7 +45,7 @@ public class Event {
         this.ageMin = ageMin;
         this.ageMax = ageMax;
         this.genderRestriction = genderRestriction;
-        this.type = type;
+       // this.type = type;
       //  this.time = time;
       //  this.attendees = attendees;
       //  this.location = location;
@@ -72,9 +74,9 @@ public class Event {
         this.description = description;
     }
 
-    public ArrayList<String>  getType() { return type; }
+   // public ArrayList<String>  getType() { return type; }
 
-    public void setType(ArrayList<String>  type) { this.type = type; }
+   // public void setType(ArrayList<String>  type) { this.type = type; }
 
     public int getAgeMin() { return ageMin; }
 
@@ -87,6 +89,14 @@ public class Event {
     public boolean getGenderRestriction() { return genderRestriction; }
 
     public void setGenderRestriction(boolean genderRestriction) { this.genderRestriction = genderRestriction; }
+
+    public float getLgt(){return this.lgt;}
+
+    public void setLgt(float lgt){this.lgt = lgt;}
+
+    public float getLat(){return this.lat;}
+
+    public void setLat(float lat){this.lat = lat;}
  /*
     public int getCreatorId() { return creatorId; }
 

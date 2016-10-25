@@ -16,7 +16,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-
+import java.util.List;
 /**
  * Created by geelo on 24-Oct-16.
  */
@@ -85,10 +85,24 @@ public class EventController {
     }
 
     @RequestMapping(value = "/tojson", method = RequestMethod.GET)
-    public void dataToJSONFile(String[] events) throws IOException{
+    public void dataToJSONFile() throws IOException{
         //String[] events emulator
+        List<Event> eventList = eventService.findAll();
+        JSONObject event;
+        JSONArray coords;
+        JSONArray events = new JSONArray();
+        for(int i=0; i<eventList.size();i++){
+            event = new JSONObject();
+            event.put("eventName", eventList.get(i).getName());
+            event.put("eventDesc", eventList.get(i).getDescription());
+            coords = new JSONArray();
+            coords.add("lat:"+eventList.get(i).getLat());
+            coords.add("lgt:"+eventList.get(i).getLgt());
+            event.put("coordinates", coords);
+            events.add("Event:"+event);
+        }
 
-        JSONObject obj = new JSONObject();
+       /* JSONObject obj = new JSONObject();
         obj.put("EiCaramba", "crunchify.com");
         obj.put("Author", "App Shah");
 
@@ -97,13 +111,13 @@ public class EventController {
         company.add("company: Paupal");
         company.add("Company: Google");
         obj.put("CompanyList", company);
-        
+        */
 
         String path = System.getProperty("user.dir");
         path += "\\src\\main\\webapp\\js\\data.json";
         FileWriter file = new FileWriter(path);
         try {
-            file.write(obj.toJSONString());
+            file.write(events.toJSONString());
             System.out.println(System.getProperty("user.dir"));
         } catch (IOException e){
             e.printStackTrace();

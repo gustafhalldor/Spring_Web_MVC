@@ -4,7 +4,6 @@ function initMap() {
     var rvkLOC = {lat: 64.138705, lng: -21.955501};
     //var imgSrc = "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSb0Ry8iIoe-4I_uaA0seqyGsaOoT7RZzG7ESMbU5G5L0EPKebJvjesosw";
 
-
     var map = new google.maps.Map(document.getElementById('map'), {
       zoom: 14,
       center: rvkLOC
