@@ -45,43 +45,43 @@ function initMap() {
     });*/
 }
 
-function statusChangeCallBack(response) {
-    console.log('statusChangeCallBack');
-    console.log(response);
-
-    if(response.status === 'connected') {
-        testAPI();
-    } else if (response.status === 'not_authorized') {
-        // The person is logged into Facebook, but not your app.
-        document.getElementById('status').innerHTML = 'Please log ' +
-            'into this app.';
-    } else {
-        // The person is not logged into Facebook, so we're not sure if
-        // they are logged into this app or not.
-        document.getElementById('status').innerHTML = 'Please log ' +
-            'into Facebook.';
-    }
-}
-
+/*
 function checkLoginState() {
     FB.getLoginStatus(function(response) {
         statusChangeCallback(response);
     });
 }
-
+*/
 window.fbAsyncInit = function() {
     FB.init({
         appId      : '549623305236918',
+        auth       : true,
+        status     : true,
         cookie     : true,  // enable cookies to allow the server to access
                             // the session
         xfbml      : true,  // parse social plugins on this page
-        version    : 'v2.5' // use graph api version 2.5
+        version    : 'v2.8' // use graph api version 2.5
     });
 
-    FB.getLoginStatus(function(response) {
-        statusChangeCallback(response);
+    $('#login').click(function() {
+        FB.login(function(response) {
+            if(response.authResponse) {
+                //this response return expiresIn, userID, accessToken and signedRequest
+                var accessToken = response.authResponse.accessToken;
+                var userId = response.authResponse.userID;
+                console.log('accessToken: ' + typeof(accessToken), 'userID :' + typeof(userId));
+                FB.api('/'+userId+'/friends', function(response) {
+                    if(response) {
+                        console.log(response);
+                    }
+                });
+            } else {
+                console.log("failed");
+            }
+        }, {
+            scope: 'email,user_friends'
+        });
     });
-
 };
 
 (function(d, s, id) {
@@ -91,14 +91,3 @@ window.fbAsyncInit = function() {
     js.src = "//connect.facebook.net/en_US/sdk.js";
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
-
-// Here we run a very simple test of the Graph API after login is
-// successful.  See statusChangeCallback() for when this call is made.
-function testAPI() {
-    console.log('Welcome!  Fetching your information.... ');
-    FB.api('/me', function(response) {
-        console.log('Successful login for: ' + response.name);
-        document.getElementById('status').innerHTML =
-            'Thanks for logging in, ' + response.name + '!';
-    });
-}

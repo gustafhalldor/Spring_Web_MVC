@@ -11,8 +11,8 @@
         <link rel="stylesheet" type="text/css" href="<c:url value="/css/style.css"/>"/>
     </head>
   <body>
-    <div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="true"></div>
-
+    <!--<div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="true"></div>-->
+    <div id="login">facebook login</div>
     <h3>The Event Finder</h3>
 
     <div id="map"></div>
