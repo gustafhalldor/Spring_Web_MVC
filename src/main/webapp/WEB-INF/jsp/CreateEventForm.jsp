@@ -41,19 +41,19 @@
                 <td>Gender restrict event?</td>
                 <td><form:checkbox path="genderRestriction"/>Yes</td>
             </tr>
-            <tr>
+<%--            <tr>
                 <td>Type of event:</td>
                 <td><form:checkbox path="type" value="Fotbolti"/>Fotbolti</td>
                 <td><form:checkbox path="type" value="Kubb"/>Kubb</td>
                 <td><form:checkbox path="type" value="Bordspil"/>Bordspil</td>
             </tr>
             <tr>
-                <%-- hiding this input because we want to get the data through javascript--%>
+                &lt;%&ndash; hiding this input because we want to get the data through javascript&ndash;%&gt;
                 <td><sf:input path="location" type="hidden"/></td>
             </tr>
             <tr>
                 <td><sf:input path="creatorId" type="hidden"/></td>
-            </tr>
+            </tr>--%>
         </table>
 
         <input type="submit" VALUE="CREATE!"/>
