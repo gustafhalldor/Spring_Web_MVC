@@ -25,10 +25,18 @@ public class Event {
     private int ageMin;
     private int ageMax;
     private boolean genderRestriction;
+<<<<<<< HEAD
     private ArrayList<String> type;
     private Location location;
     private int creatorId;
     private ArrayList<User> attendees;
+=======
+    private float lgt;
+    private float lat;
+    //private ArrayList<String> type
+  //  private int creatorId;
+  //  private Location location;
+>>>>>>> f682689dcf428dd299c89f155648cb21eb175747
   //  private Date time;
 
 
@@ -44,10 +52,14 @@ public class Event {
         this.ageMin = ageMin;
         this.ageMax = ageMax;
         this.genderRestriction = genderRestriction;
+<<<<<<< HEAD
         this.type = type;
         this.location = location;
         this.attendees = attendees;
         this.creatorId = creatorId;
+=======
+       // this.type = type;
+>>>>>>> f682689dcf428dd299c89f155648cb21eb175747
       //  this.time = time;
 
     }
@@ -74,9 +86,9 @@ public class Event {
         this.description = description;
     }
 
-    public ArrayList<String>  getType() { return type; }
+   // public ArrayList<String>  getType() { return type; }
 
-    public void setType(ArrayList<String>  type) { this.type = type; }
+   // public void setType(ArrayList<String>  type) { this.type = type; }
 
     public int getAgeMin() { return ageMin; }
 
@@ -89,6 +101,21 @@ public class Event {
     public boolean getGenderRestriction() { return genderRestriction; }
 
     public void setGenderRestriction(boolean genderRestriction) { this.genderRestriction = genderRestriction; }
+<<<<<<< HEAD
+=======
+
+    public float getLgt(){return this.lgt;}
+
+    public void setLgt(float lgt){this.lgt = lgt;}
+
+    public float getLat(){return this.lat;}
+
+    public void setLat(float lat){this.lat = lat;}
+ /*
+    public int getCreatorId() { return creatorId; }
+
+    public void setCreatorId(int creatorId) { this.creatorId = creatorId; }
+>>>>>>> f682689dcf428dd299c89f155648cb21eb175747
 
     public Location getLocation() { return location; }
 
