@@ -41,6 +41,14 @@
                 <td>Gender restrict event?</td>
                 <td><form:checkbox path="genderRestriction"/>Yes</td>
             </tr>
+            <tr>
+                <%--hiding this input because we want to get the data through javascript--%>
+                <td><sf:input path="lat" type="hidden"/></td>
+            </tr>
+            <tr>
+                <%--hiding this input because we want to get the data through javascript--%>
+                <td><sf:input path="lgt" type="hidden"/></td>
+            </tr>
 <%--            <tr>
                 <td>Type of event:</td>
                 <td><form:checkbox path="type" value="Fotbolti"/>Fotbolti</td>

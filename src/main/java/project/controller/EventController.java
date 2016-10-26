@@ -1,5 +1,6 @@
 package project.controller;
 
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -74,10 +75,16 @@ public class EventController {
     public void dataToJSONFile() throws IOException{
         //String[] events emulator
         List<Event> eventList = eventService.findAll();
-        JSONObject event;
+/*      JSONObject event;
         JSONArray coords;
-        JSONArray events = new JSONArray();
-        for(int i=0; i<eventList.size();i++){
+        JSONArray events = new JSONArray();*/
+
+        // create a new Gson instance
+        Gson gson = new Gson();
+        // convert your list to json
+        String events = gson.toJson(eventList);
+
+/*        for(int i=0; i<eventList.size();i++){
             event = new JSONObject();
             event.put("eventName", eventList.get(i).getName());
             event.put("eventDesc", eventList.get(i).getDescription());
@@ -86,7 +93,7 @@ public class EventController {
             coords.add("lgt:"+eventList.get(i).getLgt());
             event.put("coordinates", coords);
             events.add("Event:"+event);
-        }
+        }*/
 
        /* JSONObject obj = new JSONObject();
         obj.put("EiCaramba", "crunchify.com");
@@ -103,8 +110,8 @@ public class EventController {
         path += "\\src\\main\\webapp\\js\\data.json";
         FileWriter file = new FileWriter(path);
         try {
-            file.write(events.toJSONString());
-            System.out.println(System.getProperty("user.dir"));
+            file.write(events);
+          //  System.out.println(System.getProperty("user.dir"));
         } catch (IOException e){
             e.printStackTrace();
         }finally {

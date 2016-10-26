@@ -71,10 +71,9 @@ function initMap() {
         map.fitBounds(bounds);
     });
 
-   $.getJSON("/js/eventData.json", function(Events) {
-     $.each(Events["Events"], function(key, data) {
-        console.log(data["coordinates"][0])
-        var location = {lat: data["coordinates"][1], lng:data["coordinates"][0]};
+   $.getJSON("/js/data.json", function(Events) {
+     $.each(Events, function(key, data) {
+        var location = {lat: data["lat"], lng:data["lgt"]};
         var marker = new google.maps.Marker({
            position: location,
            map: map
@@ -82,7 +81,7 @@ function initMap() {
         var imgSrc = ""+data["imgSrc"];
         var infowindow = new google.maps.InfoWindow({
           content: ''+data["eventName"]+'<br>' + data["eventDesc"] + '<br>' +
-                   '<img src='+imgSrc+'> <br> <Button>Sign Up!</Button>'
+                   '<br> <Button>Sign Up!</Button>'
          });
          marker.addListener('click', function() {
                if(typeof(currInfoWindow) !== "undefined")currInfoWindow.close();
