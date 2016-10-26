@@ -14,32 +14,36 @@
     </head>
     <body>
 
-    <%-- Model = info --%>
+    <%--Note that the `commandName` given here HAS TO MATCH the name of the attribute--%>
+    <%--that is added to the model that is passed to the view.--%>
 
     <h2>Event information</h2>
+    <sf:form commandName="info">
 
-    <table>
-        <tr>
-            <td>Name:</td>
-            <td>${info.name}</td>
-        </tr>
-        <tr>
-            <td>Description:</td>
-            <td>${info.description}</td>
-        </tr>
-        <tr>
-            <td>Minimum age:</td>
-            <td>${info.ageMin}</td>
-        </tr>
-        <tr>
-            <td>Maximum age:</td>
-            <td>${info.ageMax}</td>
-        </tr>
-        <tr>
-            <td>Gender restrict event?</td>
-            <td>${info.genderRestriction}</td>
-        </tr>
-    </table>
+        <table>
+            <tr>
+                <td>Name:</td>
+                <td>${info.name}</td>
+            </tr>
+            <tr>
+                <td>Description:</td>
+                <td>${info.description}</td>
+            </tr>
+            <tr>
+                <td>Minimum age:</td>
+                <td>${info.ageMin}</td>
+            </tr>
+            <tr>
+                <td>Maximum age:</td>
+                <td>${info.ageMax}</td>
+            </tr>
+            <tr>
+                <td>Gender restrict event?</td>
+                <td>${info.genderRestriction}</td>
+            </tr>
+        </table>
+
+    </sf:form>
 
     <sf:form method="GET" action="/event">
         <input type="submit" VALUE="Create new event"/>

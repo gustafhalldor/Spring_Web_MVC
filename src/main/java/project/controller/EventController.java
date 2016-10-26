@@ -1,6 +1,5 @@
 package project.controller;
 
-import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -75,16 +74,10 @@ public class EventController {
     public void dataToJSONFile() throws IOException{
         //String[] events emulator
         List<Event> eventList = eventService.findAll();
-/*        JSONObject event;
-        JSONArray coords = new JSONArray();
-        JSONObject events = new JSONObject();*/
-
-        // create a new Gson instance
-        Gson gson = new Gson();
-        // convert your list to json
-        String events = gson.toJson(eventList);
-
-/*        for(int i=0; i<eventList.size();i++){
+        JSONObject event;
+        JSONArray coords;
+        JSONArray events = new JSONArray();
+        for(int i=0; i<eventList.size();i++){
             event = new JSONObject();
             event.put("eventName", eventList.get(i).getName());
             event.put("eventDesc", eventList.get(i).getDescription());
@@ -93,15 +86,24 @@ public class EventController {
             coords.add("lgt:"+eventList.get(i).getLgt());
             event.put("coordinates", coords);
             events.add("Event:"+event);
-        }*/
+        }
+
+       /* JSONObject obj = new JSONObject();
+        obj.put("EiCaramba", "crunchify.com");
+        obj.put("Author", "App Shah");
+
+        JSONArray company = new JSONArray();
+        company.add("Company: eBay");
+        company.add("company: Paupal");
+        company.add("Company: Google");
+        obj.put("CompanyList", company);
+        */
 
         String path = System.getProperty("user.dir");
         path += "\\src\\main\\webapp\\js\\data.json";
         FileWriter file = new FileWriter(path);
         try {
-          //  file.write(events.toJSONString());
-            file.write(events);
-
+            file.write(events.toJSONString());
             System.out.println(System.getProperty("user.dir"));
         } catch (IOException e){
             e.printStackTrace();

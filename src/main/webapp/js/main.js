@@ -9,18 +9,18 @@ function initMap() {
       center: rvkLOC
     });
 
-   $.getJSON("/js/data.json", function(Events) {
-     $.each(Events, function(key, data) {
-       // console.log(data["coordinates"][0])
-        var location = {lat: data["lat"], lng:data["lgt"]};
+   $.getJSON("/js/eventData.json", function(Events) {
+     $.each(Events["Events"], function(key, data) {
+        console.log(data["coordinates"][0])
+        var location = {lat: data["coordinates"][1], lng:data["coordinates"][0]};
         var marker = new google.maps.Marker({
            position: location,
            map: map
         });
-      //  var imgSrc = ""+data["imgSrc"];
+        var imgSrc = ""+data["imgSrc"];
         var infowindow = new google.maps.InfoWindow({
-          content: ''+data["name"]+'<br>' + data["description"] + '<br>' +
-                   '<br> <Button>Sign Up!</Button>'
+          content: ''+data["eventName"]+'<br>' + data["eventDesc"] + '<br>' +
+                   '<img src='+imgSrc+'> <br> <Button>Sign Up!</Button>'
          });
          marker.addListener('click', function() {
                if(typeof(currInfoWindow) !== "undefined")currInfoWindow.close();

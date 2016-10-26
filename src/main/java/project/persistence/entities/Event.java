@@ -46,10 +46,9 @@ public class Event {
         this.ageMin = ageMin;
         this.ageMax = ageMax;
         this.genderRestriction = genderRestriction;
-        this.lat = lat;
-        this.lgt = lgt;
+      //  this.type = type;
       //  this.location = location;
-      //  this.attendees = attendees;
+        this.attendees = attendees;
       //  this.creatorId = creatorId;
        // this.type = type;
       //  this.time = time;

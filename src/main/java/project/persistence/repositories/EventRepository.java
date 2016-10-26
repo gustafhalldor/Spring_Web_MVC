@@ -5,7 +5,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Component;
 import project.persistence.entities.Event;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,21 +23,21 @@ public interface EventRepository extends JpaRepository<Event, Integer> {
 
     void delete(Event event);
 
-    ArrayList<Event> findAll();
+    List<Event> findAll();
 
     // If we need a custom query that maybe doesn't fit the naming convention used by the JPA repository,
     // then we can write it quite easily with the @Query notation, like you see below.
     // This method returns all PostitNotes where the length of the name is equal or greater than 3 characters.
     @Query(value = "SELECT p FROM Event p where length(p.name) >= 3 ")
-    ArrayList<Event> findAllWithNameLongerThan3Chars();
+    List<Event> findAllWithNameLongerThan3Chars();
 
     // Instead of the method findAllReverseOrder() in PostitNoteService.java,
     // We could have used this method by adding the words
     // ByOrderByIdDesc, which mean: Order By Id in a Descending order
     //
-    ArrayList<Event> findAllByOrderByIdDesc();
+    List<Event> findAllByOrderByIdDesc();
 
     Event findOne(Integer id);
 
-    ArrayList<Event> findByName(String name);
+    List<Event> findByName(String name);
 }
