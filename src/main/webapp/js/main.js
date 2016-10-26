@@ -106,43 +106,69 @@ function initMap() {
     });*/
 }
 
-function statusChangeCallBack(response) {
-    console.log('statusChangeCallBack');
-    console.log(response);
-
-    if(response.status === 'connected') {
-        testAPI();
-    } else if (response.status === 'not_authorized') {
-        // The person is logged into Facebook, but not your app.
-        document.getElementById('status').innerHTML = 'Please log ' +
-            'into this app.';
-    } else {
-        // The person is not logged into Facebook, so we're not sure if
-        // they are logged into this app or not.
-        document.getElementById('status').innerHTML = 'Please log ' +
-            'into Facebook.';
-    }
-}
-
+/*
 function checkLoginState() {
     FB.getLoginStatus(function(response) {
         statusChangeCallback(response);
     });
 }
-
+*/
 window.fbAsyncInit = function() {
     FB.init({
         appId      : '549623305236918',
+        auth       : true,
+        status     : true,
         cookie     : true,  // enable cookies to allow the server to access
                             // the session
         xfbml      : true,  // parse social plugins on this page
-        version    : 'v2.5' // use graph api version 2.5
+        version    : 'v2.8' // use graph api version 2.5
     });
 
-    FB.getLoginStatus(function(response) {
-        statusChangeCallback(response);
+    $('#login').click(function(event) {
+        event.preventDefault();
+        FB.login(function(response) {
+            var getInfo = $('#test');
+            if(response.authResponse) {
+                //this response return expiresIn, userID, accessToken and signedRequest
+                var accessToken = response.authResponse.accessToken;
+                var userId = response.authResponse.userID;
+                FB.api('/'+userId+'/events/', function(response) {
+                    console.log(response);
+                    if(response && !response.error) {
+                        getInfo.append(
+                            $('<ul/>').text('event description: '+response.data[0].description),
+                            $('<ul/>').text('event startTime: '+response.data[0].start_time),
+                            $('<ul/>').text('event endTime: '+response.data[0].end_time),
+                            $('<ul/>').text('event name: '+response.data[0].name),
+                            $('<ul/>').text('event lat: '+response.data[0].place.location.latitude),
+                            $('<ul/>').text('event long: '+response.data[0].place.location.longitude),
+                            $('<ul/>').text('event id: '+response.data[0].id),
+                            $('<ul/>').text('event status: '+response.data[0].rsvp_status)
+                        );
+                        $('.overlay').hide();
+                        $('.loginDiv').hide();
+                        $('#logout').show();
+                    }
+                });
+            } else {
+                window.alert("failed");
+            }
+        }, {
+            scope: 'email,user_events'
+        });
     });
 
+    $('#logout').click(function(event) {
+        event.preventDefault();
+        FB.logout(function(response) {
+            if(response.status !== 'connected') {
+                console.log('goodbye');
+            }
+            $('.overlay').show();
+            $('.loginDiv').show();
+            $('#logout').hide();
+        });
+    });
 };
 
 (function(d, s, id) {
@@ -153,13 +179,4 @@ window.fbAsyncInit = function() {
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 
-// Here we run a very simple test of the Graph API after login is
-// successful.  See statusChangeCallback() for when this call is made.
-function testAPI() {
-    console.log('Welcome!  Fetching your information.... ');
-    FB.api('/me', function(response) {
-        console.log('Successful login for: ' + response.name);
-        document.getElementById('status').innerHTML =
-            'Thanks for logging in, ' + response.name + '!';
-    });
-}
+
