@@ -3,6 +3,7 @@ package project.service;
 import project.persistence.entities.Event;
 import project.persistence.entities.User;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,13 +27,13 @@ public interface EventService {
      * Get all {@link Event}s
      * @return A list of {@link Event}s
      */
-    List<Event> findAll();
+    ArrayList<Event> findAll();
 
     /**
      * Get all {@link Event}s in a reverse order
      * @return A reversed list of {@link Event}s
      */
-    List<Event> findAllReverseOrder();
+    ArrayList<Event> findAllReverseOrder();
 
     /**
      * Find a {@link Event} based on {@link Integer id}
@@ -46,6 +47,6 @@ public interface EventService {
      * @param name {@link String}
      * @return All {@link Event}s with the {@link String name} passed
      */
-    List<Event> findByName(String name);
+    ArrayList<Event> findByName(String name);
 
 }

@@ -6,6 +6,7 @@ import project.persistence.entities.Event;
 import project.persistence.repositories.EventRepository;
 import project.service.EventService;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -36,14 +37,14 @@ public class EventServiceImplementation implements EventService {
     }
 
     @Override
-    public List<Event> findAll() {
+    public ArrayList<Event> findAll() {
         return repository.findAll();
     }
 
     @Override
-    public List<Event> findAllReverseOrder() {
+    public ArrayList<Event> findAllReverseOrder() {
         // Get all the Postit notes
-        List<Event> events = repository.findAll();
+        ArrayList<Event> events = repository.findAll();
 
         // Reverse the list
         Collections.reverse(events);
@@ -57,7 +58,7 @@ public class EventServiceImplementation implements EventService {
     }
 
     @Override
-    public List<Event> findByName(String name) {
+    public ArrayList<Event> findByName(String name) {
         return repository.findByName(name);
     }
 }
