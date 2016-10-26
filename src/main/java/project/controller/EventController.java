@@ -72,31 +72,38 @@ public class EventController {
 
     @RequestMapping(value = "/tojson", method = RequestMethod.GET)
     public void dataToJSONFile() throws IOException{
+        //String[] events emulator
         List<Event> eventList = eventService.findAll();
-        JSONObject event = new JSONObject();
-        JSONObject finalObject = new JSONObject();
+        JSONObject event;
         JSONArray coords;
         JSONArray events = new JSONArray();
-
-        //Iterates through all events and creates JSON objects for each one.
         for(int i=0; i<eventList.size();i++){
             event = new JSONObject();
             event.put("eventName", eventList.get(i).getName());
             event.put("eventDesc", eventList.get(i).getDescription());
             coords = new JSONArray();
-            coords.add(eventList.get(i).getLat());
-            coords.add(+eventList.get(i).getLgt());
+            coords.add("lat:"+eventList.get(i).getLat());
+            coords.add("lgt:"+eventList.get(i).getLgt());
             event.put("coordinates", coords);
-            events.add(event);
+            events.add("Event:"+event);
         }
-        //Encases all the json data into a single JSON object.
-        finalObject.put("Events", events);
+
+       /* JSONObject obj = new JSONObject();
+        obj.put("EiCaramba", "crunchify.com");
+        obj.put("Author", "App Shah");
+
+        JSONArray company = new JSONArray();
+        company.add("Company: eBay");
+        company.add("company: Paupal");
+        company.add("Company: Google");
+        obj.put("CompanyList", company);
+        */
 
         String path = System.getProperty("user.dir");
-        path += "\\src\\main\\webapp\\js\\eventData.json";
+        path += "\\src\\main\\webapp\\js\\data.json";
         FileWriter file = new FileWriter(path);
         try {
-            file.write(finalObject.toJSONString());
+            file.write(events.toJSONString());
             System.out.println(System.getProperty("user.dir"));
         } catch (IOException e){
             e.printStackTrace();
