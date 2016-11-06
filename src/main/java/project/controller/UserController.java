@@ -4,6 +4,8 @@ package project.controller;
  * Created by Hoai Nam Duc Tran on 23/10/2016.
  */
 
+import org.hibernate.mapping.Array;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -76,5 +78,18 @@ public class UserController {
         model.addAttribute("userName", new User());
 
         return "User";
+    }
+
+    @RequestMapping(value = "/user/create", method = RequestMethod.POST)
+    public String createUser(Array data) {
+
+        User user = new User();
+        System.out.println(data);
+//        user.setName(json.name);
+
+
+        userService.save(user);
+
+        return "Index";
     }
 }

@@ -162,30 +162,44 @@ window.fbAsyncInit = function() {
             if(response.authResponse) {
                 //this response return expiresIn, userID, accessToken and signedRequest
                 var accessToken = response.authResponse.accessToken;
+
                 var userId = response.authResponse.userID;
-                FB.api('/'+userId+'/events/', function(response) {
-                    console.log(response);
-                    if(response && !response.error) {
-                        getInfo.append(
-                            $('<ul/>').text('event description: '+response.data[0].description),
-                            $('<ul/>').text('event startTime: '+response.data[0].start_time),
-                            $('<ul/>').text('event endTime: '+response.data[0].end_time),
-                            $('<ul/>').text('event name: '+response.data[0].name),
-                            $('<ul/>').text('event lat: '+response.data[0].place.location.latitude),
-                            $('<ul/>').text('event long: '+response.data[0].place.location.longitude),
-                            $('<ul/>').text('event id: '+response.data[0].id),
-                            $('<ul/>').text('event status: '+response.data[0].rsvp_status)
-                        );
-                        $('.overlay').hide();
-                        $('.loginDiv').hide();
-                        $('#logout').show();
-                    }
-                });
+               // if(!userExists(userId)) {
+                    // user doesn't exist so we need to create one in the database
+                    FB.api('/me?fields=id,name,email,birthday,permissions', function(response) {
+                        console.log(response);
+
+                        //const data = [userId, response.name, response.email];
+
+                        var name = response.name;
+                        var email = response.email;
+
+                        $.ajax({
+                            'url': 'http://localhost:8080/user/create',
+                            'type': 'POST',
+                            'dataType': 'json',
+                            'data': JSON.stringify({
+                                "id": userId,
+                                "name": name,
+                                "email": email
+                            }),
+                            success: function()
+                            {
+                                console.log("IT WORKS!");
+                            },
+                            error: function ()
+                            {
+
+                            }
+                        });
+
+                    });
+               // };
             } else {
                 window.alert("failed");
             }
         }, {
-            scope: 'email,user_events'
+            scope: 'email,user_birthday'
         });
     });
 
