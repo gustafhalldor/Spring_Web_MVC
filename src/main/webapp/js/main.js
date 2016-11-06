@@ -90,7 +90,28 @@ function initMap() {
          });
       });
    });
+    //Add listener
+    google.maps.event.addListener(map, "click", function (event) {
+    var latitude = event.latLng.lat();
+    var longitude = event.latLng.lng();
+    console.log( latitude + ', ' + longitude );
 
+    radius = new google.maps.Circle({map: map,
+        radius: 20,
+        center: event.latLng,
+        fillColor: '#777',
+        fillOpacity: 0.1,
+        strokeColor: '#AA0000',
+        strokeOpacity: 0.8,
+        strokeWeight: 2,
+        draggable: true,    // Dragable
+        editable: false      // Resizable
+    });
+
+    // Center of map
+    map.panTo(new google.maps.LatLng(latitude,longitude));
+
+}); //end addListener
 
    /* var marker = new google.maps.Marker({
       position: rvkLOC,
