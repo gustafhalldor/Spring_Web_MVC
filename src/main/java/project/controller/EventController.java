@@ -43,7 +43,7 @@ public class EventController {
 
     // When user submits his event form he is taken to /eventinfo and ViewEventInfo.jsp is displayed
     @RequestMapping(value = "/eventinfo", method = RequestMethod.POST)
-    public String saveEvent(@ModelAttribute("eventDetails") Event event, Model model) {
+    public String saveEvent(@ModelAttribute("eventDetails") Event event, Model model) throws IOException {
 
         // Save the event data we received from the form
         eventService.save(event);
@@ -71,8 +71,8 @@ public class EventController {
         return "MyEvents";
     }
 
-    @RequestMapping(value = "/tojson", method = RequestMethod.GET)
-    public void dataToJSONFile() throws IOException{
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String dataToJSONFile() throws IOException{
         //String[] events emulator
         List<Event> eventList = eventService.findAll();
 /*      JSONObject event;
@@ -83,28 +83,6 @@ public class EventController {
         Gson gson = new Gson();
         // convert your list to json
         String events = gson.toJson(eventList);
-
-/*        for(int i=0; i<eventList.size();i++){
-            event = new JSONObject();
-            event.put("eventName", eventList.get(i).getName());
-            event.put("eventDesc", eventList.get(i).getDescription());
-            coords = new JSONArray();
-            coords.add("lat:"+eventList.get(i).getLat());
-            coords.add("lgt:"+eventList.get(i).getLgt());
-            event.put("coordinates", coords);
-            events.add("Event:"+event);
-        }*/
-
-       /* JSONObject obj = new JSONObject();
-        obj.put("EiCaramba", "crunchify.com");
-        obj.put("Author", "App Shah");
-
-        JSONArray company = new JSONArray();
-        company.add("Company: eBay");
-        company.add("company: Paupal");
-        company.add("Company: Google");
-        obj.put("CompanyList", company);
-        */
 
         String path = System.getProperty("user.dir");
         path += "\\src\\main\\webapp\\js\\data.json";
@@ -118,6 +96,7 @@ public class EventController {
             file.flush();
             file.close();
         }
+        return "Index";
     }
 
 }

@@ -10,7 +10,7 @@
     <head>
         <title>Create event</title>
         <meta charset="utf-8">
-        <link rel="stylesheet" type="text/css" href="<c:url value="/css/postitnote.css"/>"/>
+            <link rel="stylesheet" type="text/css" href="<c:url value="/css/style.css"/>"/>
     </head>
     <body>
 
@@ -43,11 +43,11 @@
             </tr>
             <tr>
                 <%--hiding this input because we want to get the data through javascript--%>
-                <td><sf:input path="lat" type="hidden"/></td>
+                <td><sf:input path="lat" type="float" class="lat"/></td>
             </tr>
             <tr>
                 <%--hiding this input because we want to get the data through javascript--%>
-                <td><sf:input path="lgt" type="hidden"/></td>
+                <td><sf:input path="lgt" type="float" class="lgt"/></td>
             </tr>
 <%--            <tr>
                 <td>Type of event:</td>
@@ -63,7 +63,7 @@
                 <td><sf:input path="creatorId" type="hidden"/></td>
             </tr>--%>
         </table>
-
+        <div id="map"></div>
         <input type="submit" VALUE="CREATE!"/>
 
     </sf:form>
@@ -98,6 +98,11 @@
             <h3>No one is going yet!</h3>
         </c:otherwise>
     </c:choose>--%>
+      <script src="https://code.jquery.com/jquery-3.1.1.js"   integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="   crossorigin="anonymous"></script>
+      <script src="<c:url value="/js/main.js" />"></script>
+      <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDw_tl_1b0d4i3KviPUzVHvM7sFbmAz-RE&callback=initPlaceMarkerMap&libraries=places">
+      </script
 
     </body>
 </html>

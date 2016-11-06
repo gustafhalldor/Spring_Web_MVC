@@ -1,17 +1,25 @@
 package project.controller;
 
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import project.persistence.entities.Event;
+import project.service.EventService;
 import project.service.StringManipulationService;
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.List;
 
 @Controller
 public class HomeController {
 
     // Instance Variables
     StringManipulationService stringService;
+    EventService eventService;
 
     // Dependency Injection
     @Autowired
@@ -19,12 +27,15 @@ public class HomeController {
         this.stringService = stringService;
     }
 
+
+
     // Request mapping is the path that you want to map this method to
     // In this case, the mapping is the root "/", so when the project
     // is running and you enter "localhost:8080" into a browser, this
     // method is called
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String home(){
+    //@RequestMapping(value = "/", method = RequestMethod.GET)
+    public String home() throws IOException {
+
 
         // The string "Index" that is returned here is the name of the view
         // (the Index.jsp file) that is in the path /main/webapp/WEB-INF/jsp/
@@ -71,4 +82,31 @@ public class HomeController {
         // Look at the User.jsp file in /main/webapp/WEB-INF/jsp/ to see how the data is accessed
         return "User";
     }
+    //@RequestMapping(value = "/tojson", method = RequestMethod.GET)
+    public void dataToJSONFile() throws IOException {
+        //String[] events emulator
+        List<Event> eventList = eventService.findAll();
+/*      JSONObject event;
+        JSONArray coords;
+        JSONArray events = new JSONArray();*/
+        System.out.println("toJson!");
+        // create a new Gson instance
+        Gson gson = new Gson();
+        // convert your list to json
+        String events = gson.toJson(eventList);
+
+        String path = System.getProperty("user.dir");
+        path += "\\src\\main\\webapp\\js\\data.json";
+        FileWriter file = new FileWriter(path);
+        try {
+            file.write(events);
+            //  System.out.println(System.getProperty("user.dir"));
+        } catch (IOException e){
+            e.printStackTrace();
+        }finally {
+            file.flush();
+            file.close();
+        }
+    }
+
 }

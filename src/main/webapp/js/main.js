@@ -2,7 +2,6 @@
 function initMap() {
     var currInfoWindow;
     var rvkLOC = {lat: 64.138705, lng: -21.955501};
-    //var imgSrc = "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSb0Ry8iIoe-4I_uaA0seqyGsaOoT7RZzG7ESMbU5G5L0EPKebJvjesosw";
 
     var map = new google.maps.Map(document.getElementById('map'), {
       zoom: 14,
@@ -90,12 +89,33 @@ function initMap() {
          });
       });
    });
+
+
+
+
+
+}
+
+
+
+
+function initPlaceMarkerMap(){
+    var currInfoWindow;
+    var rvkLOC = {lat: 64.138705, lng: -21.955501};
+    var radius;
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 14,
+      center: rvkLOC,
+      mapTypeId: 'roadmap'
+    });
+
     //Add listener
     google.maps.event.addListener(map, "click", function (event) {
     var latitude = event.latLng.lat();
     var longitude = event.latLng.lng();
-    console.log( latitude + ', ' + longitude );
-
+    fillLocationTextBox(latitude, longitude);
+    console.log( latitude + ', ' + longitude);
+    if(radius) radius.setMap(null);
     radius = new google.maps.Circle({map: map,
         radius: 20,
         center: event.latLng,
@@ -103,15 +123,38 @@ function initMap() {
         fillOpacity: 0.1,
         strokeColor: '#AA0000',
         strokeOpacity: 0.8,
-        strokeWeight: 2,
+        strokeWeight: 4,
         draggable: true,    // Dragable
         editable: false      // Resizable
     });
+    google.maps.event.addListener(radius, "mouseup", function(event){
+        var latitude = event.latLng.lat();
+        var longitude = event.latLng.lng();
+        fillLocationTextBox(latitute, longitute);
+        console.log( latitude + ', ' + longitude );
+    })
 
     // Center of map
     map.panTo(new google.maps.LatLng(latitude,longitude));
+    function fillLocationTextBox(lat, lgt){
+        var lgtBox = document.getElementsByClassName("lgt");
+        var latBox = document.getElementsByClassName("lat");
+        console.log(lgtBox);
+        lgtBox[0].value = lgt;
+        latBox[0].value = lat;
+    }
+
 
 }); //end addListener
+
+
+
+
+}
+
+
+
+
 
    /* var marker = new google.maps.Marker({
       position: rvkLOC,
@@ -125,7 +168,7 @@ function initMap() {
      marker.addListener('click', function() {
       infowindow.open(map, marker);
     });*/
-}
+
 
 /*
 function checkLoginState() {
