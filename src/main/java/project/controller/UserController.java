@@ -7,12 +7,10 @@ package project.controller;
 import org.hibernate.mapping.Array;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import project.persistence.entities.User;
 import project.service.UserService;
 
@@ -61,35 +59,13 @@ public class UserController {
         return "UserInfo";
     }
 
-    // Method that returns the correct view for the URL /users/{name}
-    // The {name} part is a Path Variable, and we can reference that in our method
-    // parameters as a @PathVariable. This enables us to create dynamic URLs that are
-    // based on the data that we have.
-    // This method finds all Postit Notes posted by someone with the requested {name}
-    // and returns a list with all those Postit Notes.
-    @RequestMapping(value = "/users/{name}", method = RequestMethod.GET)
-    public String userGetUsersFromName(@PathVariable String name, Model model) {
-        // Get all Postit Notes with this name and add them to the model
-        model.addAttribute("userNames", userService.findByName(name));
-
-        // Add a new Postit Note to the model for the form
-        // If you look at the form in PostitNotes.jsp, you can see that we
-        // reference this attribute there by the name `postitNote`.
-        model.addAttribute("userName", new User());
-
-        return "User";
-    }
-
+    // This method is called from an AJAX method in main.js when a user first logs in with
+    // Facebook. Using @RequestBody gives us access to the data included in the AJAX call.
     @RequestMapping(value = "/user/create", method = RequestMethod.POST)
-    public String createUser(Array data) {
-
-        User user = new User();
-        System.out.println(data);
-//        user.setName(json.name);
-
+    public @ResponseBody String createUser(@RequestBody User user) {
 
         userService.save(user);
 
-        return "Index";
+        return "Halló gaman!";
     }
 }

@@ -17,8 +17,10 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    // fbId cannot be int because it's 17 digits long and is crazy high
+    private String fbId;
     private String name;
-    private String note; //for debugging purposes, remember to delete
+    private String email;
     private int age;
     private String gender;
     private ArrayList<Rating> ratings;
@@ -33,10 +35,11 @@ public class User {
 
 
 
-    public User(String name, String note, int age, String gender, ArrayList<Rating> ratings, ArrayList<Event> createdEvents,
-                ArrayList<Event> attendedEvents) {
+    public User(String name, String fbId, String email, int age, String gender, ArrayList<Rating> ratings,
+                ArrayList<Event> createdEvents, ArrayList<Event> attendedEvents) {
         this.name = name;
-        this.note = note;  //for debugging purposes, remember to delete
+        this.email = email;
+        this.fbId = fbId;
         this.age = age;
         this.gender = gender;
         this.ratings = ratings;
@@ -52,13 +55,13 @@ public class User {
 
     public void setName(String name) { this.name = name; }
 
-    public String getNote() {
-        return note;
-    }
+    public String getEmail() { return email; }
 
-    public void setNote(String note) {
-        this.note = note;
-    }
+    public void setEmail(String email) { this.email = email; }
+
+    public String getfbId() { return fbId; }
+
+    public void setfbId(String id) { this.fbId = id; }
 
     public int getAge() { return age; }
 

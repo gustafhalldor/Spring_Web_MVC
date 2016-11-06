@@ -12,7 +12,7 @@ function initMap() {
 
     // Create the search box and link it to the UI element.
     var input = document.getElementById('mapSearchBox');
-    console.log(input);
+    //console.log(input);
     var searchBox = new google.maps.places.SearchBox(input);
     map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
@@ -164,12 +164,11 @@ window.fbAsyncInit = function() {
                 var accessToken = response.authResponse.accessToken;
 
                 var userId = response.authResponse.userID;
+
+                // TODO implement userExists(userID) function
                // if(!userExists(userId)) {
                     // user doesn't exist so we need to create one in the database
                     FB.api('/me?fields=id,name,email,birthday,permissions', function(response) {
-                        console.log(response);
-
-                        //const data = [userId, response.name, response.email];
 
                         var name = response.name;
                         var email = response.email;
@@ -177,15 +176,18 @@ window.fbAsyncInit = function() {
                         $.ajax({
                             'url': 'http://localhost:8080/user/create',
                             'type': 'POST',
+                            'contentType': "application/json; charset=utf-8",
                             'dataType': 'json',
                             'data': JSON.stringify({
-                                "id": userId,
-                                "name": name,
-                                "email": email
+                                name: name,
+                                email: email,
+                                fbId: parseInt(userId)
                             }),
-                            success: function()
+                            success: function(response)
                             {
                                 console.log("IT WORKS!");
+                                console.log(response);
+                                alert(response);
                             },
                             error: function ()
                             {

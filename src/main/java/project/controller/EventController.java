@@ -65,7 +65,7 @@ public class EventController {
 
         // Something else we want to do?
 
-        model.addAttribute("events", user.getCreatedEvents());
+        //model.addAttribute("events", user.getCreatedEvents());
 
         // display updated version of myevents page, probably best to name it MyEvents.jsp
         return "MyEvents";
