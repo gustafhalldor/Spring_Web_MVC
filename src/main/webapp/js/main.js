@@ -1,4 +1,4 @@
-
+//Index initMap
 function initMap() {
     var currInfoWindow;
     var rvkLOC = {lat: 64.138705, lng: -21.955501};
@@ -79,7 +79,7 @@ function initMap() {
         });
         var imgSrc = ""+data["imgSrc"];
         var infowindow = new google.maps.InfoWindow({
-          content: ''+data["eventName"]+'<br>' + data["eventDesc"] + '<br>' +
+          content: ''+data["name"]+'<br>' + data["description"] + '<br>' +
                    '<br> <Button>Sign Up!</Button>'
          });
          marker.addListener('click', function() {
@@ -89,16 +89,9 @@ function initMap() {
          });
       });
    });
-
-
-
-
-
 }
 
-
-
-
+//Create event initMap()
 function initPlaceMarkerMap(){
     var currInfoWindow;
     var rvkLOC = {lat: 64.138705, lng: -21.955501};
@@ -114,7 +107,6 @@ function initPlaceMarkerMap(){
     var latitude = event.latLng.lat();
     var longitude = event.latLng.lng();
     fillLocationTextBox(latitude, longitude);
-    console.log( latitude + ', ' + longitude);
     if(radius) radius.setMap(null);
     radius = new google.maps.Circle({map: map,
         radius: 20,
@@ -130,8 +122,7 @@ function initPlaceMarkerMap(){
     google.maps.event.addListener(radius, "mouseup", function(event){
         var latitude = event.latLng.lat();
         var longitude = event.latLng.lng();
-        fillLocationTextBox(latitute, longitute);
-        console.log( latitude + ', ' + longitude );
+        fillLocationTextBox(latitude, longitude);
     })
 
     // Center of map
@@ -139,36 +130,12 @@ function initPlaceMarkerMap(){
     function fillLocationTextBox(lat, lgt){
         var lgtBox = document.getElementsByClassName("lgt");
         var latBox = document.getElementsByClassName("lat");
-        console.log(lgtBox);
         lgtBox[0].value = lgt;
         latBox[0].value = lat;
     }
-
-
 }); //end addListener
 
-
-
-
 }
-
-
-
-
-
-   /* var marker = new google.maps.Marker({
-      position: rvkLOC,
-      text: "Event",
-      map: map
-    });
-    //The window that pops up when you click a marker.
-    var infowindow = new google.maps.InfoWindow({
-      content: 'Event hjá Vr2! <br> Klukkan: 16:00 <br><img src='+imgSrc+'>  <br> <button>Sign Up!</button>'
-    });
-     marker.addListener('click', function() {
-      infowindow.open(map, marker);
-    });*/
-
 
 /*
 function checkLoginState() {
