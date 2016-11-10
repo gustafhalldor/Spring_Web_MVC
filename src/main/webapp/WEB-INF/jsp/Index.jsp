@@ -23,6 +23,8 @@
       </li>
         <h3>The Event Finder</h3>
 
+        <div><jsp:include page="${request.contextPath}/event"></jsp:include></div>
+
         <input id="mapSearchBox" class="controls" type="text" placeholder="Search Box">
         <div id="map"></div>
 

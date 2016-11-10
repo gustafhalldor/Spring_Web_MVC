@@ -63,7 +63,7 @@
                 <td><sf:input path="creatorId" type="hidden"/></td>
             </tr>--%>
         </table>
-        <div id="map"></div>
+        <%--<div id="map"></div>--%>
         <input type="submit" VALUE="CREATE!"/>
 
     </sf:form>
@@ -100,9 +100,9 @@
     </c:choose>--%>
       <script src="https://code.jquery.com/jquery-3.1.1.js"   integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="   crossorigin="anonymous"></script>
       <script src="<c:url value="/js/main.js" />"></script>
-      <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDw_tl_1b0d4i3KviPUzVHvM7sFbmAz-RE&callback=initPlaceMarkerMap&libraries=places">
-      </script
+      <%--<script async defer--%>
+            <%--src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDw_tl_1b0d4i3KviPUzVHvM7sFbmAz-RE&callback=initPlaceMarkerMap&libraries=places">--%>
+      <%--</script>--%>
 
     </body>
 </html>
