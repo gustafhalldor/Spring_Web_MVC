@@ -1,3 +1,28 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*//*
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+*/
 /* screen overlay when prompt for Login*//*
 .overlay {
     position: fixed;
@@ -22,16 +47,38 @@
     border-radius: 10px;
     z-index: 11;
 }
-
+*/
 #login {
-    position: absolute;
-    left: 30%;
+    background: url('../images/fb_login_button.png') no-repeat;
+    outline: none;
+    border: none;
+    /*position: absolute;*/
+    border-radius: 10px;
+    left: 18%;
     top: 40%;
+    width: 202px;
+    height: 42px;
 }
 
 #logout {
     display: none;
-}*/
+}
+
+.navigationBar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.main {
+    display: flex;
+    width: 100%;
+}
+
+.mapContainer {
+    width: 100%;
+    max-width: 1200px;
+    min-width: 400px;
+}
 
 #map {
     height: 700px;

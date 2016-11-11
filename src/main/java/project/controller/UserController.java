@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.*;
 import project.persistence.entities.User;
 import project.service.UserService;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 
 @Controller
 public class UserController {
@@ -64,8 +67,16 @@ public class UserController {
     @RequestMapping(value = "/user/create", method = RequestMethod.POST)
     public @ResponseBody String createUser(@RequestBody User user) {
 
+
         userService.save(user);
 
         return "Halló gaman!";
+    }
+
+    @RequestMapping(value = "user/check", method = RequestMethod.GET)
+    public @ResponseBody String check(@RequestParam String fdId, HttpServletRequest request, HttpServletResponse response, Model model) {
+        userService.findAll();
+
+        return "test";
     }
 }

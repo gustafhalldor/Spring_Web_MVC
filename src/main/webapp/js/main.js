@@ -137,6 +137,7 @@ function initMap() {
 }
 
 function init() {
+    $( '.createEventSideBar' ).hide();
     $( '.toggle_createEvent_sideBar_btn' ).on('click', function(){
         toggleMap()
     });
@@ -144,6 +145,7 @@ function init() {
 }
 
 function toggleMap() {
+    $( '.createEventSideBar' ).toggle(500);
     sideBarOn = !sideBarOn;
     initMap();
 }
@@ -201,6 +203,8 @@ function checkLoginState() {
     });
 }
 */
+
+
 window.fbAsyncInit = function() {
     FB.init({
         appId      : '549623305236918',
@@ -211,6 +215,23 @@ window.fbAsyncInit = function() {
         xfbml      : true,  // parse social plugins on this page
         version    : 'v2.8' // use graph api version 2.5
     });
+
+    function userExists(userId) {
+        if(false) {
+            $.ajax({
+                'url': 'http://localhost:8080/user/check',
+                'type': 'GET',
+                'contentType': 'application/json; charset=utf-8',
+                'dateType': 'json',
+                'data': {"fdId": userId},
+                'success': function (data) {
+                    console.log(data);
+                    return true;
+                }
+            });
+        }
+        alert("nothing happens");
+    }
 
     $('#login').click(function(event) {
         event.preventDefault();
@@ -223,7 +244,7 @@ window.fbAsyncInit = function() {
                 var userId = response.authResponse.userID;
 
                 // TODO implement userExists(userID) function
-               // if(!userExists(userId)) {
+                if(!userExists(userId)) {
                     // user doesn't exist so we need to create one in the database
                     FB.api('/me?fields=id,name,email,birthday,permissions', function(response) {
 
@@ -253,7 +274,7 @@ window.fbAsyncInit = function() {
                         });
 
                     });
-               // };
+                };
             } else {
                 window.alert("failed");
             }
