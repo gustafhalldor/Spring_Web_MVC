@@ -16,7 +16,7 @@
       <button type="button" class="toggle_createEvent_sideBar_btn">Create Event</button>
       <h3>The Event Finder</h3>
       <div class="loginDiv">
-          <button type="button" id="login">login with facebook</button>
+          <button type="button" id="login"></button>
       </div>
       <button type="button" id="logout">logout</button>
   </nav>
