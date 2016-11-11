@@ -1,7 +1,7 @@
 //Index initMap
-const sideBarOn = false;
+var sideBarOn = false;
 function initMap() {
-    if(sideBarOn) {
+    if(!sideBarOn) {
         var currInfoWindow;
         var rvkLOC = {lat: 64.138705, lng: -21.955501};
 
@@ -134,6 +134,18 @@ function initMap() {
             }
         });
     }
+}
+
+function init() {
+    $( '.toggle_createEvent_sideBar_btn' ).on('click', function(){
+        toggleMap()
+    });
+
+}
+
+function toggleMap() {
+    sideBarOn = !sideBarOn;
+    initMap();
 }
 
 //Create event initMap()
@@ -271,4 +283,4 @@ window.fbAsyncInit = function() {
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 
-
+init();
