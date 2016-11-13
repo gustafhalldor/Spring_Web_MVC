@@ -4,10 +4,7 @@ import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import project.persistence.entities.Event;
 import project.persistence.entities.User;
 import project.service.EventService;
@@ -42,7 +39,7 @@ public class EventController {
     }
 
     // When user submits his event form he is taken to /eventinfo and ViewEventInfo.jsp is displayed
-    @RequestMapping(value = "/eventinfo", method = RequestMethod.POST)
+    @RequestMapping(value = "/saveEvent", method = RequestMethod.POST)
     public String saveEvent(@ModelAttribute("eventDetails") Event event, Model model) throws IOException {
 
         // Save the event data we received from the form
@@ -55,6 +52,25 @@ public class EventController {
 
         return "ViewEventInfo";
     }
+
+
+
+    // When user submits his event form he is taken to /eventinfo and ViewEventInfo.jsp is displayed
+    @RequestMapping(value = {"/eventinfo", "/eventinfo/{id}"}, method = RequestMethod.GET)
+    public String viewEvent(@ModelAttribute("eventDetails") Event event, Model model,
+                            @PathVariable("id") Integer id2) throws IOException {
+
+        // Save the event data we received from the form
+       // eventService.save(event);
+
+        // TODO: Have to add the event to the user's created events
+        Event eventInfo = eventService.findOne(id2);
+        // Displays the event information through the "info" attribute, which is sent to ViewEventInfo.jsp
+        model.addAttribute("info", eventInfo);
+
+        return "ViewEventInfo";
+    }
+
 
     @RequestMapping(value = "/myevents", method = RequestMethod.POST)
     public String deleteEvent(Event event, User user, Model model) {

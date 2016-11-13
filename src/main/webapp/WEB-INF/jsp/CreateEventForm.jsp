@@ -5,19 +5,10 @@
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<html lang="is" >
-
-    <head>
-        <title>Create event</title>
-        <meta charset="utf-8">
-            <link rel="stylesheet" type="text/css" href="<c:url value="/css/style.css"/>"/>
-    </head>
-    <body>
-
     <%--Note that the `commandName` given here HAS TO MATCH the name of the attribute--%>
     <%--that is added to the model that is passed to the view.--%>
     <%--See PostitNoteController, method postitNoteViewGet(), and find where this attribute is added to the model.--%>
-    <sf:form method="POST" commandName="eventDetails" action="/eventinfo">
+    <sf:form method="POST" commandName="eventDetails" action="/saveEvent">
 
         <table>
             <tr>
@@ -99,10 +90,3 @@
         </c:otherwise>
     <%--</c:choose>&ndash;%&gt;--%>
       <%--<script src="https://code.jquery.com/jquery-3.1.1.js"   integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="   crossorigin="anonymous"></script>--%>
-      <%--<script src="<c:url value="/js/main.js" />"></script>--%>
-      <%--<script async defer--%>
-            <%--src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDw_tl_1b0d4i3KviPUzVHvM7sFbmAz-RE&callback=initPlaceMarkerMap&libraries=places">--%>
-      <%--</script>--%>
-
-    </body>
-</html>

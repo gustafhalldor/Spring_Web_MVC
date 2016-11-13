@@ -1,6 +1,8 @@
 //Index initMap
 var sideBarOn = false;
+var eventInfoSideBarOn = false;
 function initMap() {
+
     if(!sideBarOn) {
         var currInfoWindow;
         var rvkLOC = {lat: 64.138705, lng: -21.955501};
@@ -11,24 +13,24 @@ function initMap() {
             mapTypeId: 'roadmap'
 
         });
-
         // Create the search box and link it to the UI element.
         var input = document.getElementById('mapSearchBox');
         //console.log(input);
-        var searchBox = new google.maps.places.SearchBox(input);
+        //var searchBox = new google.maps.places.SearchBox(input);
         map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
+        console.log("villa?");
         // Bias the SearchBox results towards current map's viewport.
         map.addListener('bounds_changed', function () {
-            searchBox.setBounds(map.getBounds());
+           // searchBox.setBounds(map.getBounds());
         });
 
         var markers = [];
         // Listen for the event fired when the user selects a prediction and retrieve
         // more details for that place.
+         /*
         searchBox.addListener('places_changed', function () {
             var places = searchBox.getPlaces();
-
+            console.log(places);
             if (places.length == 0) {
                 return;
             }
@@ -38,6 +40,7 @@ function initMap() {
                 marker.setMap(null);
             });
             markers = [];
+            console.log("erroR?");
 
             // For each place, get the icon, name and location.
             var bounds = new google.maps.LatLngBounds();
@@ -71,6 +74,7 @@ function initMap() {
             });
             map.fitBounds(bounds);
         });
+        */
 
         $.getJSON("/js/data.json", function (Events) {
             $.each(Events, function (key, data) {
@@ -87,11 +91,14 @@ function initMap() {
                 marker.addListener('click', function () {
                     if (typeof(currInfoWindow) !== "undefined")currInfoWindow.close();
                     currInfoWindow = infowindow;
+
                     infowindow.open(map, marker);
+                    eventInfoSideBar();
                 });
             });
         });
     }else{
+
         var currInfoWindow;
         var rvkLOC = {lat: 64.138705, lng: -21.955501};
         var radius;
@@ -138,17 +145,28 @@ function initMap() {
 
 function init() {
     $( '.createEventSideBar' ).hide();
+    $( '.eventInfoSideBar' ).hide();
     $( '.toggle_createEvent_sideBar_btn' ).on('click', function(){
         toggleMap()
     });
-
 }
 
+
 function toggleMap() {
+    $( '.eventInfoSideBar' ).hide(500);
     $( '.createEventSideBar' ).toggle(500);
     sideBarOn = !sideBarOn;
     initMap();
 }
+
+function eventInfoSideBar() {
+    $( '.createEventSideBar' ).hide(500);
+    $( '.eventInfoSideBar' ).show(500);
+    sideBarOn = false;
+
+    initMap();
+}
+
 
 //Create event initMap()
 function initPlaceMarkerMap(){

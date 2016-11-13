@@ -25,6 +25,7 @@
 
   <div class="main">
         <div class="createEventSideBar"><jsp:include page="${request.contextPath}/event"></jsp:include></div>
+        <div class="eventInfoSideBar"><jsp:include page="${request.contextPath}/eventinfo/1"></jsp:include></div>
         <div class="mapContainer">
             <input id="mapSearchBox" class="controls" type="text" placeholder="Search Box">
             <div id="map"></div>
@@ -33,7 +34,7 @@
         <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDw_tl_1b0d4i3KviPUzVHvM7sFbmAz-RE&callback=initMap&libraries=places">
         </script>
-
+        <!--<h3><a href="/eventinfo/1">Event Info</a></h3>-->
         <!--<h3><a href="/event">Create event</a></h3>-->
     </div>
     <script src="<c:url value="/js/main.js" />"></script>
