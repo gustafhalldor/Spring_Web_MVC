@@ -117,7 +117,7 @@ public class Event {
     public ArrayList<User> getAttendees() { return attendees; }
 
     public void setAttendees(ArrayList<User> attendees) { this.attendees = attendees; }
-/*
+
     public Date getTime() { return time; }
 
     public void setTime(Date time) { this.time = time; }

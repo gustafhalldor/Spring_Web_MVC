@@ -60,9 +60,6 @@ public class EventController {
     public String viewEvent(@ModelAttribute("eventDetails") Event event, Model model,
                             @PathVariable("id") Integer id2) throws IOException {
 
-        // Save the event data we received from the form
-       // eventService.save(event);
-
         // TODO: Have to add the event to the user's created events
         Event eventInfo = eventService.findOne(id2);
         // Displays the event information through the "info" attribute, which is sent to ViewEventInfo.jsp
@@ -89,11 +86,8 @@ public class EventController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String dataToJSONFile() throws IOException{
-        //String[] events emulator
+
         List<Event> eventList = eventService.findAll();
-/*      JSONObject event;
-        JSONArray coords;
-        JSONArray events = new JSONArray();*/
 
         // create a new Gson instance
         Gson gson = new Gson();
@@ -105,7 +99,6 @@ public class EventController {
         FileWriter file = new FileWriter(path);
         try {
             file.write(events);
-          //  System.out.println(System.getProperty("user.dir"));
         } catch (IOException e){
             e.printStackTrace();
         }finally {
