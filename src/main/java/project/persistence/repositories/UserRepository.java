@@ -2,6 +2,7 @@ package project.persistence.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Component;
 import project.persistence.entities.User;
 
@@ -30,6 +31,9 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     // This method returns all PostitNotes where the length of the name is equal or greater than 3 characters.
     @Query(value = "SELECT p FROM User p where length(p.name) >= 3 ")
     List<User> findAllWithNameLongerThan3Chars();
+
+    @Query(value = "SELECT p FROM User p WHERE p.fbId = :facebookId")
+    User findOneByString(@Param("facebookId") String fbId);
 
     // Instead of the method findAllReverseOrder() in PostitNoteService.java,
     // We could have used this method by adding the words

@@ -40,6 +40,8 @@ public interface UserService {
      */
     User findOne(Integer id);
 
+    User findOneByString(String fbid);
+
     /**
      * Find all {@link User}s with {@link String name}
      * @param name {@link String}

@@ -257,20 +257,53 @@ window.fbAsyncInit = function() {
     });
 
     function userExists(userId) {
-        if(false) {
+        if(userId != "") {
             $.ajax({
                 'url': 'http://localhost:8080/user/check',
                 'type': 'GET',
                 'contentType': 'application/json; charset=utf-8',
                 'dateType': 'json',
-                'data': {"fdId": userId},
+                'data': {"fbId": userId},
                 'success': function (data) {
-                    console.log(data);
-                    return true;
+                    userExistsHandler(data, userId);
                 }
             });
         }
-        alert("nothing happens");
+        else alert("nothing happens");
+    }
+
+    function userExistsHandler(data, userId) {
+        if(data === false) {
+            // user doesn't exist so we need to create one in the database
+            FB.api('/me?fields=id,name,email,birthday,permissions', function(response) {
+
+                var name = response.name;
+                var email = response.email;
+
+                $.ajax({
+                    'url': 'http://localhost:8080/user/create',
+                    'type': 'POST',
+                    'contentType': "application/json; charset=utf-8",
+                    'dataType': 'json',
+                    'data': JSON.stringify({
+                        name: name,
+                        email: email,
+                        fbId: userId
+                    }),
+                    success: function(response)
+                    {
+
+                    },
+                    error: function ()
+                    {
+
+                    }
+                });
+            });
+        }
+        else {
+            alert("You are already logged in!");
+        }
     }
 
     $('#login').click(function(event) {
@@ -283,38 +316,9 @@ window.fbAsyncInit = function() {
 
                 var userId = response.authResponse.userID;
 
-                // TODO implement userExists(userID) function
-                if(!userExists(userId)) {
-                    // user doesn't exist so we need to create one in the database
-                    FB.api('/me?fields=id,name,email,birthday,permissions', function(response) {
+                // checks if user already exists and if not, creates one
+                userExists(userId);
 
-                        var name = response.name;
-                        var email = response.email;
-
-                        $.ajax({
-                            'url': 'http://localhost:8080/user/create',
-                            'type': 'POST',
-                            'contentType': "application/json; charset=utf-8",
-                            'dataType': 'json',
-                            'data': JSON.stringify({
-                                name: name,
-                                email: email,
-                                fbId: parseInt(userId)
-                            }),
-                            success: function(response)
-                            {
-                                console.log("IT WORKS!");
-                                console.log(response);
-                                alert(response);
-                            },
-                            error: function ()
-                            {
-
-                            }
-                        });
-
-                    });
-                };
             } else {
                 window.alert("failed");
             }

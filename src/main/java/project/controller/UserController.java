@@ -41,9 +41,15 @@ public class UserController {
     }
 
     @RequestMapping(value = "user/check", method = RequestMethod.GET)
-    public @ResponseBody String check(@RequestParam String fdId, HttpServletRequest request, HttpServletResponse response, Model model) {
-        userService.findAll();
+    public @ResponseBody Boolean userExists(@RequestParam String fbId, HttpServletRequest request, HttpServletResponse response, Model model) {
 
-        return "test";
+        User user = userService.findOneByString(fbId);
+
+        // if no user exists, null is returned and we return false
+        if(user == null) {
+            return false;
+        }
+
+        return true;
     }
 }
