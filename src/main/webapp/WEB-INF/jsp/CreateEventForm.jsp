@@ -10,36 +10,28 @@
     <%--See PostitNoteController, method postitNoteViewGet(), and find where this attribute is added to the model.--%>
     <sf:form method="POST" commandName="eventDetails" action="/saveEvent">
 
-        <table>
-            <tr>
-                <td>Name:</td>
+                <H3>Name:</H3>
                 <%--the `path` attribute matches the `name` attribute of the Entity that was passed in the model--%>
-                <td><sf:input path="name" type="text" placeholder="Enter name of event"/></td>
-            </tr>
-            <tr>
-                <td>Description:</td>
-                <td><sf:textarea path="description" type="text" placeholder="Description of event"/></td>
-            </tr>
-            <tr>
-                <td>Minimum age:</td>
-                <td><sf:input path="ageMin" type="number" min="18" value="18"/></td>
-            </tr>
-            <tr>
-                <td>Maximum age:</td>
-                <td><sf:input path="ageMax" type="number" min="18" value="18"/></td>
-            </tr>
-            <tr>
-                <td>Gender restrict event?</td>
-                <td><form:checkbox path="genderRestriction"/>Yes</td>
-            </tr>
-            <tr>
+                <p><sf:input path="name" type="text" placeholder="Enter name of event"/></p>
+
+                <H3>Description:</H3>
+                <p><sf:textarea path="description" type="text" placeholder="Description of event"/></p>
+
+                <H3>Minimum age:</H3>
+                <p><sf:input path="ageMin" type="number" min="18" value="18"/></p>
+
+                <H3>Maximum age:</H3>
+                <p><sf:input path="ageMax" type="number" min="18" value="18"/></p>
+
+                <H3>Gender restrict event?</H3>
+                <p><form:checkbox path="genderRestriction"/>Yes</p>
+
                 <%--hiding this input because we want to get the data through javascript--%>
-                <td><sf:input path="lat" type="float" class="lat"/></td>
-            </tr>
-            <tr>
+                <sf:input path="lat" type="float" class="lat"/>
+
                 <%--hiding this input because we want to get the data through javascript--%>
-                <td><sf:input path="lgt" type="float" class="lgt"/></td>
-            </tr>
+                <sf:input path="lgt" type="float" class="lgt"/>
+
 <%--            <tr>
                 <td>Type of event:</td>
                 <td><form:checkbox path="type" value="Fotbolti"/>Fotbolti</td>

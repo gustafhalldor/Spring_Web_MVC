@@ -11,28 +11,20 @@
 <h2>Event information</h2>
 <sf:form commandName="info">
 
-    <table>
-        <tr>
-            <td>Name:</td>
-            <td>${info.name}</td>
-        </tr>
-        <tr>
-            <td>Description:</td>
-            <td>${info.description}</td>
-        </tr>
-        <tr>
-            <td>Minimum age:</td>
-            <td>${info.ageMin}</td>
-        </tr>
-        <tr>
-            <td>Maximum age:</td>
-            <td>${info.ageMax}</td>
-        </tr>
-        <tr>
-            <td>Gender restrict event?</td>
-            <td>${info.genderRestriction}</td>
-        </tr>
-    </table>
+    <H3>Name:</H3>
+    <p class="viewEventInfo_name">${info.name}</p>
+
+    <H3>Description:</H3>
+    <p class="viewEventInfo_description">${info.description}</p>
+
+    <H3>Minimum age:</H3>
+    <p class="viewEventInfo_ageMin">${info.ageMin}</p>
+
+    <H3>Maximum age:</H3>
+    <p class="viewEventInfo_ageMax">${info.ageMax}</p>
+
+    <H3>Gender restrict event?</H3>
+    <p class="viewEventInfo_genderRestriction">${info.genderRestriction}</p>
 
 </sf:form>
 
