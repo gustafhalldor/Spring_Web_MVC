@@ -169,11 +169,24 @@ function eventInfoSideBar(name, description, minAge, maxAge, genRestriction) {
 
 function fillEventInfo(name, description, minAge, maxAge, genRestriction){
 
- $('.viewEventInfo-name').html(name);
- $('.viewEventInfo-description').html(description);
- $('.viewEventInfo-minAge').html(minAge);
- $('.viewEventInfo-maxAge').html(maxAge);
- $('.viewEventInfo-genREstriction').html(genRestriction);
+ $('.viewEventInfo_name').html(name);
+ $('.viewEventInfo_description').html(description);
+ $('.viewEventInfo_ageMin').html(minAge);
+ $('.viewEventInfo_ageMax').html(maxAge);
+ $('.viewEventInfo_genderRestriction').html(genRestriction);
+}
+
+function attendEvent(eventId, userId){
+    $.ajax({
+        'url': 'http://localhost:8080/attend',
+        'type': 'POST',
+        'contentType': 'application/json',
+        'dateType': 'json',
+        'data': {"userId": userId, "eventId": eventId},
+        'success': function (data) {
+            console.log('Attending Event!');
+        }
+    });
 }
 
 

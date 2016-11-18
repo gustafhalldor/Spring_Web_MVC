@@ -28,10 +28,6 @@
 
 </sf:form>
 
-<sf:form method="GET" action="/event">
-    <input type="submit" VALUE="Create new event"/>
-</sf:form>
-
 <h2>Attendees:</h2>
 <%--Choose what code to generate based on tests that we implement--%>
 <c:choose>

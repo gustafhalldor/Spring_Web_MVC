@@ -50,7 +50,7 @@ public class EventController {
         // Displays the event information through the "info" attribute, which is sent to ViewEventInfo.jsp
         model.addAttribute("info", event);
 
-        return "ViewEventInfo";
+        return "redirect:/";
     }
 
 
