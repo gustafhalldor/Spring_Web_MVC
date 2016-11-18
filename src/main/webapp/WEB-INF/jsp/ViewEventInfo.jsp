@@ -34,22 +34,12 @@
 
     <%--If the model has an attribute with the name `listOfAttendees`--%>
     <c:when test="${not empty listOfAttendees}">
-        <%--Create a table for the Postit Notes--%>
-        <table>
+        <ul class="attendeeList">
 
-                <%--For each postit note, that is in the list that was passed in the model--%>
-                <%--generate a row in the table--%>
-                <%--Here we set `postit` as a singular item out of the list `postitNotes`--%>
             <c:forEach var="attendee" items="${listOfAttendees}">
-                <tr>
-                        <%--We can reference attributes of the Entity by just entering the name we gave--%>
-                        <%--it in the singular item var, and then just a dot followed by the attribute name--%>
-
-                        <%--Create a link based on the name attribute value--%>
-                    <td>${attendee.name}</td>
-                </tr>
+                <li>${attendee.name}</li>
             </c:forEach>
-        </table>
+        </ul>
     </c:when>
 
     <%--If all tests are false, then do this--%>

@@ -13,11 +13,12 @@
     </head>
     <body>
 
+    <%-- Gústi: This is a relic from the spring boot application. We would probably like to rename the page to "MyEvents"
+        or something like that, so it is more like a MyProfile kind of deal. The endpoint /users doesn't even exist
+        anymore as I deleted it! I'm just crazy like that. --%>
+
     <h1><a href="/users">User pages</a></h1>
 
-    <%--Note that the `commandName` given here HAS TO MATCH the name of the attribute--%>
-    <%--that is added to the model that is passed to the view.--%>
-    <%--See PostitNoteController, method postitNoteViewGet(), and find where this attribute is added to the model.--%>
     <sf:form method="POST" commandName="userName" action="/users">
 
         <table>
@@ -28,7 +29,6 @@
             </tr>
             <tr>
                 <td>Info:</td>
-                    <%--the `path` attribute matches the `note` attribute of the Entity that was passed in the model--%>
                 <td><sf:textarea path="note" type="text" placeholder="Some text here"/></td>
             </tr>
         </table>
@@ -37,28 +37,10 @@
 
     </sf:form>
 
-    <%--Choose what code to generate based on tests that we implement--%>
+
     <c:choose>
-        <%--If the model has an attribute with the name `postitNotes`--%>
         <c:when test="${not empty userNames}">
-            <%--Create a table for the Postit Notes--%>
-            <table class="notes">
 
-                <%--For each postit note, that is in the list that was passed in the model--%>
-                <%--generate a row in the table--%>
-                <%--Here we set `postit` as a singular item out of the list `postitNotes`--%>
-                <c:forEach var="user" items="${userNames}">
-                    <tr>
-                        <%--We can reference attributes of the Entity by just entering the name we gave--%>
-                        <%--it in the singular item var, and then just a dot followed by the attribute name--%>
-
-                        <%--Create a link based on the name attribute value--%>
-                        <td><a href="/users/${user.name}">${user.name}</a></td>
-                        <%--The String in the note attribute--%>
-                        <td>${user.note}</td>
-                    </tr>
-                </c:forEach>
-            </table>
         </c:when>
 
         <%--If all tests are false, then do this--%>

@@ -45,7 +45,6 @@
             <tr>
                 <td><sf:input path="creatorId" type="hidden"/></td>
             </tr>--%>
-        </table>
         <%--<div id="map"></div>--%>
         <input type="submit" VALUE="CREATE!"/>
 
