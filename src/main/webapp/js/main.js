@@ -159,18 +159,18 @@ function toggleMap() {
     initMap();
 }
 
-function eventInfoSideBar() {
+function eventInfoSideBar(name, description, minAge, maxAge, genRestriction) {
+    fillEventInfo(name, description, minAge, maxAge, genRestriction)
     $( '.createEventSideBar' ).hide(500);
     $( '.eventInfoSideBar' ).show(500);
     sideBarOn = false;
-
     initMap();
 }
 
 function fillEventInfo(name, description, minAge, maxAge, genRestriction){
 
  $('.viewEventInfo-name').html(name);
- $('.viewEventInfo-description').html.(description);
+ $('.viewEventInfo-description').html(description);
  $('.viewEventInfo-minAge').html(minAge);
  $('.viewEventInfo-maxAge').html(maxAge);
  $('.viewEventInfo-genREstriction').html(genRestriction);
