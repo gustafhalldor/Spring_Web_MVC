@@ -93,7 +93,7 @@ function initMap() {
                     currInfoWindow = infowindow;
 
                     infowindow.open(map, marker);
-                    eventInfoSideBar();
+                    eventInfoSideBar(data["name"], data["description"], data["ageMin"], data["ageMax"], data["genderRestriction"]);
                 });
             });
         });
@@ -165,6 +165,15 @@ function eventInfoSideBar() {
     sideBarOn = false;
 
     initMap();
+}
+
+function fillEventInfo(name, description, minAge, maxAge, genRestriction){
+
+ $('.viewEventInfo-name').html(name);
+ $('.viewEventInfo-description').html.(description);
+ $('.viewEventInfo-minAge').html(minAge);
+ $('.viewEventInfo-maxAge').html(maxAge);
+ $('.viewEventInfo-genREstriction').html(genRestriction);
 }
 
 
