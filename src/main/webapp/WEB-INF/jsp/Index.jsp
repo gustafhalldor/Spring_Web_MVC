@@ -18,7 +18,7 @@
       <div class="loginDiv">
           <button type="button" id="login"></button>
       </div>
-      <button type="button" id="logout">logout</button>
+      <button type="button" id="logout"></button>
   </nav>
   <!--<div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="true"></div>-->
 

@@ -236,6 +236,8 @@ function initPlaceMarkerMap(){
 
 }
 
+/* *** START OF FACEBOOK CODE *** */
+
 /*
 function checkLoginState() {
     FB.getLoginStatus(function(response) {
@@ -254,6 +256,19 @@ window.fbAsyncInit = function() {
                             // the session
         xfbml      : true,  // parse social plugins on this page
         version    : 'v2.8' // use graph api version 2.5
+    });
+
+    FB.Event.subscribe('auth.statusChange', function(response) {
+        console.log(response.status);
+        if(response.status === 'connected'){
+            $('.loginDiv').hide();
+            $('#logout').show();
+        }
+
+        else {
+            $('.loginDiv').show();
+            $('#logout').hide();
+        }
     });
 
     function userExists(userId) {
@@ -301,30 +316,50 @@ window.fbAsyncInit = function() {
                 });
             });
         }
-        else {
-            alert("You are already logged in!");
+    };
+
+    /*FB.getLoginStatus(function(response) {
+        if(response.status === 'connected'){
+            $('.loginDiv').hide();
+            $('#logout').show();
         }
-    }
+
+        else {
+            $('.loginDiv').show();
+            $('#logout').hide();
+        }
+    });*/
 
     $('#login').click(function(event) {
         event.preventDefault();
-        FB.login(function(response) {
-            var getInfo = $('#test');
-            if(response.authResponse) {
-                //this response return expiresIn, userID, accessToken and signedRequest
-                var accessToken = response.authResponse.accessToken;
 
-                var userId = response.authResponse.userID;
+        FB.getLoginStatus(function(response) {
 
-                // checks if user already exists and if not, creates one
-                userExists(userId);
+            if(response.status !== 'connected'){
 
-            } else {
-                window.alert("failed");
+                FB.login(function(response) {
+                    //  console.log(response);
+                    var getInfo = $('#test');
+                    if(response.authResponse) {
+                        //this response return expiresIn, userID, accessToken and signedRequest
+                        //var accessToken = response.authResponse.accessToken;
+
+                        var userId = response.authResponse.userID;
+
+                        // checks if user already exists and if not, creates one.
+                        userExists(userId);
+
+                        $('.loginDiv').hide();
+                        $('#logout').show();
+
+                    } else {
+                        window.alert("failed");
+                    }
+                }, {
+                    scope: 'email,user_birthday'
+                });
             }
-        }, {
-            scope: 'email,user_birthday'
-        });
+        })
     });
 
     $('#logout').click(function(event) {
@@ -347,5 +382,7 @@ window.fbAsyncInit = function() {
     js.src = "//connect.facebook.net/en_US/sdk.js";
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
+
+/* *** END OF FACEBOOK CODE *** */
 
 init();
