@@ -263,11 +263,17 @@ window.fbAsyncInit = function() {
         if(response.status === 'connected'){
             $('.loginDiv').hide();
             $('#logout').show();
+            $('.main').show();
+            $('.navigationBar').show();
+            $('.welcomePage').hide();
         }
 
         else {
             $('.loginDiv').show();
             $('#logout').hide();
+            $('.main').hide();
+            $('.navigationBar').hide();
+            $('.welcomePage').show();
         }
     });
 
