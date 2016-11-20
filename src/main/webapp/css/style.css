@@ -90,10 +90,8 @@ p {
     justify-content: space-between;
     align-items: center;
     border-bottom: 0.5px solid #c8c8c8;
-    -webkit-box-shadow: 0 2px 10px rgba(68, 68, 65, 0.38);
-    -moz-box-shadow: 0 2px 10px rgba(68, 68, 65, 0.38);
-    box-shadow: 0 2px 10px rgba(68, 68, 65, 0.38);
-    z-index: 2;
+    border-bottom-width: 5px;
+    border-bottom-color: rgba(255, 171, 15, 1);
     background-color: yellow;
 }
 
@@ -147,8 +145,6 @@ img{
 
 .createEventForm h3,
 .viewEventForm h3 {
-    font: 13px Arial, sans-serif;
-    font-weight: lighter;
     padding: 5px 0 5px 0;
 }
 
