@@ -18,10 +18,10 @@
                 <sf:textarea path="description" type="text" placeholder="Description of event"/>
 
                 <h3>Start Date<span>*</span></h3>
-                <sf:input path="startDate" type="date" class="datePicker" placeholder="Date"/>
+                <sf:input path="startDate" type="text" class="datePicker" placeholder="Date"/>
 
                 <h3>End Date<span>*</span></h3>
-                <sf:input path="endDate" type="date" class="datePicker" placeholder="Date"/>
+                <sf:input path="endDate" type="text" class="datePicker" placeholder="Date"/>
 
                 <h3>Minimum age<span>*</span></h3>
                 <sf:input path="ageMin" type="number" min="18" value="18"/>
