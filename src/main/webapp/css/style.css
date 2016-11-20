@@ -88,13 +88,28 @@ p {
 .navigationBar {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    border-bottom: 0.5px solid #c8c8c8;
+    border-bottom-width: 5px;
+    border-bottom-color: rgba(255, 171, 15, 1);
+    background-color: yellow;
 }
+
+.toggle_createEvent_sideBar_btn {
+
+}
+
+.toggle_createEvent_sideBar_btn:hover {
+
+}
+
 
 .main {
     display: flex;
     width: 100%;
     margin: 0 auto;
     justify-content: center;
+    padding-top: 20px;
 }
 
 .lat, .lgt {
@@ -105,16 +120,16 @@ p {
 
 }
 
-
-
 .mapContainer {
     width: 80%;
     max-width: 1200px;
     min-width: 400px;
+    height: 90vh;
+    min-height: 50vh;
 }
 
 #map {
-    height: 700px;
+    height: 100%;
     width: 100%;
 }
 img{
@@ -130,8 +145,6 @@ img{
 
 .createEventForm h3,
 .viewEventForm h3 {
-    font: 13px Arial, sans-serif;
-    font-weight: lighter;
     padding: 5px 0 5px 0;
 }
 

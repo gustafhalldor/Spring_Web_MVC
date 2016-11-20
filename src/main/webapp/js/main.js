@@ -149,6 +149,7 @@ function initMap() {
 function init() {
     $( '.createEventSideBar' ).hide();
     $( '.eventInfoSideBar' ).hide();
+    $( '.datePicker' ).datetimepicker({});
     $( '.toggle_createEvent_sideBar_btn' ).on('click', function(){
         toggleMap()
     });

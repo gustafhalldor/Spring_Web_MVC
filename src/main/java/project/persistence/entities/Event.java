@@ -30,8 +30,8 @@ public class Event {
     private float lat;
     //private ArrayList<String> type
   //  private int creatorId;
-  //  private Location location;
-  //  private Date time;
+    private Date startDate;
+    private Date endDate;
 
 
     // Notice the empty constructor, because we need to be able to create an empty Event to add
@@ -41,7 +41,7 @@ public class Event {
     }
 
     public Event(String name, String description, int ageMax, int ageMin, boolean genderRestriction, ArrayList<String> type,
-                 Location location, ArrayList<Integer> attendees, int creatorId, float lat, float lgt) {
+                 Location location, ArrayList<User> attendees, int creatorId, float lat, float lgt, Date startDate, Date endDate) {
         this.name = name;
         this.description = description;
         this.ageMin = ageMin;
@@ -49,11 +49,12 @@ public class Event {
         this.genderRestriction = genderRestriction;
         this.lgt = lgt;
         this.lat = lat;
+        this.startDate = startDate;
+        this.endDate = endDate;
       //  this.location = location;
         this.attendees = new ArrayList<Integer>();
       //  this.creatorId = creatorId;
        // this.type = type;
-      //  this.time = time;
 
     }
 
@@ -103,11 +104,21 @@ public class Event {
 
     public void setLat(float lat){this.lat = lat;}
 
+
     public void setAttendee(Integer userID) { this.attendees.add(userID); }
 
     public void setAttendees(ArrayList<Integer> attendees) { this.attendees = attendees; }
 
     public ArrayList<Integer> getAttendees() { return this.attendees;}
+
+
+    public Date getStartDate() { return startDate; }
+
+    public void setStartDate(Date date) { this.startDate = startDate; }
+
+    public Date getEndDate() { return endDate; }
+
+    public void setEndDate(Date date) { this.endDate = endDate; }
 
  /*
     public int getCreatorId() { return creatorId; }
@@ -126,8 +137,5 @@ public class Event {
 
 
 
-    public Date getTime() { return time; }
-
-    public void setTime(Date time) { this.time = time; }
 */
 }
