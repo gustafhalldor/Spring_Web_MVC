@@ -8,23 +8,25 @@
     <%--Note that the `commandName` given here HAS TO MATCH the name of the attribute--%>
     <%--that is added to the model that is passed to the view.--%>
     <%--See PostitNoteController, method postitNoteViewGet(), and find where this attribute is added to the model.--%>
-    <sf:form method="POST" commandName="eventDetails" action="/saveEvent">
+    <sf:form class="createEventForm" method="POST" commandName="eventDetails" action="/saveEvent">
 
-                <H3>Name:</H3>
+                <h3>Name<span>*</span></h3>
                 <%--the `path` attribute matches the `name` attribute of the Entity that was passed in the model--%>
-                <p><sf:input path="name" type="text" placeholder="Enter name of event"/></p>
+                <sf:input path="name" type="text" placeholder="Enter name of event"/>
 
-                <H3>Description:</H3>
-                <p><sf:textarea path="description" type="text" placeholder="Description of event"/></p>
+                <h3>Description<span>*</span></h3>
+                <sf:textarea path="description" type="text" placeholder="Description of event"/>
 
-                <H3>Minimum age:</H3>
-                <p><sf:input path="ageMin" type="number" min="18" value="18"/></p>
+                
 
-                <H3>Maximum age:</H3>
-                <p><sf:input path="ageMax" type="number" min="18" value="18"/></p>
+                <h3>Minimum age<span>*</span></h3>
+                <sf:input path="ageMin" type="number" min="18" value="18"/>
 
-                <H3>Gender restrict event?</H3>
-                <p><form:checkbox path="genderRestriction"/>Yes</p>
+                <h3>Maximum age<span>*</span></h3>
+                <sf:input path="ageMax" type="number" min="18" value="18"/>
+
+                <h3>Gender restrict event?(optional)</h3>
+                <h3><form:checkbox path="genderRestriction"/> Yes</h3>
 
                 <%--hiding this input because we want to get the data through javascript--%>
                 <sf:input path="lat" type="float" class="lat"/>
@@ -46,7 +48,7 @@
                 <td><sf:input path="creatorId" type="hidden"/></td>
             </tr>--%>
         <%--<div id="map"></div>--%>
-        <input type="submit" VALUE="CREATE!"/>
+        <button type="submit" VALUE="Create"/>Create</button>
 
     </sf:form>
 

@@ -9,21 +9,21 @@
 <%--that is added to the model that is passed to the view.--%>
 
 <h2>Event information</h2>
-<sf:form commandName="info">
+<sf:form class="viewEventForm" commandName="info">
 
-    <H3>Name:</H3>
+    <h3>Name:</h3>
     <p class="viewEventInfo_name">${info.name}</p>
 
-    <H3>Description:</H3>
+    <h3>Description:</h3>
     <p class="viewEventInfo_description">${info.description}</p>
 
-    <H3>Minimum age:</H3>
+    <h3>Minimum age:</h3>
     <p class="viewEventInfo_ageMin">${info.ageMin}</p>
 
-    <H3>Maximum age:</H3>
+    <h3>Maximum age:</h3>
     <p class="viewEventInfo_ageMax">${info.ageMax}</p>
 
-    <H3>Gender restrict event?</H3>
+    <h3>Gender restrict event?</h3>
     <p class="viewEventInfo_genderRestriction">${info.genderRestriction}</p>
 
 </sf:form>

@@ -1,28 +1,27 @@
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
-*//*
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+*/
+* {
     margin: 0;
     padding: 0;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
+    box-sizing: border-box;
 }
-*/
+
+.wrapper {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: Gill Sans Ultra;
+    font-weight: bold;
+}
+
+p {
+    font-family: Garamond;
+}
 /* screen overlay when prompt for Login*//*
 .overlay {
     position: fixed;
@@ -73,6 +72,19 @@ time, mark, audio, video {
     height: 42px;
 }
 
+.welcomePage {
+    padding: 10% 20%;
+    background-color: yellow;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.welcomePage h1 {
+    width: 100%;
+    padding: 0 0 25px 0;
+}
+
 .navigationBar {
     display: flex;
     justify-content: space-between;
@@ -82,10 +94,21 @@ time, mark, audio, video {
     display: flex;
     width: 100%;
     margin: 0 auto;
+    justify-content: center;
 }
 
+.lat, .lgt {
+    display: none;
+}
+
+.createEventSideBar {
+
+}
+
+
+
 .mapContainer {
-    width: 100%;
+    width: 80%;
     max-width: 1200px;
     min-width: 400px;
 }
@@ -97,4 +120,47 @@ time, mark, audio, video {
 img{
     height: 150px;
     width: 150px;
+}
+
+/*CreateEventForm*/
+.createEventForm, .viewEventForm {
+    border: 1px solid #c8c8c8;
+    padding: 10px;
+}
+
+.createEventForm h3,
+.viewEventForm h3 {
+    font: 13px Arial, sans-serif;
+    font-weight: lighter;
+    padding: 5px 0 5px 0;
+}
+
+.createEventForm input {
+    border-radius: 3px;
+    border: 0.5px solid #c8c8c8;
+    padding: 3px 2px;
+}
+
+.createEventForm textarea {
+    border-radius: 3px;
+    border: 0.5px solid #c8c8c8;
+    resize: none;
+    padding: 3px 2px;
+}
+
+.createEventForm span {
+    color: red;
+}
+
+::-webkit-input-placeholder {
+    font-style: italic;
+}
+:-moz-placeholder {
+    font-style: italic;
+}
+::-moz-placeholder {
+    font-style: italic;
+}
+:-ms-input-placeholder {
+    font-style: italic;
 }
