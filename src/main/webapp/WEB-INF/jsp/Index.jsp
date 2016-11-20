@@ -7,8 +7,11 @@
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <html>
     <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>The Event Finder</title>
         <link rel="stylesheet" type="text/css" href="<c:url value="/css/style.css"/>"/>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     </head>
   <body>
   <div class="wrapper">
@@ -35,7 +38,11 @@
                 <div id="map"></div>
             </div>
             <div class="eventInfoSideBar"><jsp:include page="${request.contextPath}/eventinfo/1"></jsp:include></div>
-            <script   src="https://code.jquery.com/jquery-3.1.1.js"   integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="   crossorigin="anonymous"></script>
+
+
+            <script src="https://code.jquery.com/jquery-3.1.1.js"   integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="   crossorigin="anonymous"></script>
+            <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
             <script async defer
                 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDw_tl_1b0d4i3KviPUzVHvM7sFbmAz-RE&callback=initMap&libraries=places">
             </script>
