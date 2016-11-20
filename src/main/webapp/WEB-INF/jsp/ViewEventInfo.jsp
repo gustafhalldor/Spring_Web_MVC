@@ -26,24 +26,13 @@
     <h3>Gender restrict event?</h3>
     <p class="viewEventInfo_genderRestriction">${info.genderRestriction}</p>
 
+    <button class="viewEventInfo_attendBtn"> Attend Event! </button>
+
+     <h3>Attendees</h3>
+     <div id="attendees">
+
+     </div>
+
+
+
 </sf:form>
-
-<h2>Attendees:</h2>
-<%--Choose what code to generate based on tests that we implement--%>
-<c:choose>
-
-    <%--If the model has an attribute with the name `listOfAttendees`--%>
-    <c:when test="${not empty listOfAttendees}">
-        <ul class="attendeeList">
-
-            <c:forEach var="attendee" items="${listOfAttendees}">
-                <li>${attendee.name}</li>
-            </c:forEach>
-        </ul>
-    </c:when>
-
-    <%--If all tests are false, then do this--%>
-    <c:otherwise>
-        <h3>No one is going yet!</h3>
-    </c:otherwise>
-</c:choose>
