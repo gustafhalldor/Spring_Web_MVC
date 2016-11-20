@@ -15,13 +15,10 @@
   <nav class="navigationBar">
       <button type="button" class="toggle_createEvent_sideBar_btn">Create Event</button>
       <h3>The Event Finder</h3>
-      <div class="loginDiv">
-          <button type="button" id="login"></button>
-      </div>
+
       <button type="button" id="logout"></button>
   </nav>
   <!--<div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="true"></div>-->
-
 
   <div class="main">
         <div class="createEventSideBar"><jsp:include page="${request.contextPath}/event"></jsp:include></div>
@@ -37,6 +34,13 @@
         </script>
         <!--<h3><a href="/eventinfo/1">Event Info</a></h3>-->
         <!--<h3><a href="/event">Create event</a></h3>-->
+    </div>
+    <div class="welcomePage">
+        <h1>The Event Finder</h1>
+        <p>Discover new passions and meet new people with us.</p>
+        <div class="loginDiv">
+            <button type="button" id="login"></button>
+        </div>
     </div>
     <script src="<c:url value="/js/main.js" />"></script>
   </body>
