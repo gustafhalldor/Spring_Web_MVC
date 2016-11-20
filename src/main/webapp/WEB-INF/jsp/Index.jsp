@@ -12,6 +12,7 @@
         <title>The Event Finder</title>
         <link rel="stylesheet" type="text/css" href="<c:url value="/css/style.css"/>"/>
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" type="text/css" href="<c:url value="/css/jquery-ui-timepicker-addon.css"/>"/>
     </head>
   <body>
   <div class="wrapper">
@@ -39,9 +40,8 @@
             </div>
             <div class="eventInfoSideBar"><jsp:include page="${request.contextPath}/eventinfo/1"></jsp:include></div>
 
-
-            <script src="https://code.jquery.com/jquery-3.1.1.js"   integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="   crossorigin="anonymous"></script>
-            <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+          <script src="https://code.jquery.com/jquery-3.1.1.js"   integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="   crossorigin="anonymous"></script>
+          <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
             <script async defer
                 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDw_tl_1b0d4i3KviPUzVHvM7sFbmAz-RE&callback=initMap&libraries=places">
@@ -50,6 +50,8 @@
             <!--<h3><a href="/event">Create event</a></h3>-->
         </div>
     </div>
+
+    <script src="<c:url value="/js/jquery-ui-timepicker-addon.js" />"></script>
     <script src="<c:url value="/js/main.js" />"></script>
   </body>
 </html>
