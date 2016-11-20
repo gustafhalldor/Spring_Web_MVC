@@ -308,7 +308,6 @@ window.fbAsyncInit = function() {
                 'dateType': 'json',
                 'data': {"fbId": userId},
                 'success': function (data) {
-
                     userExistsHandler(data, userId);
                 }
             });
@@ -374,6 +373,7 @@ window.fbAsyncInit = function() {
                         //var accessToken = response.authResponse.accessToken;
 
                         var userId = response.authResponse.userID;
+                        $('#profilePic').attr('src', 'http://graph.facebook.com/' + userId + '/picture');
 
                         // checks if user already exists and if not, creates one.
                         userExists(userId);
@@ -385,7 +385,7 @@ window.fbAsyncInit = function() {
                         window.alert("failed");
                     }
                 }, {
-                    scope: 'email,user_birthday'
+                    scope: 'email,user_birthday,public_profile'
                 });
             }
         })

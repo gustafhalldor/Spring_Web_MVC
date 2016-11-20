@@ -27,8 +27,11 @@
       <nav class="navigationBar">
           <button type="button" class="toggle_createEvent_sideBar_btn">Create Event</button>
           <h3>The Event Finder</h3>
+          <div>
+              <img id="profilePic" src="">
+              <button type="button" id="logout"></button>
+          </div>
 
-          <button type="button" id="logout"></button>
       </nav>
 
       <div class="main">
