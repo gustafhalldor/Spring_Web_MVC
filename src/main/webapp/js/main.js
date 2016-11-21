@@ -288,6 +288,7 @@ window.fbAsyncInit = function() {
             $('.main').show();
             $('.navigationBar').show();
             $('.welcomePage').hide();
+            $('#profilePic').attr('src', 'http://graph.facebook.com/' + response.authResponse.userID + '/picture');
         }
 
         else {
@@ -373,7 +374,6 @@ window.fbAsyncInit = function() {
                         //var accessToken = response.authResponse.accessToken;
 
                         var userId = response.authResponse.userID;
-                        $('#profilePic').attr('src', 'http://graph.facebook.com/' + userId + '/picture');
 
                         // checks if user already exists and if not, creates one.
                         userExists(userId);
