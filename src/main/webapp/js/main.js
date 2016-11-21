@@ -179,10 +179,8 @@ function fillEventInfo(name, description, minAge, maxAge, genRestriction, attend
  $('.viewEventInfo_ageMax').html(maxAge);
  $('.viewEventInfo_genderRestriction').html(genRestriction);
  $('.viewEventInfo_attendBtn').on("click", function(){ attend(eventID)});
- console.log(eventID);
 
  // PLACEHOLDER ATTEND // Ætti bara að kalla á þetta fall ef ýtt er á Attend takka sem virkar ekki núna!
- attend(eventID);
 
  
  if(!attendees) return;
@@ -198,7 +196,7 @@ function fillEventInfo(name, description, minAge, maxAge, genRestriction, attend
 }
 
 function attend(eventID){
-
+    console.log(eventID)
     $.ajax({
         'url': 'http://localhost:8080/attend',
         'type': 'POST',
