@@ -150,11 +150,15 @@ function init() {
     $( '.createEventSideBar' ).hide();
     $( '.eventInfoSideBar' ).hide();
     $( '.datePicker' ).datetimepicker({});
-    $( '.toggle_createEvent_sideBar_btn' ).on('click', function(){
-        toggleMap()
+    $( '.toggle_createEvent_sideBar_btn' ).on('click', function(e){
+        toggleMap();
     });
+    hideEventInfo();
 }
 
+function createEvent() {
+
+}
 
 function toggleMap() {
     $( '.eventInfoSideBar' ).hide(500);
@@ -169,6 +173,13 @@ function eventInfoSideBar(name, description, minAge, maxAge, genRestriction, att
     $( '.eventInfoSideBar' ).show(500);
     sideBarOn = false;
     initMap();
+}
+
+function hideEventInfo() {
+    $('.hide_eventBtn').on('click', function(e) {
+        e.preventDefault();
+        $('.eventInfoSideBar').hide(500);
+    });
 }
 
 function fillEventInfo(name, description, minAge, maxAge, genRestriction, attendees, eventID){
