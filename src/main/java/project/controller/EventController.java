@@ -2,8 +2,13 @@ package project.controller;
 
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import project.persistence.entities.Event;
 import project.persistence.entities.User;
@@ -28,6 +33,14 @@ public class EventController {
         this.eventService = eventService;
     }
 
+    @Autowired
+    @Qualifier("eventValidator")
+    private Validator validator;
+
+    @InitBinder
+    private void initBinder(WebDataBinder binder) {
+        binder.setValidator(validator);
+    }
 
     // Allows for a new event to be created. Upon visiting /event the form to fill out is displayed.
     @RequestMapping(value = "/event", method = RequestMethod.GET)
@@ -38,19 +51,28 @@ public class EventController {
         return "CreateEventForm";
     }
 
-    // When user submits his event form he is taken to /eventinfo and ViewEventInfo.jsp is displayed
+
     @RequestMapping(value = "/saveEvent", method = RequestMethod.POST)
-    public String saveEvent(@ModelAttribute("eventDetails") Event event, Model model) throws IOException {
+    public String saveEvent(@ModelAttribute("eventDetails") @Validated Event event,
+                                BindingResult bindingResult, Model model) throws IOException {
 
-        // Save the event data we received from the form
-        eventService.save(event);
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("formHasErrors", true);
+            return "redirect:/";
+        }
 
-        // TODO: Have to add the event to the user's created events
+        else {
+            // Save the event data we received from the form
+            eventService.save(event);
 
-        // Displays the event information through the "info" attribute, which is sent to ViewEventInfo.jsp
-        model.addAttribute("info", event);
+            // TODO: Have to add the event to the user's created events
 
-        return "redirect:/";
+            // Displays the event information through the "info" attribute, which is sent to ViewEventInfo.jsp
+            model.addAttribute("info", event);
+
+            return "redirect:/";
+        }
+
     }
 
 
