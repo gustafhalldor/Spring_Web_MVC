@@ -19,6 +19,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+
+import java.util.ArrayList;
 import java.util.List;
 /**
  * Created by geelo on 24-Oct-16.
@@ -75,7 +77,35 @@ public class EventController {
 
     }
 
+    @RequestMapping(value = "/attend", method = RequestMethod.POST)
+    public String attend(@RequestBody  String data) throws IOException {
 
+        //The incoming data is in the form "eventID,userID"
+        String[] attendeeData = data.split(",");
+        int userID = Integer.parseInt(attendeeData[0]);
+        int eventID = Integer.parseInt(attendeeData[1]);
+
+        System.out.println(userID);
+        System.out.println(eventID);
+        Event event = eventService.findOne(eventID);
+
+        if(event.getAttendees() == null){
+            event.setAttendees(new ArrayList<Integer>());
+            event.setAttendee(userID);
+        }
+        else{
+            event.setAttendee(userID);
+        }
+
+        eventService.save(event);
+
+        // TODO: Have to add the event to the user's created events
+
+        // Displays the event information through the "info" attribute, which is sent to ViewEventInfo.jsp
+        //model.addAttribute("info", event);
+
+        return "redirect:/";
+    }
 
     // When user submits his event form he is taken to /eventinfo and ViewEventInfo.jsp is displayed
     @RequestMapping(value = {"/eventinfo", "/eventinfo/{id}"}, method = RequestMethod.GET)

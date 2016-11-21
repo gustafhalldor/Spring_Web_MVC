@@ -95,6 +95,11 @@ p {
     background-color: yellow;
 }
 
+div #profilePic {
+    width: 35px;
+    height: 35px;
+}
+
 .toggle_createEvent_sideBar_btn {
 
 }

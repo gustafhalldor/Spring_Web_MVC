@@ -25,7 +25,7 @@ public class Event {
     private int ageMin;
     private int ageMax;
     private boolean genderRestriction;
-  //  private ArrayList<User> attendees;
+    private ArrayList<Integer> attendees;
     private float lgt;
     private float lat;
     //private ArrayList<String> type
@@ -37,6 +37,7 @@ public class Event {
     // Notice the empty constructor, because we need to be able to create an empty Event to add
     // to our model so we can use it with our form
     public Event() {
+
     }
 
     public Event(String name, String description, int ageMax, int ageMin, boolean genderRestriction, ArrayList<String> type,
@@ -51,7 +52,7 @@ public class Event {
         this.startDate = startDate;
         this.endDate = endDate;
       //  this.location = location;
-      //  this.attendees = attendees;
+        this.attendees = new ArrayList<Integer>();
       //  this.creatorId = creatorId;
        // this.type = type;
 
@@ -103,6 +104,14 @@ public class Event {
 
     public void setLat(float lat){this.lat = lat;}
 
+
+    public void setAttendee(Integer userID) { this.attendees.add(userID); }
+
+    public void setAttendees(ArrayList<Integer> attendees) { this.attendees = attendees; }
+
+    public ArrayList<Integer> getAttendees() { return this.attendees;}
+
+
     public Date getStartDate() { return startDate; }
 
     public void setStartDate(Date date) { this.startDate = startDate; }
@@ -110,6 +119,7 @@ public class Event {
     public Date getEndDate() { return endDate; }
 
     public void setEndDate(Date date) { this.endDate = endDate; }
+
  /*
     public int getCreatorId() { return creatorId; }
 
@@ -125,7 +135,7 @@ public class Event {
 
     public ArrayList<User> getAttendees() { return attendees; }
 
-    public void setAttendees(ArrayList<User> attendees) { this.attendees = attendees; }
+
 
 */
 }

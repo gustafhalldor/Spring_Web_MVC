@@ -1,6 +1,9 @@
 //Index initMap
 var sideBarOn = false;
 var eventInfoSideBarOn = false;
+
+//Harðkóðaður logged in user - Þarf að ná í id úr facebook login.
+var userID = 80085;
 function initMap() {
 
     if(!sideBarOn) {
@@ -18,7 +21,6 @@ function initMap() {
         //console.log(input);
         //var searchBox = new google.maps.places.SearchBox(input);
         map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-        console.log("villa?");
         // Bias the SearchBox results towards current map's viewport.
         map.addListener('bounds_changed', function () {
            // searchBox.setBounds(map.getBounds());
@@ -93,7 +95,8 @@ function initMap() {
                     currInfoWindow = infowindow;
 
                     infowindow.open(map, marker);
-                    eventInfoSideBar(data["name"], data["description"], data["ageMin"], data["ageMax"], data["genderRestriction"]);
+                    console.log(data["attendees"]);
+                    eventInfoSideBar(data["name"], data["description"], data["ageMin"], data["ageMax"], data["genderRestriction"], data["attendees"], data["id"]);
                 });
             });
         });
@@ -160,32 +163,48 @@ function toggleMap() {
     initMap();
 }
 
-function eventInfoSideBar(name, description, minAge, maxAge, genRestriction) {
-    fillEventInfo(name, description, minAge, maxAge, genRestriction)
+function eventInfoSideBar(name, description, minAge, maxAge, genRestriction, attendees, eventID) {
+    fillEventInfo(name, description, minAge, maxAge, genRestriction, attendees, eventID)
     $( '.createEventSideBar' ).hide(500);
     $( '.eventInfoSideBar' ).show(500);
     sideBarOn = false;
     initMap();
 }
 
-function fillEventInfo(name, description, minAge, maxAge, genRestriction){
+function fillEventInfo(name, description, minAge, maxAge, genRestriction, attendees, eventID){
 
  $('.viewEventInfo_name').html(name);
  $('.viewEventInfo_description').html(description);
  $('.viewEventInfo_ageMin').html(minAge);
  $('.viewEventInfo_ageMax').html(maxAge);
  $('.viewEventInfo_genderRestriction').html(genRestriction);
+ $('.viewEventInfo_attendBtn').on("click", function(){ attend(eventID)});
+
+ // PLACEHOLDER ATTEND // Ætti bara að kalla á þetta fall ef ýtt er á Attend takka sem virkar ekki núna!
+
+ 
+ if(!attendees) return;
+
+ var attendeeList = document.getElementById("attendees");
+ for(var i=0; i < attendees.length; i++){
+    var attendee = document.createElement("p");
+    var attendeeName = document.createTextNode(attendees[i]);
+    attendee.appendChild(attendeeName);
+
+    attendeeList.appendChild(attendee);
+ }
 }
 
-function attendEvent(eventId, userId){
+function attend(eventID){
+    console.log(eventID)
     $.ajax({
         'url': 'http://localhost:8080/attend',
         'type': 'POST',
         'contentType': 'application/json',
         'dateType': 'json',
-        'data': {"userId": userId, "eventId": eventId},
+        'data': userID+","+eventID,
         'success': function (data) {
-            console.log('Attending Event!');
+            console.log('Attending Event! eventID:'+eventID);
         }
     });
 }
@@ -352,6 +371,7 @@ window.fbAsyncInit = function() {
                         //var accessToken = response.authResponse.accessToken;
 
                         var userId = response.authResponse.userID;
+                        $('#profilePic').attr('src', 'http://graph.facebook.com/' + userId + '/picture');
 
                         // checks if user already exists and if not, creates one.
                         userExists(userId);
@@ -363,7 +383,7 @@ window.fbAsyncInit = function() {
                         window.alert("failed");
                     }
                 }, {
-                    scope: 'email,user_birthday'
+                    scope: 'email,user_birthday,public_profile'
                 });
             }
         })
