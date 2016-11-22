@@ -53,8 +53,10 @@
             <!--<h3><a href="/event">Create event</a></h3>-->
         </div>
     </div>
+  <script src="<c:url value="/js/jquery-ui-timepicker-addon.js" />"></script>
+  <script src="<c:url value="/js/main.js" />"></script>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+      <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
 
-    <script src="<c:url value="/js/jquery-ui-timepicker-addon.js" />"></script>
-    <script src="<c:url value="/js/main.js" />"></script>
   </body>
 </html>

@@ -183,6 +183,6 @@ img{
     font-style: italic;
 }
 
-.redError {
+div.error {
     color: red;
 }
