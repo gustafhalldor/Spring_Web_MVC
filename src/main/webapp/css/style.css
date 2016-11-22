@@ -87,21 +87,54 @@ p {
 
 .navigationBar {
     display: flex;
+    height: 60px;
     justify-content: space-between;
     align-items: center;
+    padding: 0 3px;
     border-bottom: 0.5px solid #c8c8c8;
     border-bottom-width: 5px;
     border-bottom-color: rgba(255, 171, 15, 1);
     background-color: yellow;
 }
 
+.navigationBar a{
+    padding: 10px 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    color: white;
+    background-color: #cb4e4e;
+    border-radius: 0 0 5px 5px;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    outline: none;
+    box-sizing: border-box;
+    text-decoration: none;
+
+}
+
 div #profilePic {
     width: 35px;
     height: 35px;
+    border: 1px solid black;
 }
 
 .toggle_createEvent_sideBar_btn {
-
+    padding: 10px 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    color: white;
+    background-color: #cb4e4e;
+    border-radius: 0 0 5px 5px;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    outline: none;
+    box-sizing: border-box;
 }
 
 .toggle_createEvent_sideBar_btn:hover {
@@ -197,4 +230,55 @@ img{
 
 div.error {
     color: red;
+}
+
+
+/* My events */
+body {
+    background-color: #E0DFDB;
+}
+
+.myEvents_eventInfo{
+    width: 500px;
+    margin-top: 10px;
+    padding: 15px;
+    background-color: #D3D3D3;
+}
+
+.myEvents_text{
+    margin-bottom: 10px;
+}
+
+.myEvents_eventInfo a{
+    padding: 5px 5px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    color: white;
+    background-color: #cb4e4e;
+    border-radius: 0 0 5px 5px;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    outline: none;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+.myEvents_wrapper{
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.myEvents_main{
+    display: flex;
+    width: 100%;
+    margin: 0 auto;
+    justify-content: space-around;
+    padding-top: 20px;
+    flex-direction:column;
+     align-items: center;
 }
