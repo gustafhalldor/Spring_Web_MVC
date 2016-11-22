@@ -34,7 +34,7 @@ public class EventController {
     public EventController(EventService eventService) {
         this.eventService = eventService;
     }
-
+/*
     @Autowired
     @Qualifier("eventValidator")
     private Validator validator;
@@ -43,7 +43,7 @@ public class EventController {
     private void initBinder(WebDataBinder binder) {
         binder.setValidator(validator);
     }
-
+*/
     // Allows for a new event to be created. Upon visiting /event the form to fill out is displayed.
     @RequestMapping(value = "/event", method = RequestMethod.GET)
     public String createEvent(Model model) {
@@ -58,12 +58,14 @@ public class EventController {
     public String saveEvent(@ModelAttribute("eventDetails") @Validated Event event,
                                 BindingResult bindingResult, Model model) throws IOException {
 
-        if (bindingResult.hasErrors()) {
+       /* if (bindingResult.hasErrors()) {
             model.addAttribute("formHasErrors", true);
             return "redirect:/";
         }
 
         else {
+
+        */
             // Save the event data we received from the form
             eventService.save(event);
 
@@ -73,7 +75,7 @@ public class EventController {
             model.addAttribute("info", event);
 
             return "redirect:/";
-        }
+        //}
 
     }
 
@@ -119,6 +121,19 @@ public class EventController {
 
         return "ViewEventInfo";
     }
+    // When user submits his event form he is taken to /eventinfo and ViewEventInfo.jsp is displayed
+    @RequestMapping(value = {"/event/{id}"}, method = RequestMethod.GET)
+    public String showEvent(@ModelAttribute("eventDetails") Event event, Model model,
+                            @PathVariable("id") Integer id2) throws IOException {
+
+        // TODO: Have to add the event to the user's created events
+        Event eventInfo = eventService.findOne(id2);
+        // Displays the event information through the "info" attribute, which is sent to ViewEventInfo.jsp
+        model.addAttribute("info", eventInfo);
+
+        return "MyEvents";
+    }
+
 
 
     @RequestMapping(value = "/myevents", method = RequestMethod.POST)

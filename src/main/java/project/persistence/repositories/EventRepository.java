@@ -31,6 +31,10 @@ public interface EventRepository extends JpaRepository<Event, Integer> {
     @Query(value = "SELECT p FROM Event p where length(p.name) >= 3 ")
     List<Event> findAllWithNameLongerThan3Chars();
 
+    // Find all upcoming events.
+    @Query(value = "SELECT p FROM Event p") //Remember to add time constraints!
+    List<Event> findAllUpcoming();
+
     // Instead of the method findAllReverseOrder() in PostitNoteService.java,
     // We could have used this method by adding the words
     // ByOrderByIdDesc, which mean: Order By Id in a Descending order

@@ -5,11 +5,8 @@
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<%--Note that the `commandName` given here HAS TO MATCH the name of the attribute--%>
-<%--that is added to the model that is passed to the view.--%>
-
-<h2>Event information</h2>
-<sf:form class="viewEventForm" commandName="info">
+    <h2>Event information</h2>
+    <sf:form class="viewEventForm" commandName="info">
 
     <h3>Name:</h3>
     <p class="viewEventInfo_name">${info.name}</p>
@@ -26,13 +23,11 @@
     <h3>Gender restrict event?</h3>
     <p class="viewEventInfo_genderRestriction">${info.genderRestriction}</p>
 
-    <button class="viewEventInfo_attendBtn"> Attend Event! </button>
+    <button class="viewEventInfo_attendBtn" type="button"> Attend Event! </button>
 
      <h3>Attendees</h3>
      <div id="attendees">
 
      </div>
-
-
-
-</sf:form>
+     </sf:form>
+     <button class="hide_eventBtn">Hide event info</button>
