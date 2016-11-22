@@ -35,6 +35,9 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     @Query(value = "SELECT p FROM User p WHERE p.fbId = :facebookId")
     User findOneByString(@Param("facebookId") String fbId);
 
+    @Query(value = "SELECT p.id FROM User p WHERE p.fbId = :user")
+    int findIdByString(@Param("user") String fbId);
+
     // Instead of the method findAllReverseOrder() in PostitNoteService.java,
     // We could have used this method by adding the words
     // ByOrderByIdDesc, which mean: Order By Id in a Descending order

@@ -39,12 +39,12 @@ public class UserController {
     @RequestMapping(value = "/user/create", method = RequestMethod.POST)
     public @ResponseBody String createUser(@RequestBody User user) {
 
-
         userService.save(user);
 
         return "Halló gaman!";
     }
 
+    // Check to see if user already exists (i.e. has logged in before)
     @RequestMapping(value = "user/check", method = RequestMethod.GET)
     public @ResponseBody Boolean userExists(@RequestParam String fbId, HttpServletRequest request, HttpServletResponse response, Model model) {
 
@@ -70,7 +70,7 @@ public class UserController {
 
 
 
-        model.addAttribute("upcomingEvents", userUpcomingEvents(80085));
+        model.addAttribute("upcomingEvents", userUpcomingEvents(id2));
         return "UserInfo";
     }
 

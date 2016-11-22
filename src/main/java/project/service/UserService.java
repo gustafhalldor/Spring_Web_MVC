@@ -42,6 +42,7 @@ public interface UserService {
 
     User findOneByString(String fbid);
 
+    int findIdByString(String user);
     /**
      * Find all {@link User}s with {@link String name}
      * @param name {@link String}

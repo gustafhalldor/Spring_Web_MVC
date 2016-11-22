@@ -18,14 +18,14 @@
   <div class="wrapper">
       <div class="overlay"></div>
       <div class="welcomePage">
-          <h1>The Event Finder</h1>
+          <a href="/"><h1>The Event Finder</h1></a>
           <p>Discover new passions and meet new people with us.</p>
           <div class="loginDiv">
               <button type="button" id="login"></button>
           </div>
       </div>
       <nav class="navigationBar">
-          <h3>The Event Finder</h3>
+          <a href="/"><h1>The Event Finder</h1></a>
           <div>
               <img id="profilePic" src="">
               <button type="button" id="logout"></button>
@@ -60,7 +60,9 @@
 
                     <h3>Attendees</h3>
                     <div id="attendees">
-                         <c:forEach items="${info.attendees}" var="attendee">
+
+                         <c:forEach items="${attendeeNames}" var="attendee">
+                             <%--<img src="http://graph.facebook.com/${attendeeFbId}/picture" alt="profile picture">--%>
                                 <p>${attendee}</p>
                             </c:forEach>
                     </div>
@@ -75,7 +77,11 @@
             </script>
         </div>
     </div>
-
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script
+          src="http://code.jquery.com/ui/1.12.0/jquery-ui.min.js"
+          integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E="
+          crossorigin="anonymous"></script>
     <script src="<c:url value="/js/jquery-ui-timepicker-addon.js" />"></script>
     <script src="<c:url value="/js/main.js" />"></script>
   </body>

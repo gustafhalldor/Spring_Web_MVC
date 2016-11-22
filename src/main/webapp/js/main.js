@@ -3,7 +3,7 @@ var sideBarOn = false;
 var eventInfoSideBarOn = false;
 
 //Harðkóðaður logged in user - Þarf að ná í id úr facebook login.
-var userID = 80085;
+var userID;
 
 
 function initMap() {
@@ -166,14 +166,10 @@ function fillEventInfo(name, description, minAge, maxAge, genRestriction, attend
  $('.viewEventInfo_genderRestriction').html(genRestriction.toString());
  $('.viewEventInfo_attendBtn').on("click", function(){ attend(eventID)});
 
- // PLACEHOLDER ATTEND // Ætti bara að kalla á þetta fall ef ýtt er á Attend takka sem virkar ekki núna!
-attend(eventID);
-
  if(!attendees) return;
 
  var attendeeList = document.getElementById("attendees");
  attendeeList.innerHTML ="";
- attendeeList
  for(var i=0; i < attendees.length; i++){
     var attendee = document.createElement("p");
     var attendeeName = document.createTextNode(attendees[i]);
@@ -184,17 +180,42 @@ attend(eventID);
 }
 
 function attend(eventID){
-    console.log(eventID)
+
     $.ajax({
         'url': 'http://localhost:8080/attend',
         'type': 'POST',
-        'contentType': 'application/json',
-        'dateType': 'json',
-        'data': userID+","+eventID,
+        'contentType': 'application/json; charset=utf-8',
+        'data': JSON.stringify({
+            eventId: eventID,
+            fbId: userID
+        }),
         'success': function (data) {
+            showSuccessToaster("Event successfully joined!");
             console.log('Attending Event! eventID:'+eventID);
         }
     });
+}
+
+function showSuccessToaster(param){
+    Command: toastr["success"](param, "Success!")
+
+    toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": false,
+        "positionClass": "toast-top-right",
+        "preventDuplicates": true,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "3000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    }
 }
 
 
@@ -255,14 +276,6 @@ function initPlaceMarkerMap(){
 
 /* *** START OF FACEBOOK CODE *** */
 
-/*
-function checkLoginState() {
-    FB.getLoginStatus(function(response) {
-        statusChangeCallback(response);
-    });
-}
-*/
-
 
 window.fbAsyncInit = function() {
     FB.init({
@@ -276,7 +289,7 @@ window.fbAsyncInit = function() {
     });
 
     FB.Event.subscribe('auth.statusChange', function(response) {
-        console.log(response.status);
+
         if(response.status === 'connected'){
             $('.loginDiv').hide();
             $('#logout').show();
@@ -284,6 +297,7 @@ window.fbAsyncInit = function() {
             $('.navigationBar').show();
             $('.welcomePage').hide();
             $('#profilePic').attr('src', 'http://graph.facebook.com/' + response.authResponse.userID + '/picture');
+            userID = response.authResponse.userID;
         }
 
         else {
@@ -341,18 +355,6 @@ window.fbAsyncInit = function() {
             });
         }
     };
-
-    /*FB.getLoginStatus(function(response) {
-        if(response.status === 'connected'){
-            $('.loginDiv').hide();
-            $('#logout').show();
-        }
-
-        else {
-            $('.loginDiv').show();
-            $('#logout').hide();
-        }
-    });*/
 
     $('#login').click(function(event) {
         event.preventDefault();

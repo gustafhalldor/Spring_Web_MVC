@@ -1,6 +1,9 @@
 package project.controller;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import org.json.simple.JSONValue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -22,6 +25,9 @@ import org.json.simple.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.springframework.data.repository.init.ResourceReader.Type.JSON;
+
 /**
  * Created by geelo on 24-Oct-16.
  */
@@ -29,10 +35,12 @@ import java.util.List;
 public class EventController {
 
     EventService eventService;
+    UserService userService;
 
     @Autowired
-    public EventController(EventService eventService) {
+    public EventController(EventService eventService, UserService userService) {
         this.eventService = eventService;
+        this.userService = userService;
     }
 /*
     @Autowired
@@ -80,23 +88,25 @@ public class EventController {
     }
 
     @RequestMapping(value = "/attend", method = RequestMethod.POST)
-    public String attend(@RequestBody  String data) throws IOException {
+    public String attend(@RequestBody String data) throws IOException {
 
-        //The incoming data is in the form "eventID,userID"
-        String[] attendeeData = data.split(",");
-        int userID = Integer.parseInt(attendeeData[0]);
-        int eventID = Integer.parseInt(attendeeData[1]);
+        // cleanup the string so it only contains numbers and a comma
+        String snip1 = data.replaceAll("[{}\":a-zA-Z]", "");
+        // split the string into 2 parts, first one is eventID, second is FB userID
+        String[] snip2 = snip1.split(",");
 
-        System.out.println(userID);
-        System.out.println(eventID);
+        int eventID = Integer.parseInt(snip2[0]);
+        String user = snip2[1];
+
         Event event = eventService.findOne(eventID);
+        int person = userService.findIdByString(user);
 
         if(event.getAttendees() == null){
             event.setAttendees(new ArrayList<Integer>());
-            event.setAttendee(userID);
+            event.setAttendee(person);
         }
         else{
-            event.setAttendee(userID);
+            event.setAttendee(person);
         }
 
         eventService.save(event);
@@ -126,10 +136,31 @@ public class EventController {
     public String showEvent(@ModelAttribute("eventDetails") Event event, Model model,
                             @PathVariable("id") Integer id2) throws IOException {
 
-        // TODO: Have to add the event to the user's created events
         Event eventInfo = eventService.findOne(id2);
-        // Displays the event information through the "info" attribute, which is sent to ViewEventInfo.jsp
+        ArrayList attendees = eventInfo.getAttendees();
+
+        ArrayList attendeeName = new ArrayList();
+        ArrayList attendeeFbId = new ArrayList();
+
+
+        for (int i = 0; i < attendees.size(); i++){
+
+            User user = userService.findOne((Integer)attendees.get(i));
+            if (user != null){
+                System.out.println(user);
+                String name = user.getName();
+                System.out.println(name);
+                attendeeName.add(i, name);
+
+                String fbId = user.getfbId();
+                attendeeFbId.add(i, fbId);
+            }
+        }
+
+        // Displays the event information through the "info" attribute, which is sent to MyEvents.jsp
         model.addAttribute("info", eventInfo);
+        model.addAttribute("attendeeNames", attendeeName);
+        model.addAttribute("attendeeFbId", attendeeFbId);
 
         return "MyEvents";
     }

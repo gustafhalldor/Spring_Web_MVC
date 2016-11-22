@@ -60,6 +60,9 @@ public class UserServiceImplementation implements UserService {
         return repository.findOneByString(fbid);
     }
 
+    public int findIdByString(String user) {
+        return repository.findIdByString(user);
+    }
     @Override
     public List<User> findByName(String name) {
         return repository.findByName(name);
