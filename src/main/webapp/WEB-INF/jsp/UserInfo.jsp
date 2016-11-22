@@ -24,10 +24,13 @@
         <p>Here are the events you are signed up for:</p>
             <c:forEach items="${upcomingEvents}" var="event">
 
-                <div class="userInfo_event">
-                    <li>Name: ${event.name}</li>
-                    <li>Description: ${event.description}</li>
-                    <a href="/event/${event.id}">Show on map</a>
+                <div class="myEvents_eventInfo">
+                   <div class="myEvents_text">
+                     <p>Name: ${event.name}</p>
+                     <p>Description: ${event.description}</p>
+                   </div>
+                   <a href="/event/${event.id}" class="">Show on map</a>
+
                 </div>
             </c:forEach>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
