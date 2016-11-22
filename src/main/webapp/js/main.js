@@ -123,8 +123,8 @@ function initFocusEventMap() {
 
 
 function init() {
-    $( '.createEventSideBar' ).hide();
-    $( '.eventInfoSideBar' ).hide();
+    //$( '.createEventSideBar' ).hide();
+    //$( '.eventInfoSideBar' ).hide();
     $( '.datePicker' ).datetimepicker({});
     $( '.toggle_createEvent_sideBar_btn' ).on('click', function(e){
         toggleMap();
@@ -132,21 +132,19 @@ function init() {
     hideEventInfo();
 }
 
-function createEvent() {
-
-}
-
 function toggleMap() {
-    $( '.eventInfoSideBar' ).hide(500);
-    $( '.createEventSideBar' ).toggle(500);
+    $( '.eventInfoSideBar' ).removeClass('showMe');
+    $( '.eventInfoSideBar' ).addClass('hideMe');
+    $('.createEventSideBar').toggleClass('hideMe');
     sideBarOn = !sideBarOn;
     initMap();
 }
 
 function eventInfoSideBar(name, description, minAge, maxAge, genRestriction, attendees, eventID) {
     fillEventInfo(name, description, minAge, maxAge, genRestriction, attendees, eventID)
-    $( '.createEventSideBar' ).hide(500);
-    $( '.eventInfoSideBar' ).show(500);
+    //$( '.createEventSideBar' ).removeClass('showMe');
+    $( '.eventInfoSideBar' ).removeClass('hideMe');
+    $( '.eventInfoSideBar' ).addClass('showMe');
     sideBarOn = false;
     initMap();
 }
@@ -154,7 +152,8 @@ function eventInfoSideBar(name, description, minAge, maxAge, genRestriction, att
 function hideEventInfo() {
     $('.hide_eventBtn').on('click', function(e) {
         e.preventDefault();
-        $('.eventInfoSideBar').hide(500);
+        $('.eventInfoSideBar').removeClass('showMe');
+        $('.eventInfoSideBar').addClass('hideMe');
     });
 }
 

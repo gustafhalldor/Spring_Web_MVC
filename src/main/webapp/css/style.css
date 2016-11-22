@@ -113,8 +113,16 @@ div #profilePic {
     display: flex;
     width: 100%;
     margin: 0 auto;
-    justify-content: center;
+    justify-content: space-around;
     padding-top: 20px;
+}
+
+.hideMe {
+    visibility: hidden;
+}
+
+.showMe {
+    visibility: visible;
 }
 
 .lat, .lgt {
@@ -122,11 +130,15 @@ div #profilePic {
 }
 
 .createEventSideBar {
+    width: 20%;
+}
 
+.eventInfoSideBar {
+    width: 20%;
 }
 
 .mapContainer {
-    width: 80%;
+    width: 60%;
     max-width: 1200px;
     min-width: 400px;
     height: 90vh;
