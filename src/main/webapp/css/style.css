@@ -182,3 +182,7 @@ img{
 :-ms-input-placeholder {
     font-style: italic;
 }
+
+.redError {
+    color: red;
+}

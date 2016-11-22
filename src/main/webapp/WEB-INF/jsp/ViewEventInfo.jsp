@@ -36,3 +36,4 @@
 
 
 </sf:form>
+<button class="hide_eventBtn">Hide event info</button>

@@ -150,11 +150,15 @@ function init() {
     $( '.createEventSideBar' ).hide();
     $( '.eventInfoSideBar' ).hide();
     $( '.datePicker' ).datetimepicker({});
-    $( '.toggle_createEvent_sideBar_btn' ).on('click', function(){
-        toggleMap()
+    $( '.toggle_createEvent_sideBar_btn' ).on('click', function(e){
+        toggleMap();
     });
+    hideEventInfo();
 }
 
+function createEvent() {
+
+}
 
 function toggleMap() {
     $( '.eventInfoSideBar' ).hide(500);
@@ -171,6 +175,13 @@ function eventInfoSideBar(name, description, minAge, maxAge, genRestriction, att
     initMap();
 }
 
+function hideEventInfo() {
+    $('.hide_eventBtn').on('click', function(e) {
+        e.preventDefault();
+        $('.eventInfoSideBar').hide(500);
+    });
+}
+
 function fillEventInfo(name, description, minAge, maxAge, genRestriction, attendees, eventID){
 
  $('.viewEventInfo_name').html(name);
@@ -179,10 +190,8 @@ function fillEventInfo(name, description, minAge, maxAge, genRestriction, attend
  $('.viewEventInfo_ageMax').html(maxAge);
  $('.viewEventInfo_genderRestriction').html(genRestriction);
  $('.viewEventInfo_attendBtn').on("click", function(){ attend(eventID)});
- console.log(eventID);
 
  // PLACEHOLDER ATTEND // Ætti bara að kalla á þetta fall ef ýtt er á Attend takka sem virkar ekki núna!
- attend(eventID);
 
  if(!attendees) return;
 
@@ -197,7 +206,7 @@ function fillEventInfo(name, description, minAge, maxAge, genRestriction, attend
 }
 
 function attend(eventID){
-
+    console.log(eventID)
     $.ajax({
         'url': 'http://localhost:8080/attend',
         'type': 'POST',
@@ -288,6 +297,7 @@ window.fbAsyncInit = function() {
             $('.main').show();
             $('.navigationBar').show();
             $('.welcomePage').hide();
+            $('#profilePic').attr('src', 'http://graph.facebook.com/' + response.authResponse.userID + '/picture');
         }
 
         else {
@@ -373,7 +383,6 @@ window.fbAsyncInit = function() {
                         //var accessToken = response.authResponse.accessToken;
 
                         var userId = response.authResponse.userID;
-                        $('#profilePic').attr('src', 'http://graph.facebook.com/' + userId + '/picture');
 
                         // checks if user already exists and if not, creates one.
                         userExists(userId);
