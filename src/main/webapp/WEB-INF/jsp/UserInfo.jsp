@@ -3,52 +3,28 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <html lang="en">
 
     <head>
-        <title>User pages</title>
+        <title>${info.name} page</title>
 
         <link rel="stylesheet" type="text/css" href="<c:url value="/css/style.css"/>"/>
     </head>
     <body>
-
-    <%-- Gústi: This is a relic from the spring boot application. We would probably like to rename the page to "MyEvents"
-        or something like that, so it is more like a MyProfile kind of deal. The endpoint /users doesn't even exist
-        anymore as I deleted it! I'm just crazy like that. --%>
-
-    <h1><a href="/users">User pages</a></h1>
-
-    <sf:form method="POST" commandName="userName" action="/users">
-
-        <table>
-            <tr>
-                <td>Name:</td>
-                <%--the `path` attribute matches the `name` attribute of the Entity that was passed in the model--%>
-                <td><sf:input path="name" type="text" placeholder="Enter name"/></td>
-            </tr>
-            <tr>
-                <td>Info:</td>
-                <td><sf:textarea path="note" type="text" placeholder="Some text here"/></td>
-            </tr>
-        </table>
-
-        <input type="submit" VALUE="Post It!"/>
-
-    </sf:form>
+        <h1>This is ${info.name} events page!</a></h1>
+        <p>Here are the events you are signed up for:</p>
 
 
-    <c:choose>
-        <c:when test="${not empty userNames}">
+            <c:forEach items="${upcomingEvents}" var="event">
+                <div class "userInfo_event">
+                    <li>Name: ${event.name}</li>
+                    <li>Description: ${event.description}</li>
+                    <button>Show on map</button>
+                </div>
+            </c:forEach>
 
-        </c:when>
 
-        <%--If all tests are false, then do this--%>
-        <c:otherwise>
-            <h3>No notes!</h3>
-        </c:otherwise>
-    </c:choose>
-
-    <script src="<c:url value="/js/main.js" />"></script>
     </body>
 </html>

@@ -48,4 +48,7 @@ public interface EventService {
      */
     List<Event> findByName(String name);
 
+    List<Event> findAllUpcoming();
+
+
 }

@@ -41,6 +41,9 @@ public class EventServiceImplementation implements EventService {
     }
 
     @Override
+    public List<Event> findAllUpcoming() {return repository.findAllUpcoming(); }
+
+    @Override
     public List<Event> findAllReverseOrder() {
         // Get all the Postit notes
         List<Event> events = repository.findAll();

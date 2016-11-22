@@ -184,7 +184,6 @@ function fillEventInfo(name, description, minAge, maxAge, genRestriction, attend
  // PLACEHOLDER ATTEND // Ætti bara að kalla á þetta fall ef ýtt er á Attend takka sem virkar ekki núna!
  attend(eventID);
 
- 
  if(!attendees) return;
 
  var attendeeList = document.getElementById("attendees");
@@ -210,6 +209,7 @@ function attend(eventID){
         }
     });
 }
+
 
 
 //Create event initMap()
