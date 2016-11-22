@@ -23,7 +23,7 @@
     <h3>Gender restrict event?</h3>
     <p class="viewEventInfo_genderRestriction">${info.genderRestriction}</p>
 
-    <button class="viewEventInfo_attendBtn"> Attend Event! </button>
+    <button class="viewEventInfo_attendBtn" type="button"> Attend Event! </button>
 
      <h3>Attendees</h3>
      <div id="attendees">
