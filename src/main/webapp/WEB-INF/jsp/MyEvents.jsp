@@ -68,14 +68,14 @@
 
           <script src="https://code.jquery.com/jquery-3.1.1.js"   integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="   crossorigin="anonymous"></script>
           <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
+          <script src="<c:url value="/js/jquery-ui-timepicker-addon.js" />"></script>
+          <script src="<c:url value="/js/main.js" />"></script>
             <script async defer
                 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDw_tl_1b0d4i3KviPUzVHvM7sFbmAz-RE&callback=initFocusEventMap&libraries=places">
             </script>
         </div>
     </div>
 
-    <script src="<c:url value="/js/jquery-ui-timepicker-addon.js" />"></script>
-    <script src="<c:url value="/js/main.js" />"></script>
+
   </body>
 </html>
