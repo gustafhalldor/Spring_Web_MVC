@@ -105,7 +105,13 @@ public class Event {
     public void setLat(float lat){this.lat = lat;}
 
 
-    public void setAttendee(Integer userID) { this.attendees.add(userID); }
+    public void setAttendee(Integer userID) {
+        if(this.attendees.contains(userID)) return;
+        else {
+            this.attendees.add(userID);
+            System.out.println("BÆti við user");
+        }
+    }
 
     public void setAttendees(ArrayList<Integer> attendees) { this.attendees = attendees; }
 

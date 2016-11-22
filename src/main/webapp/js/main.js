@@ -4,11 +4,15 @@ var eventInfoSideBarOn = false;
 
 //Harðkóðaður logged in user - Þarf að ná í id úr facebook login.
 var userID = 80085;
+
+
 function initMap() {
 
     if(!sideBarOn) {
         var currInfoWindow;
         var rvkLOC = {lat: 64.138705, lng: -21.955501};
+
+        var eventToFocus = getEventIdFromUrl();
 
         var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 14,
@@ -18,65 +22,7 @@ function initMap() {
         });
         // Create the search box and link it to the UI element.
         var input = document.getElementById('mapSearchBox');
-        //console.log(input);
-        //var searchBox = new google.maps.places.SearchBox(input);
-        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-        // Bias the SearchBox results towards current map's viewport.
-        map.addListener('bounds_changed', function () {
-           // searchBox.setBounds(map.getBounds());
-        });
-
         var markers = [];
-        // Listen for the event fired when the user selects a prediction and retrieve
-        // more details for that place.
-         /*
-        searchBox.addListener('places_changed', function () {
-            var places = searchBox.getPlaces();
-            console.log(places);
-            if (places.length == 0) {
-                return;
-            }
-
-            // Clear out the old markers.
-            markers.forEach(function (marker) {
-                marker.setMap(null);
-            });
-            markers = [];
-            console.log("erroR?");
-
-            // For each place, get the icon, name and location.
-            var bounds = new google.maps.LatLngBounds();
-            places.forEach(function (place) {
-                if (!place.geometry) {
-                    console.log("Returned place contains no geometry");
-                    return;
-                }
-                var icon = {
-                    url: place.icon,
-                    size: new google.maps.Size(71, 71),
-                    origin: new google.maps.Point(0, 0),
-                    anchor: new google.maps.Point(17, 34),
-                    scaledSize: new google.maps.Size(25, 25)
-                };
-
-                // Create a marker for each place.
-                markers.push(new google.maps.Marker({
-                    map: map,
-                    icon: icon,
-                    title: place.name,
-                    position: place.geometry.location
-                }));
-
-                if (place.geometry.viewport) {
-                    // Only geocodes have viewport.
-                    bounds.union(place.geometry.viewport);
-                } else {
-                    bounds.extend(place.geometry.location);
-                }
-            });
-            map.fitBounds(bounds);
-        });
-        */
 
         $.getJSON("/js/data.json", function (Events) {
             $.each(Events, function (key, data) {
@@ -146,6 +92,36 @@ function initMap() {
     }
 }
 
+function initFocusEventMap() {
+        $( '.eventInfoSideBar' ).show();
+        var rvkLOC = {lat: 64.138705, lng: -21.955501};
+
+        var focusedID = getEventIdFromUrl();
+        var markers = [];
+        $.getJSON("/js/data.json", function (Events) {
+            $.each(Events, function (key, data) {
+            if(data["id"] == focusedID){
+
+                var location = {lat: data["lat"], lng: data["lgt"]};
+                 var map = new google.maps.Map(document.getElementById('map'), {
+                            zoom: 14,
+                            center: location,
+                            mapTypeId: 'roadmap'
+                 });
+
+                var marker = new google.maps.Marker({
+                    position: location,
+                    map: map
+                });
+              }
+            });
+        });
+
+  }
+
+
+
+
 function init() {
     $( '.createEventSideBar' ).hide();
     $( '.eventInfoSideBar' ).hide();
@@ -188,14 +164,17 @@ function fillEventInfo(name, description, minAge, maxAge, genRestriction, attend
  $('.viewEventInfo_description').html(description);
  $('.viewEventInfo_ageMin').html(minAge);
  $('.viewEventInfo_ageMax').html(maxAge);
- $('.viewEventInfo_genderRestriction').html(genRestriction);
+ $('.viewEventInfo_genderRestriction').html(genRestriction.toString());
  $('.viewEventInfo_attendBtn').on("click", function(){ attend(eventID)});
 
  // PLACEHOLDER ATTEND // Ætti bara að kalla á þetta fall ef ýtt er á Attend takka sem virkar ekki núna!
+attend(eventID);
 
  if(!attendees) return;
 
  var attendeeList = document.getElementById("attendees");
+ attendeeList.innerHTML ="";
+ attendeeList
  for(var i=0; i < attendees.length; i++){
     var attendee = document.createElement("p");
     var attendeeName = document.createTextNode(attendees[i]);
@@ -217,6 +196,14 @@ function attend(eventID){
             console.log('Attending Event! eventID:'+eventID);
         }
     });
+}
+
+
+function getEventIdFromUrl(){
+    var url = window.location.href;
+    var eventIdPos = url.indexOf("event/");
+    var eventId = url.substring(eventIdPos+6, url.length);
+    return eventId;
 }
 
 

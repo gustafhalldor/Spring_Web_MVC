@@ -26,6 +26,7 @@
       </div>
       <nav class="navigationBar">
           <button type="button" class="toggle_createEvent_sideBar_btn">Create Event</button>
+          <a href="user/1">My events</a>
           <h3>The Event Finder</h3>
           <div>
               <img id="profilePic" src="">
