@@ -31,23 +31,12 @@ function initMap() {
                     position: location,
                     map: map
                 });
-                var imgSrc = "" + data["imgSrc"];
-                var infowindow = new google.maps.InfoWindow({
-                    content: '' + data["name"] + '<br>' + data["description"] + '<br>' +
-                    '<br> <Button>Sign Up!</Button>'
-                });
                 marker.addListener('click', function () {
-                    if (typeof(currInfoWindow) !== "undefined")currInfoWindow.close();
-                    currInfoWindow = infowindow;
-
-                    infowindow.open(map, marker);
-                    console.log(data["attendees"]);
                     eventInfoSideBar(data["name"], data["description"], data["ageMin"], data["ageMax"], data["genderRestriction"], data["attendees"], data["id"]);
                 });
             });
         });
     }else{
-
         var currInfoWindow;
         var rvkLOC = {lat: 64.138705, lng: -21.955501};
         var radius;
@@ -123,8 +112,6 @@ function initFocusEventMap() {
 
 
 function init() {
-    //$( '.createEventSideBar' ).hide();
-    //$( '.eventInfoSideBar' ).hide();
     $( '.datePicker' ).datetimepicker({});
     $( '.toggle_createEvent_sideBar_btn' ).on('click', function(e){
         toggleMap();
@@ -167,8 +154,6 @@ function fillEventInfo(name, description, minAge, maxAge, genRestriction, attend
  $('.viewEventInfo_attendBtn').on("click", function(){ attend(eventID)});
 
  // PLACEHOLDER ATTEND // Ætti bara að kalla á þetta fall ef ýtt er á Attend takka sem virkar ekki núna!
-attend(eventID);
-
  if(!attendees) return;
 
  var attendeeList = document.getElementById("attendees");

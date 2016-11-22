@@ -37,7 +37,6 @@
 
 
             <div class="mapContainer">
-
                 <div id="map"></div>
             </div>
 
