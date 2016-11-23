@@ -110,7 +110,8 @@ function initFocusEventMap() {
 function init() {
     $( '.datePicker1' ).datetimepicker({
         dateFormat: "yy-mm-dd",
-        timeFormat: "hh:mm:ss",
+        timeFormat: "HH:mm:ss",
+        stepMinute: 5,
         showSecond: false,
         onSelect: function(){
             $('.datePicker2').val(this.value);
@@ -119,7 +120,8 @@ function init() {
     });
     $( '.datePicker2' ).datetimepicker({
         dateFormat: "yy-mm-dd",
-        timeFormat: "hh:mm:ss",
+        timeFormat: "HH:mm:ss",
+        stepMinute: 5,
         showSecond: false
     });
 
