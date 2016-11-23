@@ -315,22 +315,22 @@ window.fbAsyncInit = function() {
     FB.Event.subscribe('auth.statusChange', function(response) {
 
         if(response.status === 'connected'){
-            //$('.loginDiv').hide();
+            $('.loginDiv').hide();
             $('#logout').show();
             $('.main').show();
             $('.navigationBar').show();
-            //$('.welcomePage').hide();
+            $('.welcomePage').hide();
             $('#profilePic').attr('src', 'http://graph.facebook.com/' + response.authResponse.userID + '/picture');
             userID = response.authResponse.userID;
         }
 
         else {
-            //$('.loginDiv').show();
+            $('.loginDiv').show();
             $('#logout').hide();
-            //$('.main').hide();
-            //$('.navigationBar').hide();
-            //$('.welcomePage').show();
-            window.location.href = 'http://localhost:8080/';
+            $('.main').hide();
+            $('.navigationBar').hide();
+            $('.welcomePage').show();
+            //window.location.href = 'http://localhost:8080/';
         }
     });
 

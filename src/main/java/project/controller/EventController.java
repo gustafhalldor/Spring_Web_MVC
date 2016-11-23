@@ -191,13 +191,13 @@ public class EventController {
     }
 
     //The front page route.
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/welcomePage", method = RequestMethod.GET)
     public String welcomePage() {
 
         return "WelcomePage";
     }
 
-    @RequestMapping(value = "/home", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public String dataToJSONFile() throws IOException{
 
         List<Event> eventList = eventService.findAll();
