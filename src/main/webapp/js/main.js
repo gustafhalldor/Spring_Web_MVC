@@ -108,8 +108,22 @@ function initFocusEventMap() {
 
 
 function init() {
-    $( '.datePicker' ).datetimepicker({});
-    $( '.toggle_createEvent_sideBar_btn' ).on('click', function(e){
+    $( '.datePicker1' ).datetimepicker({
+        dateFormat: "yy-mm-dd",
+        timeFormat: "hh:mm:ss",
+        showSecond: false,
+        onSelect: function(){
+            $('.datePicker2').val(this.value);
+        },
+
+    });
+    $( '.datePicker2' ).datetimepicker({
+        dateFormat: "yy-mm-dd",
+        timeFormat: "hh:mm:ss",
+        showSecond: false
+    });
+
+        $( '.toggle_createEvent_sideBar_btn' ).on('click', function(e){
         toggleMap();
     });
     hideEventInfo();

@@ -3,6 +3,7 @@ package project.persistence.entities;
 import javax.persistence.*;
 
 import java.awt.*;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -30,8 +31,8 @@ public class Event {
     private float lat;
     //private ArrayList<String> type
   //  private int creatorId;
-    private Date startDate;
-    private Date endDate;
+    private Timestamp startDate;
+    private Timestamp endDate;
 
 
     // Notice the empty constructor, because we need to be able to create an empty Event to add
@@ -41,7 +42,7 @@ public class Event {
     }
 
     public Event(String name, String description, int ageMax, int ageMin, boolean genderRestriction, ArrayList<String> type,
-                 Location location, ArrayList<User> attendees, int creatorId, float lat, float lgt, Date startDate, Date endDate) {
+                 Location location, ArrayList<User> attendees, int creatorId, float lat, float lgt, Timestamp startDate, Timestamp endDate) {
         this.name = name;
         this.description = description;
         this.ageMin = ageMin;
@@ -120,11 +121,11 @@ public class Event {
 
     public Date getStartDate() { return startDate; }
 
-    public void setStartDate(Date date) { this.startDate = startDate; }
+    public void setStartDate(Timestamp date) { this.startDate = date; }
 
     public Date getEndDate() { return endDate; }
 
-    public void setEndDate(Date date) { this.endDate = endDate; }
+    public void setEndDate(Timestamp date) { this.endDate = date; }
 
  /*
     public int getCreatorId() { return creatorId; }
