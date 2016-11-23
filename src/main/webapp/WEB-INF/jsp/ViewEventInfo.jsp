@@ -30,7 +30,7 @@
         </c:otherwise>
     </c:choose>
 
-    <button class="viewEventInfo_attendBtn" type="button"> Attend Event! </button>
+    <button class="viewEventInfo_attendBtn btn" type="button"> Attend Event! </button>
 
      <h3>Attendees</h3>
      <div id="attendees">
@@ -47,4 +47,4 @@
          </c:choose>
      </div>
      </sf:form>
-     <button class="hide_eventBtn">Hide event info</button>
+     <button class="hide_eventBtn btn">Hide event info</button>
