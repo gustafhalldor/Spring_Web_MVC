@@ -159,12 +159,20 @@ div #profilePic {
 }
 
 .createEventSideBar {
+    border-left: 0.1px solid #cb4e4e;
+    border-right: 0.1px solid #cb4e4e;
+    border-bottom: 0.1px solid #cb4e4e;
+    background-color: white;
     position: absolute;
     z-index: 10;
     width: 20%;
 }
 
 .eventInfoSideBar {
+    border-left: 0.1px solid #cb4e4e;
+    border-right: 0.1px solid #cb4e4e;
+    border-bottom: 0.1px solid #cb4e4e;
+    background-color: white;
     position: absolute;
     z-index: 10;
     width: 20%;
@@ -287,6 +295,7 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    background-color: white;
 }
 
 .myEvents_main{
