@@ -18,7 +18,7 @@
     </head>
   <body>
   <div class="wrapper">
-      <div class="welcomePage">
+      <div class="welcomePage showMe">
           <h1>The Event Finder</h1>
           <p>Discover new passions and meet new people with us.</p>
           <div class="loginDiv">

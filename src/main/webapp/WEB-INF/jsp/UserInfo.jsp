@@ -22,7 +22,7 @@
               <div class="unUsed"></div>
         </nav>
         <div class="myEvents_main">
-        <h1>This is ${info.name} events page!</a></h1>
+        <h1>This is ${info.name} events page!</h1>
         <p>Here are the events you are signed up for:</p>
             <c:forEach items="${upcomingEvents}" var="event">
 

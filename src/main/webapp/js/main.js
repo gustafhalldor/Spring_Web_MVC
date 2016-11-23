@@ -321,7 +321,8 @@ window.fbAsyncInit = function() {
             $('.btnContainer').show();
             $('.main').show();
             $('.navigationBar').show();
-            $('.welcomePage').hide();
+            $('.welcomePage').removeClass('showMe');
+            $('.welcomePage').addClass('hideMe');
             $('#profilePic').attr('src', 'http://graph.facebook.com/' + response.authResponse.userID + '/picture');
             userID = response.authResponse.userID;
         }
@@ -331,7 +332,8 @@ window.fbAsyncInit = function() {
             $('.btnContainer').hide();
             $('.main').hide();
             $('.navigationBar').hide();
-            $('.welcomePage').show();
+            $('.welcomePage').removeClass('hideMe');
+            $('.welcomePage').addClass('showMe');
             //window.location.href = 'http://localhost:8080/';
         }
     });
