@@ -13,11 +13,11 @@
         <%--See PostitNoteController, method postitNoteViewGet(), and find where this attribute is added to the model.--%>
         <sf:form class="createEventForm" method="POST" commandName="eventDetails" action="/saveEvent">
 
-            <h3>Name<span>*</span></h3>
+            <h3>Event name<span>*</span></h3>
             <%--the `path` attribute matches the `name` attribute of the Entity that was passed in the model--%>
             <sf:input path="name" type="text" cssClass="createEventForm_Name" placeholder="Enter name of event"/>
 
-            <h3>Description<span>*</span></h3>
+            <h3>Event description<span>*</span></h3>
             <sf:textarea path="description" type="text" cssClass="createEventForm_Description" placeholder="Description of event"/>
 
             <h3>Start Date<span>*</span></h3>
@@ -88,7 +88,7 @@
             <c:otherwise>
                 <h3>No one is going yet!</h3>
             </c:otherwise>
-        <%--</c:choose>&ndash;%&gt;--%>
+        </c:choose>--%>
         <%--<script src="https://code.jquery.com/jquery-3.1.1.js"   integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="   crossorigin="anonymous"></script>--%>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script type="text/javascript" src="<c:url value="/js/createFormValidation.js" />"></script>
