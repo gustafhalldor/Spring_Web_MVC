@@ -167,7 +167,11 @@ p {
     color: white;
 }
 
+.main {
+    visibility: hidden;
+}
 .navigationBar {
+    visibility: hidden;
     display: flex;
     height: 60px;
     justify-content: space-between;
