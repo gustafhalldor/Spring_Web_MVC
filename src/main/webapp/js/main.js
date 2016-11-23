@@ -146,7 +146,9 @@ function fillEventInfo(name, description, minAge, maxAge, genRestriction, attend
  $('.viewEventInfo_description').html(description);
  $('.viewEventInfo_ageMin').html(minAge);
  $('.viewEventInfo_ageMax').html(maxAge);
- $('.viewEventInfo_genderRestriction').html(genRestriction.toString());
+ if(genRestriction) $('.viewEventInfo_genderRestriction').html("This is a gender restricted event.");
+ else $('.viewEventInfo_genderRestriction').html("This is not a gender restricted event.");
+
  $('.viewEventInfo_attendBtn').on("click", function(){ attend(eventID)});
 
 

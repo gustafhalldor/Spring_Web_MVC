@@ -20,8 +20,15 @@
     <h3>Maximum age:</h3>
     <p class="viewEventInfo_ageMax">${info.ageMax}</p>
 
-    <h3>Gender restrict event?</h3>
-    <p class="viewEventInfo_genderRestriction">${info.genderRestriction}</p>
+    <h3>Gender restriction</h3>
+    <c:choose>
+        <c:when test="${not info.genderRestriction}">
+            <p class="viewEventInfo_genderRestriction">This is a gender restricted event</p>
+        </c:when>
+        <c:otherwise>
+             <p class="viewEventInfo_genderRestriction">This is not a gender restricted event</p>
+        </c:otherwise>
+    </c:choose>
 
     <button class="viewEventInfo_attendBtn" type="button"> Attend Event! </button>
 
