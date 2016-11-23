@@ -19,13 +19,13 @@
   <body>
   <div class="wrapper">
       <div class="overlay"></div>
-      <div class="welcomePage">
-          <h1>The Event Finder</h1>
-          <p>Discover new passions and meet new people with us.</p>
-          <div class="loginDiv">
-              <button type="button" id="login"></button>
-          </div>
-      </div>
+      <%--<div class="welcomePage">--%>
+          <%--<h1>The Event Finder</h1>--%>
+          <%--<p>Discover new passions and meet new people with us.</p>--%>
+          <%--<div class="loginDiv">--%>
+              <%--<button type="button" id="login"></button>--%>
+          <%--</div>--%>
+      <%--</div>--%>
       <nav class="navigationBar">
           <button type="button" class="toggle_createEvent_sideBar_btn btn">Create Event</button>
           <a class="btn" href="user/1">My events</a>

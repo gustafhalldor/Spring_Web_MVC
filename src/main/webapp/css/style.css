@@ -263,6 +263,26 @@ body {
     text-decoration: none;
 }
 
+.myEventNavigationBar {
+    display: flex;
+    height: 60px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3px;
+    border-bottom: 0.5px solid #c8c8c8;
+    border-bottom-width: 5px;
+    border-bottom-color: rgba(255, 171, 15, 1);
+    background-color: #8A3324;
+}
+
+.myEventNavigationBar h3 {
+    color: white;
+}
+
+.myEventNavigationBar a {
+    text-decoration: none;
+}
+
 .myEvents_wrapper{
     display: flex;
     min-height: 100vh;
@@ -277,4 +297,20 @@ body {
     padding-top: 2em;
     flex-direction:column;
      align-items: center;
+}
+
+
+.eventInfo {
+    border: 0.1px solid #cb4e4e;
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.eventInfo:hover {
+    background-color: rgba(255, 107, 107, 1);
+}
+
+.unUsed {
+    visibility: hidden;
+    width: 55.12px;
+    height: 32.22px;
 }
