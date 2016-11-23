@@ -86,7 +86,6 @@ $().ready(function(){
     // params: the value of latitude
     jQuery.validator.addMethod("validLocation", function(value, element, params) {
         //need to implement logic
-        console.log(value);
 
         return (value != 0.0 && params != 0.0);
     }, "The event must have a location ^_^");

@@ -169,9 +169,7 @@ public class EventController {
 
             User user = userService.findOne((Integer)attendees.get(i));
             if (user != null){
-                System.out.println(user);
                 String name = user.getName();
-                System.out.println(name);
                 attendeeName.add(name);
 
                 String fbId = user.getfbId();
