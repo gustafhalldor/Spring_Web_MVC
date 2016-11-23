@@ -173,8 +173,6 @@ function fillEventInfo(name, description, minAge, maxAge, genRestriction, attend
     let startArr = start.toString().split(" ")
     let endArr = end.toString().split(" ")
 
-    console.log(startArr.toString())
-
  $('.viewEventInfo_name').html(name);
  $('.viewEventInfo_description').html(description);
  if(maxAge === 99){
@@ -490,9 +488,17 @@ window.fbAsyncInit = function() {
     });
 
     $( document ).ready(
-        function() {
-          $('#login').trigger('click');
-        }
+        FB.getLoginStatus(function(response) {
+            console.log("yuyu");
+            if(response.status !== 'connected'){
+                console.log("yuyu");
+                $('.btnContainer').hide();
+                $('.main').hide();
+                $('.navigationBar').hide();
+            }else{
+
+            }
+        })
     )
 };
 
