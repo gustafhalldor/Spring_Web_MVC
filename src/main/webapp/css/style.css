@@ -198,7 +198,7 @@ div #profilePic {
     visibility: visible;
 }
 
-.lat, .lgt, .creatorId{
+.lat, .lgt, .creatorId {
     display: none;
 }
 

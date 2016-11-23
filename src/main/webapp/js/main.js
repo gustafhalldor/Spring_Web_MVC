@@ -2,9 +2,14 @@
 var sideBarOn = false;
 
 var userID;
-
+//Not the facebook userid
+var userIdNormal;
 
 function initMap() {
+    console.log(userIdNormal);
+    if(userIdNormal == undefined){
+        addUserIDToBox();
+    }
 
     if(!sideBarOn) {
         var currInfoWindow;
@@ -104,18 +109,15 @@ function initFocusEventMap() {
 
   }
 
-
-
-
 function init() {
     $( '.datePicker1' ).datetimepicker({
         dateFormat: "yy-mm-dd",
         timeFormat: "HH:mm:ss",
         stepMinute: 5,
-        showSecond: false,
-        onSelect: function(){
+        showSecond: false
+/*        onSelect: function(){
             $('.datePicker2').val(this.value);
-        },
+        },*/
 
     });
     $( '.datePicker2' ).datetimepicker({
@@ -126,7 +128,7 @@ function init() {
     });
 
     $( '.toggle_createEvent_sideBar_btn' ).on('click', function(e){
-        $('.creatorId').val(userID);
+        addUserIDToBox();
         var sideBar = $('.createEventSideBar').hasClass('hideMe');
         if(sideBar) {
             $(this).text('hide event');
@@ -163,8 +165,6 @@ function hideEventInfo() {
     });
 }
 
-var attendeeNameString;
-
 function fillEventInfo(name, description, minAge, maxAge, genRestriction, attendees, eventID){
 
  $('.viewEventInfo_name').html(name);
@@ -174,6 +174,12 @@ function fillEventInfo(name, description, minAge, maxAge, genRestriction, attend
  if(genRestriction) $('.viewEventInfo_genderRestriction').html("This is a gender restricted event.");
  else $('.viewEventInfo_genderRestriction').html("This is not a gender restricted event.");
 
+ if(attendees.indexOf(userIdNormal) >= 0){
+    $('.viewEventInfo_attendBtn').hide();
+ }
+ else{
+    $('.viewEventInfo_attendBtn').show();
+ }
  $('.viewEventInfo_attendBtn').on("click", function(){ attend(eventID)});
 
 
@@ -197,7 +203,7 @@ function fillEventInfo(name, description, minAge, maxAge, genRestriction, attend
                     createElementForAttendee(data, attendeeList);
                 }
             });
-    }
+}
 
 function createElementForAttendee(name, attendeeList){
         var attendee = document.createElement("p");
@@ -205,6 +211,26 @@ function createElementForAttendee(name, attendeeList){
         attendee.appendChild(attendeeName);
         attendeeList.appendChild(attendee);
 }
+
+ function addUserIDToBox() {
+            $.ajax({
+                'url': 'http://localhost:8080/user/id',
+                'type': 'GET',
+                'contentType': 'application/json; charset=utf-8',
+                'dateType': 'json',
+                'data': {"fbId": userID},
+                'success': function (data) {
+                    addUserIDToBoxCallBack(data);
+                }
+            });
+}
+
+function addUserIDToBoxCallBack(data){
+    $('.creatorId').val(data);
+    userIdNormal = data;
+    console.log("userid set to " + userIdNormal);
+}
+
 
 function attend(eventID){
 
@@ -325,6 +351,18 @@ window.fbAsyncInit = function() {
             $('.welcomePage').addClass('hideMe');
             $('#profilePic').attr('src', 'http://graph.facebook.com/' + response.authResponse.userID + '/picture');
             userID = response.authResponse.userID;
+
+            $.ajax({
+                'url': 'http://localhost:8080/user/id',
+                'type': 'GET',
+                'contentType': 'application/json; charset=utf-8',
+                'dateType': 'json',
+                'data': {"fbId": userID},
+                'success': function (data) {
+                    addUserIDToBoxCallBack(data);
+                    appendUserIdToMyEventsURL(data);
+                }
+            });
         }
 
         else {
@@ -338,6 +376,10 @@ window.fbAsyncInit = function() {
         }
     });
 
+    function appendUserIdToMyEventsURL(data) {
+        var a = document.getElementById('myEventsBtn');
+        a.href = "user/"+data;
+    }
     function userExists(userId) {
         if(userId != "") {
             $.ajax({

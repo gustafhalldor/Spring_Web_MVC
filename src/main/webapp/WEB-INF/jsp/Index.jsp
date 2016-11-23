@@ -20,7 +20,7 @@
   <div class="wrapper">
       <div class="welcomePage showMe">
           <h1>The Event Finder</h1>
-          <p>Discover new passions and meet new people with us.</p>
+          <p>Discover new passions and meet new people!</p>
           <div class="loginDiv">
               <button type="button" id="login"></button>
           </div>
@@ -28,7 +28,7 @@
       <nav class="navigationBar">
           <div class="leftSide">
               <button type="button" class="toggle_createEvent_sideBar_btn btn">Create Event</button>
-              <a class="btn" href="user/1">My events</a>
+              <a class="btn" id="myEventsBtn" href="">My Events</a>
           </div>
 
           <h3>The Event Finder</h3>
@@ -52,8 +52,9 @@
                 <!--<input id="mapSearchBox" class="controls" type="text" placeholder="Search Box">-->
                 <div id="map"></div>
             </div>
-            <div class="eventInfoSideBar hideMe"><jsp:include page="${request.contextPath}/eventinfo/"></jsp:include></div>
 
+            <div class="eventInfoSideBar hideMe"><jsp:include page="${request.contextPath}/eventinfo/"></jsp:include></div>
+          
           <script src="https://code.jquery.com/jquery-3.1.1.js"   integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="   crossorigin="anonymous"></script>
           <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
           <script src="<c:url value="/js/jquery-ui-timepicker-addon.js" />"></script>
