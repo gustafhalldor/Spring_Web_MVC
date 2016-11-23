@@ -34,6 +34,9 @@
               <img id="profilePic" src="">
               <span></span>
               <button class="btn" type="button" id="logout"></button>
+              <div class="loginDiv">
+                  <button type="button" id="login"></button>
+              </div>
           </div>
 
       </nav>
