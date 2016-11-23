@@ -33,7 +33,12 @@
           <div class="rightSide">
               <img id="profilePic" src="">
               <span></span>
-              <button class="btn" type="button" id="logout"></button>
+              <div class="btnContainer">
+                  <img class="divImg" src="./images/fb_icon.png">
+                  <button class="exbtn" type="button" id="logout">
+                      <span>Logout</span>
+                  </button>
+              </div>
               <div class="loginDiv">
                   <button type="button" id="login"></button>
               </div>

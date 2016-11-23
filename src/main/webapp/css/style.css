@@ -57,32 +57,68 @@ p {
     background: url('../images/fb_login_button.png') no-repeat;
     outline: none;
     border: none;
-    /*position: absolute;*/
     cursor: pointer;
     border-radius: 10px;
     left: 18%;
     top: 40%;
     width: 202px;
     height: 42px;
+}
+
+.exbtn {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    color: white;
+    cursor: pointer;
+    border: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    outline: none;
+}
+
+.btnContainer {
+    cursor: pointer;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    background-image: linear-gradient(#637bad, #5872a7);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 #8a9cc2;
+    border-color: #29447e #29447e #1a356e;
+    border-bottom-left-radius: 5px;
+    color: #fff;
+    background-color: #5B74A8;
 }
 
 #logout {
-    display: none;
-    background: url('../images/fb_logout_button.png') no-repeat;
-    outline: none;
-    border: none;
-    /*position: absolute;*/
-    cursor: pointer;
-    border-radius: 10px;
-    left: 18%;
-    top: 40%;
-    width: 202px;
-    height: 42px;
+    background-image: linear-gradient(#637bad, #5872a7);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 #8a9cc2;
+    border-color: #29447e #29447e #1a356e;
+    background-color: #4f6696;
+    width: 68px;
+    height: 32px;
 }
+
+.divImg {
+    border-right: 0.3px solid white;
+    width: 32px;
+    height: 32px;
+}
+/*
+#logout img {
+    width: 27.35%;
+    height: 32px;
+}
+
+#logout span {
+    width: 72.65%;
+}
+*/
 
 .rightSide {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .rightSide span {
@@ -193,6 +229,7 @@ div #profilePic {
     height: 100%;
     width: 100%;
 }
+
 img {
     height: 150px;
     width: 150px;
