@@ -28,7 +28,7 @@
       <nav class="navigationBar">
           <div class="leftSide">
               <button type="button" class="toggle_createEvent_sideBar_btn btn">Create Event</button>
-              <a class="btn" href="user/1">My events</a>
+              <a class="btn" id="myEventsBtn" href="user/1">My events</a>
           </div>
 
           <h3>The Event Finder</h3>

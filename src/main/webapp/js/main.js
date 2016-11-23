@@ -112,10 +112,10 @@ function init() {
         dateFormat: "yy-mm-dd",
         timeFormat: "HH:mm:ss",
         stepMinute: 5,
-        showSecond: false,
-        onSelect: function(){
+        showSecond: false
+/*        onSelect: function(){
             $('.datePicker2').val(this.value);
-        },
+        },*/
 
     });
     $( '.datePicker2' ).datetimepicker({
@@ -343,6 +343,18 @@ window.fbAsyncInit = function() {
             $('.welcomePage').hide();
             $('#profilePic').attr('src', 'http://graph.facebook.com/' + response.authResponse.userID + '/picture');
             userID = response.authResponse.userID;
+
+            $.ajax({
+                'url': 'http://localhost:8080/user/id',
+                'type': 'GET',
+                'contentType': 'application/json; charset=utf-8',
+                'dateType': 'json',
+                'data': {"fbId": userID},
+                'success': function (data) {
+                    console.log(data);
+                    appendUserIdToMyEventsURL(data);
+                }
+            });
         }
 
         else {
@@ -355,6 +367,10 @@ window.fbAsyncInit = function() {
         }
     });
 
+    function appendUserIdToMyEventsURL(data) {
+        var a = document.getElementById('myEventsBtn');
+        a.href = "user/"+data;
+    }
     function userExists(userId) {
         if(userId != "") {
             $.ajax({
