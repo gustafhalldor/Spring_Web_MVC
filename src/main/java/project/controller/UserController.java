@@ -71,6 +71,16 @@ public class UserController {
         return user.getName();
     }
 
+    // Check to see userName
+    @RequestMapping(value = "user/id", method = RequestMethod.GET)
+    public @ResponseBody int getID(@RequestParam String fbId, HttpServletRequest request, HttpServletResponse response, Model model) {
+
+        User user = userService.findOneByString(fbId);
+
+        System.out.println(user.getName());
+        return user.getId();
+    }
+
 
     //Display the user page for a user. This page will show the events that the user has created and is attending.
     @RequestMapping(value = "user/{userID}", method = RequestMethod.GET)

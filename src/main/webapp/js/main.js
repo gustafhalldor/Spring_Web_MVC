@@ -126,7 +126,8 @@ function init() {
     });
 
     $( '.toggle_createEvent_sideBar_btn' ).on('click', function(e){
-        $('.creatorId').val(userID);
+        addUserIDToBox();
+        console.log("creatorID er: "+ $('.creatorId').val());
         var sideBar = $('.createEventSideBar').hasClass('hideMe');
         if(sideBar) {
             $(this).text('hide event');
@@ -197,7 +198,7 @@ function fillEventInfo(name, description, minAge, maxAge, genRestriction, attend
                     createElementForAttendee(data, attendeeList);
                 }
             });
-    }
+}
 
 function createElementForAttendee(name, attendeeList){
         var attendee = document.createElement("p");
@@ -205,6 +206,24 @@ function createElementForAttendee(name, attendeeList){
         attendee.appendChild(attendeeName);
         attendeeList.appendChild(attendee);
 }
+
+ function addUserIDToBox() {
+            $.ajax({
+                'url': 'http://localhost:8080/user/id',
+                'type': 'GET',
+                'contentType': 'application/json; charset=utf-8',
+                'dateType': 'json',
+                'data': {"fbId": userID},
+                'success': function (data) {
+                    addUserIDToBoxCallBack(data);
+                }
+            });
+}
+
+function addUserIDToBoxCallBack(data){
+    $('.creatorId').val(data);
+}
+
 
 function attend(eventID){
 

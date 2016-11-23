@@ -66,15 +66,17 @@ public class EventController {
     public String saveEvent(@ModelAttribute("eventDetails") @Validated Event event,
                                 BindingResult bindingResult, Model model) throws IOException {
 
-            //Attends the event creator
-            event.setAttendee(event.getCreatorId());
-            // Save the event data we received from the form
-            eventService.save(event);
 
-            // TODO: Have to add the event to the user's created events
+          System.out.println(event.getCreatorId());
+          //Attends the event creator
+          event.setAttendee(event.getCreatorId());
+          // Save the event data we received from the form
+          eventService.save(event);
 
-            // Displays the event information through the "info" attribute, which is sent to ViewEventInfo.jsp
-            model.addAttribute("info", event);
+          // TODO: Have to add the event to the user's created events
+
+          // Displays the event information through the "info" attribute, which is sent to ViewEventInfo.jsp
+          model.addAttribute("info", event);
 
             return "redirect:/";
         //}

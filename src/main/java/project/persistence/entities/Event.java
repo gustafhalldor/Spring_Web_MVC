@@ -136,7 +136,7 @@ public class Event {
     public void setEndDate(Timestamp date) { this.endDate = date; }
 
 
-    public int getCreatorId() { return creatorId; }
+    public int getCreatorId() { return this.creatorId; }
 
     public void setCreatorId(int creatorId) { this.creatorId = creatorId; }
  /*
