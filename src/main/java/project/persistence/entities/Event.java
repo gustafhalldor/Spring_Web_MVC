@@ -3,6 +3,7 @@ package project.persistence.entities;
 import javax.persistence.*;
 
 import java.awt.*;
+import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
@@ -119,11 +120,11 @@ public class Event {
     public ArrayList<Integer> getAttendees() { return this.attendees;}
 
 
-    public Date getStartDate() { return startDate; }
+    public Timestamp getStartDate() { return startDate; }
 
     public void setStartDate(Timestamp date) { this.startDate = date; }
 
-    public Date getEndDate() { return endDate; }
+    public Timestamp getEndDate() { return endDate; }
 
     public void setEndDate(Timestamp date) { this.endDate = date; }
 

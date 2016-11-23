@@ -290,21 +290,22 @@ window.fbAsyncInit = function() {
     FB.Event.subscribe('auth.statusChange', function(response) {
 
         if(response.status === 'connected'){
-            $('.loginDiv').hide();
+            //$('.loginDiv').hide();
             $('#logout').show();
             $('.main').show();
             $('.navigationBar').show();
-            $('.welcomePage').hide();
+            //$('.welcomePage').hide();
             $('#profilePic').attr('src', 'http://graph.facebook.com/' + response.authResponse.userID + '/picture');
             userID = response.authResponse.userID;
         }
 
         else {
-            $('.loginDiv').show();
+            //$('.loginDiv').show();
             $('#logout').hide();
-            $('.main').hide();
-            $('.navigationBar').hide();
-            $('.welcomePage').show();
+            //$('.main').hide();
+            //$('.navigationBar').hide();
+            //$('.welcomePage').show();
+            window.location.href = 'http://localhost:8080/';
         }
     });
 
@@ -396,6 +397,37 @@ window.fbAsyncInit = function() {
             $('#logout').hide();
         });
     });
+
+    $( document ).ready(
+        function() {
+            FB.getLoginStatus(function(response) {
+
+                if(response.status !== 'connected'){
+
+                    FB.login(function(response) {
+                        var getInfo = $('#test');
+                        if(response.authResponse) {
+                            //this response return expiresIn, userID, accessToken and signedRequest
+                            //var accessToken = response.authResponse.accessToken;
+
+                            var userId = response.authResponse.userID;
+
+                            // checks if user already exists and if not, creates one.
+                            userExists(userId);
+
+                            $('.loginDiv').hide();
+                            $('#logout').show();
+
+                        } else {
+                            window.alert("failed");
+                        }
+                    }, {
+                        scope: 'email,user_birthday,public_profile'
+                    });
+                }
+            })
+        }
+    )
 };
 
 (function(d, s, id) {
@@ -405,6 +437,7 @@ window.fbAsyncInit = function() {
     js.src = "//connect.facebook.net/en_US/sdk.js";
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
+
 
 /* *** END OF FACEBOOK CODE *** */
 

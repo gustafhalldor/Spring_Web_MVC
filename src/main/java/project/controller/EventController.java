@@ -203,6 +203,12 @@ public class EventController {
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String welcomePage() {
+
+        return "WelcomePage";
+    }
+
+    @RequestMapping(value = "/home", method = RequestMethod.GET)
     public String dataToJSONFile() throws IOException{
 
         List<Event> eventList = eventService.findAll();
