@@ -347,8 +347,7 @@ window.fbAsyncInit = function() {
             $('.btnContainer').show();
             $('.main').show();
             $('.navigationBar').show();
-            $('.welcomePage').removeClass('showMe');
-            $('.welcomePage').addClass('hideMe');
+            $('.welcomePage').hide();
             $('#profilePic').attr('src', 'http://graph.facebook.com/' + response.authResponse.userID + '/picture');
             userID = response.authResponse.userID;
 
@@ -370,8 +369,7 @@ window.fbAsyncInit = function() {
             $('.btnContainer').hide();
             $('.main').hide();
             $('.navigationBar').hide();
-            $('.welcomePage').removeClass('hideMe');
-            $('.welcomePage').addClass('showMe');
+            $('.welcomePage').show();
             //window.location.href = 'http://localhost:8080/';
         }
     });
