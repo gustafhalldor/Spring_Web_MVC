@@ -85,7 +85,7 @@ p {
     background-image: linear-gradient(#637bad, #5872a7);
     box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 #8a9cc2;
     border-color: #29447e #29447e #1a356e;
-    border-bottom-left-radius: 5px;
+    border-radius: 0 0 5px 5px;
     color: #fff;
     background-color: #5B74A8;
 }
@@ -94,6 +94,7 @@ p {
     background-image: linear-gradient(#637bad, #5872a7);
     box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 #8a9cc2;
     border-color: #29447e #29447e #1a356e;
+    border-bottom-right-radius: 5px;
     background-color: #4f6696;
     width: 68px;
     height: 32px;
@@ -101,6 +102,7 @@ p {
 
 .divImg {
     border-right: 0.3px solid white;
+    border-bottom-left-radius: 5px;
     width: 32px;
     height: 32px;
 }

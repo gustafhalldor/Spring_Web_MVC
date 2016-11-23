@@ -249,7 +249,7 @@ function showSuccessToaster(param){
         "debug": false,
         "newestOnTop": false,
         "progressBar": false,
-        "positionClass": "toast-top-right",
+        "positionClass": "toast-bottom-center",
         "preventDuplicates": true,
         "onclick": null,
         "showDuration": "300",
@@ -337,7 +337,7 @@ window.fbAsyncInit = function() {
 
         if(response.status === 'connected'){
             $('.loginDiv').hide();
-            $('#logout').show();
+            $('.btnContainer').show();
             $('.main').show();
             $('.navigationBar').show();
             $('.welcomePage').hide();
@@ -347,7 +347,7 @@ window.fbAsyncInit = function() {
 
         else {
             $('.loginDiv').show();
-            $('#logout').hide();
+            $('.btnContainer').hide();
             $('.main').hide();
             $('.navigationBar').hide();
             $('.welcomePage').show();
@@ -424,7 +424,7 @@ window.fbAsyncInit = function() {
                         userExists(userId);
 
                         $('.loginDiv').hide();
-                        $('#logout').show();
+                        $('.btnContainer').show();
 
                     } else {
                         window.alert("failed");
@@ -443,7 +443,7 @@ window.fbAsyncInit = function() {
             }
             $('.overlay').show();
             $('.loginDiv').show();
-            $('#logout').hide();
+            $('.btnContainer').hide();
         });
     });
 
