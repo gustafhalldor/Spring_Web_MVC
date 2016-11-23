@@ -20,7 +20,7 @@
   <div class="wrapper">
       <div class="welcomePage">
           <h1>The Event Finder</h1>
-          <p>Discover new passions and meet new people with us.</p>
+          <p>Discover new passions and meet new people!</p>
           <div class="loginDiv">
               <button type="button" id="login"></button>
           </div>
@@ -28,7 +28,7 @@
       <nav class="navigationBar">
           <div class="leftSide">
               <button type="button" class="toggle_createEvent_sideBar_btn btn">Create Event</button>
-              <a class="btn" id="myEventsBtn" href="user/1">My events</a>
+              <a class="btn" id="myEventsBtn" href="">My Events</a>
           </div>
 
           <h3>The Event Finder</h3>
@@ -54,7 +54,7 @@
             </div>
 
 
-            <div class="eventInfoSideBar hideMe"><jsp:include page="${request.contextPath}/eventinfo/1"></jsp:include></div>
+            <div class="eventInfoSideBar hideMe"><jsp:include page="${request.contextPath}/eventinfo/"></jsp:include></div>
 
 
           <script src="https://code.jquery.com/jquery-3.1.1.js"   integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="   crossorigin="anonymous"></script>
