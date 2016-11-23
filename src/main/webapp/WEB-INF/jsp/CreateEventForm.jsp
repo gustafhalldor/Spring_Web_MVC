@@ -42,7 +42,7 @@
             <sf:input path="lgt" type="float" class="lgt"/>
 
             <%--hiding this input because we want to get the data through javascript--%>
-            <sf:input path="creatorId" type="float" class="creatorId"/>
+            <sf:input path="creatorId" type="int" class="creatorId"/>
 
             <%--            <tr>
                             <td>Type of event:</td>
