@@ -27,12 +27,13 @@
           </div>
       </div>
       <nav class="navigationBar">
-          <button type="button" class="toggle_createEvent_sideBar_btn">Create Event</button>
-          <a href="user/1">My events</a>
+          <button type="button" class="toggle_createEvent_sideBar_btn btn">Create Event</button>
+          <a class="btn" href="user/1">My events</a>
           <h3>The Event Finder</h3>
-          <div>
+          <div class="rightSide">
               <img id="profilePic" src="">
-              <button type="button" id="logout"></button>
+              <span></span>
+              <button class="btn" type="button" id="logout">Logout</button>
           </div>
 
       </nav>
@@ -41,7 +42,7 @@
             <div class="createEventSideBar hideMe"><jsp:include page="${request.contextPath}/event"></jsp:include></div>
 
             <div class="mapContainer">
-                <input id="mapSearchBox" class="controls" type="text" placeholder="Search Box">
+                <!--<input id="mapSearchBox" class="controls" type="text" placeholder="Search Box">-->
                 <div id="map"></div>
             </div>
             <div class="eventInfoSideBar hideMe"><jsp:include page="${request.contextPath}/eventinfo/1"></jsp:include></div>
