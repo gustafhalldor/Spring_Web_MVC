@@ -55,7 +55,7 @@
                             <td><sf:input path="creatorId" type="hidden"/></td>
                         </tr>--%>
             <%--<div id="map"></div>--%>
-            <button type="submit" VALUE="Create"/>Create</button>
+            <button type="submit" VALUE="Create" class="createEventFormButton"/>Create</button>
 
         </sf:form>
 

@@ -27,7 +27,10 @@
 
      <h3>Attendees</h3>
      <div id="attendees">
-
+         <c:forEach items="${attendeeNames}" var="attendee">
+             <%--<img src="http://graph.facebook.com/${attendeeFbId}/picture" alt="profile picture">--%>
+             <p>${attendee}</p>
+         </c:forEach>
      </div>
      </sf:form>
      <button class="hide_eventBtn">Hide event info</button>

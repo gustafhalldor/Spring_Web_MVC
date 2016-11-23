@@ -126,8 +126,30 @@ public class EventController {
 
         // TODO: Have to add the event to the user's created events
         Event eventInfo = eventService.findOne(id2);
+
+        ArrayList attendees = eventInfo.getAttendees();
+
+        ArrayList attendeeName = new ArrayList();
+        ArrayList attendeeFbId = new ArrayList();
+
+
+        for (int i = 0; i < attendees.size(); i++){
+
+            User user = userService.findOne((Integer)attendees.get(i));
+            if (user != null){
+                System.out.println(user);
+                String name = user.getName();
+                System.out.println(name);
+                attendeeName.add(i, name);
+
+                String fbId = user.getfbId();
+                attendeeFbId.add(i, fbId);
+            }
+        }
+
         // Displays the event information through the "info" attribute, which is sent to ViewEventInfo.jsp
         model.addAttribute("info", eventInfo);
+        model.addAttribute("attendeeNames", attendeeName);
 
         return "ViewEventInfo";
     }

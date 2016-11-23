@@ -1,8 +1,6 @@
 //Index initMap
 var sideBarOn = false;
-var eventInfoSideBarOn = false;
 
-//Harðkóðaður logged in user - Þarf að ná í id úr facebook login.
 var userID;
 
 
@@ -11,8 +9,6 @@ function initMap() {
     if(!sideBarOn) {
         var currInfoWindow;
         var rvkLOC = {lat: 64.138705, lng: -21.955501};
-
-        var eventToFocus = getEventIdFromUrl();
 
         var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 14,
@@ -156,7 +152,7 @@ function fillEventInfo(name, description, minAge, maxAge, genRestriction, attend
 
  if(!attendees) return;
 
- var attendeeList = document.getElementById("attendees");
+/* var attendeeList = document.getElementById("attendees");
  attendeeList.innerHTML ="";
  for(var i=0; i < attendees.length; i++){
     var attendee = document.createElement("p");
@@ -164,7 +160,7 @@ function fillEventInfo(name, description, minAge, maxAge, genRestriction, attend
     attendee.appendChild(attendeeName);
 
     attendeeList.appendChild(attendee);
- }
+ }*/
 }
 
 function attend(eventID){
