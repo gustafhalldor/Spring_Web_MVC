@@ -230,7 +230,7 @@ function showSuccessToaster(param){
         "debug": false,
         "newestOnTop": false,
         "progressBar": false,
-        "positionClass": "toast-top-right",
+        "positionClass": "toast-bottom-center",
         "preventDuplicates": true,
         "onclick": null,
         "showDuration": "300",
