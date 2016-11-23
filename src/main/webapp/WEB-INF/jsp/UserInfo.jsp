@@ -16,15 +16,17 @@
     </head>
     <body>
     <div class="myEvents_wrapper">
-         <nav class="navigationBar">
+         <nav class="myEventNavigationBar">
+              <a class="btn" href="/">Back</a>
               <h3>The Event Finder</h3>
+              <div class="unUsed"></div>
         </nav>
         <div class="myEvents_main">
         <h1>This is ${info.name} events page!</a></h1>
         <p>Here are the events you are signed up for:</p>
             <c:forEach items="${upcomingEvents}" var="event">
 
-                <div class="myEvents_eventInfo">
+                <div class="myEvents_eventInfo eventInfo">
                    <div class="myEvents_text">
                      <p>Name: ${event.name}</p>
                      <p>Description: ${event.description}</p>
