@@ -87,11 +87,11 @@ public class Event {
 
     public int getAgeMin() { return ageMin; }
 
-    public void setAgeMin(int ageMin) { this.ageMin = ageMin; }
+    public void setAgeMin(int ageMin) { if(ageMin >= 18) this.ageMin = ageMin; }
 
     public int getAgeMax() { return ageMax; }
 
-    public void setAgeMax(int ageMax) { this.ageMax = ageMax; }
+    public void setAgeMax(int ageMax) { if(ageMax >= 18) this.ageMax = ageMax; }
 
     public boolean getGenderRestriction() { return genderRestriction; }
 
@@ -107,10 +107,11 @@ public class Event {
 
 
     public void setAttendee(Integer userID) {
+
+
         if(this.attendees.contains(userID)) return;
         else {
             this.attendees.add(userID);
-            System.out.println("BÆti við user");
         }
     }
 

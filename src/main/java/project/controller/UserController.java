@@ -25,7 +25,8 @@ import java.util.List;
 @Controller
 public class UserController {
 
-    UserService userService; EventService eventService;
+    UserService userService;
+    EventService eventService;
 
     @Autowired
     public UserController(UserService userService, EventService eventService) {
@@ -54,11 +55,10 @@ public class UserController {
         if(user == null) {
             return false;
         }
-
         return true;
     }
 
-
+    //Display the user page for a user. This page will show the events that the user has created and is attending.
     @RequestMapping(value = "user/{userID}", method = RequestMethod.GET)
     public String userInfo(@ModelAttribute User userModel,
                            @ModelAttribute ArrayList<Event> eventIDs,
@@ -68,31 +68,29 @@ public class UserController {
         User user = userService.findOne(id2);
         model.addAttribute("info", user);
 
-
-
         model.addAttribute("upcomingEvents", userUpcomingEvents(id2));
         return "UserInfo";
     }
 
+    //Returns the ArrayList of events that the user is attending.
     public ArrayList<Event> userUpcomingEvents(int userID){
-        List <Event> upcomingEvents = eventService.findAll(); //Nota annað fall hér
+        List <Event> upcomingEvents = eventService.findAll();
         ArrayList<Event> events = new ArrayList<Event>();
         ArrayList<Integer> attendees = new ArrayList<Integer>();
         //Cycle through all upcoming event attendees and see where the userID is present.
         for(int i = 0; i < upcomingEvents.size(); i++){
 
-            //Verður inní try á meðan attendee listinn getur verið tómur
+
             try {
                 attendees = upcomingEvents.get(i).getAttendees();
                 for(int j = 0; j < attendees.size(); j++){
                     if(attendees.get(j) == userID){
                         events.add(upcomingEvents.get(i));
-                        break; //Taka út seinna þegar það er ekki hægt að skrá sig tvisvar á event.
+                        break;
                     }
                 }
             }
             catch(Exception e){
-
             }
 
         }

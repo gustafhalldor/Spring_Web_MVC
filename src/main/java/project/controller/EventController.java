@@ -66,14 +66,8 @@ public class EventController {
     public String saveEvent(@ModelAttribute("eventDetails") @Validated Event event,
                                 BindingResult bindingResult, Model model) throws IOException {
 
-       /* if (bindingResult.hasErrors()) {
-            model.addAttribute("formHasErrors", true);
-            return "redirect:/";
-        }
 
-        else {
 
-        */
             // Save the event data we received from the form
             eventService.save(event);
 
@@ -87,6 +81,8 @@ public class EventController {
 
     }
 
+    //This route posts information about a user attending an event.
+    //The post data is in the format eventID,userID
     @RequestMapping(value = "/attend", method = RequestMethod.POST)
     public String attend(@RequestBody String data) throws IOException {
 
@@ -192,16 +188,10 @@ public class EventController {
 
         eventService.delete(event);
 
-        // TODO: Have to remove the event from the user's created events
-
-        // Something else we want to do?
-
-        //model.addAttribute("events", user.getCreatedEvents());
-
-        // display updated version of myevents page, probably best to name it MyEvents.jsp
-        return "MyEvents";
+              return "MyEvents";
     }
 
+    //The front page route.
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String dataToJSONFile() throws IOException{
 
