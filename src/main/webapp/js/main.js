@@ -33,7 +33,8 @@ function initMap() {
                     map: map
                 });
                 marker.addListener('click', function () {
-                    eventInfoSideBar(data["name"], data["description"], data["ageMin"], data["ageMax"], data["genderRestriction"], data["attendees"], data["id"]);
+                    eventInfoSideBar(data["name"], data["description"], data["ageMin"], data["ageMax"],
+                        data["genderRestriction"], data["attendees"], data["id"], data["startDate"], data["endDate"]);
                 });
             });
         });
@@ -148,8 +149,8 @@ function toggleMap() {
     initMap();
 }
 
-function eventInfoSideBar(name, description, minAge, maxAge, genRestriction, attendees, eventID) {
-    fillEventInfo(name, description, minAge, maxAge, genRestriction, attendees, eventID)
+function eventInfoSideBar(name, description, minAge, maxAge, genRestriction, attendees, eventID, startDate, endDate) {
+    fillEventInfo(name, description, minAge, maxAge, genRestriction, attendees, eventID, startDate, endDate)
     //$( '.createEventSideBar' ).removeClass('showMe');
     $( '.eventInfoSideBar' ).removeClass('hideMe');
     $( '.eventInfoSideBar' ).addClass('showMe');
@@ -165,7 +166,14 @@ function hideEventInfo() {
     });
 }
 
-function fillEventInfo(name, description, minAge, maxAge, genRestriction, attendees, eventID){
+function fillEventInfo(name, description, minAge, maxAge, genRestriction, attendees, eventID, startDate, endDate){
+
+    let start = new Date(startDate);
+    let end = new Date(endDate);
+    let startArr = start.toString().split(" ")
+    let endArr = end.toString().split(" ")
+
+    console.log(startArr.toString())
 
  $('.viewEventInfo_name').html(name);
  $('.viewEventInfo_description').html(description);
@@ -175,9 +183,15 @@ function fillEventInfo(name, description, minAge, maxAge, genRestriction, attend
      $('.viewEventInfo_ageMin').html(minAge + " - " + maxAge);
  }
 
- //$('.viewEventInfo_ageMax').html(maxAge);
  if(genRestriction) $('.viewEventInfo_genderRestriction').html("This is a gender restricted event.");
  else $('.viewEventInfo_genderRestriction').html("This is not a gender restricted event.");
+
+ if(start.getDate() === end.getDate()){
+     $('.viewEventInfo_date').html(startArr[1] + " " + startArr[2] + " " + startArr[3] + " " + startArr[4].substring(0,5) + " - " + endArr[4].substring(0,5));
+ }else {
+     $('.viewEventInfo_date').html(startArr[1] + " " + startArr[2] + " " + startArr[3] + " " + startArr[4].substring(0,5) + " - " +
+         endArr[1] + " " + endArr[2] + " " + endArr[3] + " " + endArr[4].substring(0,5));
+ }
 
  if(attendees.indexOf(userIdNormal) >= 0){
     $('.viewEventInfo_attendBtn').hide();

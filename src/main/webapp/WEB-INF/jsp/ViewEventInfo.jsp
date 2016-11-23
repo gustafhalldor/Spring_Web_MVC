@@ -18,6 +18,9 @@
     <h4>Gender</h4>
     <p class="viewEventInfo_genderRestriction"></p>
 
+    <h4>Time</h4>
+    <p class="viewEventInfo_date"></p>
+
     <button class="viewEventInfo_attendBtn btn" type="button"> Attend Event! </button>
 
      <h3>Attendees</h3>
