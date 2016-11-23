@@ -60,18 +60,13 @@ p {
     height: 42px;
 }
 
-#logout {
-    display: none;
-    background: url('../images/fb_logout_button.png') no-repeat;
-    outline: none;
-    border: none;
-    /*position: absolute;*/
-    cursor: pointer;
-    border-radius: 10px;
-    left: 18%;
-    top: 40%;
-    width: 202px;
-    height: 42px;
+.rightSide {
+    display: flex;
+    justify-content: space-around;
+}
+
+.rightSide span {
+    width: 10px;
 }
 
 .welcomePage {
@@ -83,6 +78,7 @@ p {
 }
 
 .welcomePage h1 {
+    color: white;
     width: 100%;
     padding: 0 0 25px 0;
 }
@@ -100,51 +96,24 @@ p {
 }
 
 .navigationBar h3{
+<<<<<<< HEAD
     color:white;
+=======
+    color: white;
+>>>>>>> origin/master
 }
 
 .navigationBar a{
-    padding: 10px 10px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    font-size: 11px;
-    color: white;
-    background-color: #cb4e4e;
-    border-radius: 0 0 5px 5px;
-    border: none;
-    cursor: pointer;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    outline: none;
-    box-sizing: border-box;
     text-decoration: none;
-
 }
 
 div #profilePic {
-    width: 35px;
-    height: 35px;
-    border: 1px solid black;
+    width: 40px;
+    height: 40px;
+    border: 0.1px solid black;
 }
 
-.createEventFormButton {
-    padding: 10px 10px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    font-size: 11px;
-    color: white;
-    background-color: #cb4e4e;
-    border-radius: 0 0 5px 5px;
-    border: none;
-    cursor: pointer;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    outline: none;
-    box-sizing: border-box;
-    margin: auto;
-    display: block;
-}
-.toggle_createEvent_sideBar_btn {
+.btn {
     padding: 10px 10px;
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
@@ -159,18 +128,12 @@ div #profilePic {
     outline: none;
     box-sizing: border-box;
 }
-
-.toggle_createEvent_sideBar_btn:hover {
-
-}
-
 
 .main {
     display: flex;
+    position: relative;
     width: 100%;
     margin: 0 auto;
-    justify-content: space-around;
-    padding-top: 20px;
 }
 
 .hideMe {
@@ -186,26 +149,27 @@ div #profilePic {
 }
 
 .createEventSideBar {
+    position: absolute;
+    z-index: 10;
     width: 20%;
 }
 
 .eventInfoSideBar {
+    position: absolute;
+    z-index: 10;
     width: 20%;
 }
 
 .mapContainer {
-    width: 60%;
-    max-width: 1200px;
-    min-width: 400px;
-    height: 90vh;
-    min-height: 50vh;
+    width: 100%;
+    height: 100vh;
 }
 
 #map {
     height: 100%;
     width: 100%;
 }
-img{
+img {
     height: 150px;
     width: 150px;
 }

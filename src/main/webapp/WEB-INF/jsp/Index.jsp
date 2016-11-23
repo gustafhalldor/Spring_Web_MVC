@@ -27,12 +27,13 @@
           </div>
       </div>
       <nav class="navigationBar">
-          <button type="button" class="toggle_createEvent_sideBar_btn">Create Event</button>
-          <a href="user/1">My events</a>
+          <button type="button" class="toggle_createEvent_sideBar_btn btn">Create Event</button>
+          <a class="btn" href="user/1">My events</a>
           <h3>The Event Finder</h3>
-          <div>
+          <div class="rightSide">
               <img id="profilePic" src="">
-              <button type="button" id="logout"></button>
+              <span></span>
+              <button class="btn" type="button" id="logout">Logout</button>
           </div>
 
       </nav>
@@ -41,7 +42,7 @@
             <div class="createEventSideBar hideMe"><jsp:include page="${request.contextPath}/event"></jsp:include></div>
 
             <div class="mapContainer">
-                <input id="mapSearchBox" class="controls" type="text" placeholder="Search Box">
+                <!--<input id="mapSearchBox" class="controls" type="text" placeholder="Search Box">-->
                 <div id="map"></div>
             </div>
             <div class="eventInfoSideBar hideMe"><jsp:include page="${request.contextPath}/eventinfo/1"></jsp:include></div>
@@ -60,11 +61,11 @@
         </div>
     </div>
 
-  <script src="<c:url value="/js/jquery-ui-timepicker-addon.js" />"></script>
-  <script src="<c:url value="/js/main.js" />"></script>
       <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+      <script src="http://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
       <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
-  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-
+      <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+      <script src="<c:url value="/js/jquery-ui-timepicker-addon.js" />"></script>
+      <script src="<c:url value="/js/main.js" />"></script>
   </body>
 </html>

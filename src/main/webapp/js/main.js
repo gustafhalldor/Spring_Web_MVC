@@ -177,7 +177,6 @@ function attend(eventID){
         }),
         'success': function (data) {
             showSuccessToaster("Event successfully joined!");
-            console.log('Attending Event! eventID:'+eventID);
         }
     });
 }
@@ -350,7 +349,6 @@ window.fbAsyncInit = function() {
             if(response.status !== 'connected'){
 
                 FB.login(function(response) {
-                    //  console.log(response);
                     var getInfo = $('#test');
                     if(response.authResponse) {
                         //this response return expiresIn, userID, accessToken and signedRequest
@@ -378,7 +376,6 @@ window.fbAsyncInit = function() {
         event.preventDefault();
         FB.logout(function(response) {
             if(response.status !== 'connected') {
-                console.log('goodbye');
             }
             $('.overlay').show();
             $('.loginDiv').show();
