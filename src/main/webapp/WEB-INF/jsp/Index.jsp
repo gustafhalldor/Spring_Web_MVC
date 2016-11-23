@@ -18,7 +18,6 @@
     </head>
   <body>
   <div class="wrapper">
-      <div class="overlay"></div>
       <div class="welcomePage">
           <h1>The Event Finder</h1>
           <p>Discover new passions and meet new people with us.</p>
@@ -53,7 +52,7 @@
                 <!--<input id="mapSearchBox" class="controls" type="text" placeholder="Search Box">-->
                 <div id="map"></div>
             </div>
-            <div class="eventInfoSideBar hideMe"><jsp:include page="${request.contextPath}/eventinfo/"></jsp:include></div>
+            <div class="eventInfoSideBar hideMe"><jsp:include page="${request.contextPath}/eventinfo/1"></jsp:include></div>
 
           <script src="https://code.jquery.com/jquery-3.1.1.js"   integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="   crossorigin="anonymous"></script>
           <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>

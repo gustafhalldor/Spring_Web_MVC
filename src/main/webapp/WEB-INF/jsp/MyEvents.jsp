@@ -16,21 +16,22 @@
     </head>
   <body>
   <div class="wrapper">
-      <div class="overlay"></div>
-      <div class="welcomePage">
-          <a href="/"><h1>The Event Finder</h1></a>
-          <p>Discover new passions and meet new people with us.</p>
-          <div class="loginDiv">
-              <button type="button" id="login"></button>
-          </div>
-      </div>
       <nav class="navigationBar">
-          <a href="/"><h1>The Event Finder</h1></a>
-          <div>
-              <img id="profilePic" src="">
-              <button type="button" id="logout"></button>
+          <div class="leftSide">
+              <a class="btn" href="/user/1">Back</a>
+              <a class="btn" href="/">Home Page</a>
           </div>
-
+          <h3>The Event Finder</h3>
+          <div class="rightSide">
+              <img id="profilePic" src="">
+              <span></span>
+              <div class="btnContainer">
+                  <img class="divImg" src="../images/fb_icon.png">
+                  <button class="exbtn" type="button" id="logout">
+                      <span>Logout</span>
+                  </button>
+              </div>
+          </div>
       </nav>
 
       <div class="main">

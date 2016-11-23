@@ -46,5 +46,6 @@
              </c:otherwise>
          </c:choose>
      </div>
+        <button type="button" class="hide_eventBtn btn">Hide event info</button>
      </sf:form>
-     <button class="hide_eventBtn btn">Hide event info</button>
+
