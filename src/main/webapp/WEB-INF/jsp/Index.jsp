@@ -53,10 +53,8 @@
                 <div id="map"></div>
             </div>
 
-
             <div class="eventInfoSideBar hideMe"><jsp:include page="${request.contextPath}/eventinfo/"></jsp:include></div>
-
-
+          
           <script src="https://code.jquery.com/jquery-3.1.1.js"   integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="   crossorigin="anonymous"></script>
           <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
           <script src="<c:url value="/js/jquery-ui-timepicker-addon.js" />"></script>

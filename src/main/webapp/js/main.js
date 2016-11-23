@@ -6,6 +6,10 @@ var userID;
 var userIdNormal;
 
 function initMap() {
+    console.log(userIdNormal);
+    if(userIdNormal == undefined){
+        addUserIDToBox();
+    }
 
     if(!sideBarOn) {
         var currInfoWindow;
@@ -105,9 +109,6 @@ function initFocusEventMap() {
 
   }
 
-
-
-
 function init() {
     $( '.datePicker1' ).datetimepicker({
         dateFormat: "yy-mm-dd",
@@ -128,7 +129,6 @@ function init() {
 
     $( '.toggle_createEvent_sideBar_btn' ).on('click', function(e){
         addUserIDToBox();
-        console.log("creatorID er: "+ $('.creatorId').val());
         var sideBar = $('.createEventSideBar').hasClass('hideMe');
         if(sideBar) {
             $(this).text('hide event');
@@ -164,8 +164,6 @@ function hideEventInfo() {
         $('.eventInfoSideBar').addClass('hideMe');
     });
 }
-
-var attendeeNameString;
 
 function fillEventInfo(name, description, minAge, maxAge, genRestriction, attendees, eventID){
 
@@ -230,6 +228,7 @@ function createElementForAttendee(name, attendeeList){
 function addUserIDToBoxCallBack(data){
     $('.creatorId').val(data);
     userIdNormal = data;
+    console.log("userid set to " + userIdNormal);
 }
 
 
@@ -359,7 +358,7 @@ window.fbAsyncInit = function() {
                 'dateType': 'json',
                 'data': {"fbId": userID},
                 'success': function (data) {
-                    console.log(data);
+                    addUserIDToBoxCallBack(data);
                     appendUserIdToMyEventsURL(data);
                 }
             });
