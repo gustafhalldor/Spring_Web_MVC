@@ -181,11 +181,17 @@ p {
 
 .navigationBar h3{
     color:white;
+    font-size: 34px;
+}
+.myEventsNavigationBar h3{
+    color:white;
+    font-size: 34px;
 }
 
 .navigationBar a{
     text-decoration: none;
 }
+
 
 div #profilePic {
     width: 40px;
