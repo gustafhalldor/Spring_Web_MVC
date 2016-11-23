@@ -18,11 +18,15 @@
     </head>
   <body>
   <div class="wrapper">
-      <div class="welcomePage showMe">
-          <h1>The Event Finder</h1>
-          <p>Discover new passions and meet new people!</p>
-          <div class="loginDiv">
-              <button type="button" id="login"></button>
+      <div class="welcomePage">
+          <div class="wpDiv">
+              <h1><img src="../images/logo.png">The Event Finder</h1>
+              <p>Want to spend time with your family? Your beloved one ? Make friends in town?
+                  Ever wondered whats happening around you in nowaday society ?
+                  Come and join us to find new passions and meet new people, only you can change it!</p>
+              <div class="loginDiv">
+                  <button type="button" id="login"></button>
+              </div>
           </div>
       </div>
       <nav class="navigationBar">
