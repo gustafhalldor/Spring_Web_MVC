@@ -80,7 +80,6 @@ public class UserController {
         ArrayList<Integer> attendees = new ArrayList<Integer>();
         //Cycle through all upcoming event attendees and see where the userID is present.
         for(int i = 0; i < upcomingEvents.size(); i++){
-            System.out.println(i);
 
             //Verður inní try á meðan attendee listinn getur verið tómur
             try {
