@@ -415,7 +415,7 @@ window.fbAsyncInit = function() {
         })
     });
 
-    $('#logout').click(function(event) {
+    $('.btnContainer').click(function(event) {
         event.preventDefault();
         FB.logout(function(response) {
             if(response.status !== 'connected') {
