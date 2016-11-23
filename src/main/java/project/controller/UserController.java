@@ -66,6 +66,8 @@ public class UserController {
         if(user == null){
             return "User does not exist";
         }
+
+        System.out.println(user.getName());
         return user.getName();
     }
 
@@ -79,10 +81,24 @@ public class UserController {
 
         User user = userService.findOne(id2);
         model.addAttribute("info", user);
-
+        model.addAttribute("createdEvents", userCreatedEvents(id2));
         model.addAttribute("upcomingEvents", userUpcomingEvents(id2));
         return "UserInfo";
     }
+
+    //Returns the ArrayList of events that the user created.
+    public ArrayList<Event> userCreatedEvents(int userID) {
+        List <Event> upcomingEvents = eventService.findAll();
+        ArrayList<Event> events = new ArrayList<Event>();
+        ArrayList<Integer> attendees = new ArrayList<Integer>();
+        //Cycle through all upcoming event attendees and see where the userID is present.
+        for(int i = 0; i < upcomingEvents.size(); i++){
+           if(upcomingEvents.get(i).getCreatorId() == userID){
+               events.add(upcomingEvents.get(i));
+           }
+        }
+        return events;
+        }
 
     //Returns the ArrayList of events that the user is attending.
     public ArrayList<Event> userUpcomingEvents(int userID){

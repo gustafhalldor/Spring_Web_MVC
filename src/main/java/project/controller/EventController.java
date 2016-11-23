@@ -66,8 +66,8 @@ public class EventController {
     public String saveEvent(@ModelAttribute("eventDetails") @Validated Event event,
                                 BindingResult bindingResult, Model model) throws IOException {
 
-
-
+            //Attends the event creator
+            event.setAttendee(event.getCreatorId());
             // Save the event data we received from the form
             eventService.save(event);
 

@@ -124,6 +124,7 @@ function init() {
     });
 
     $( '.toggle_createEvent_sideBar_btn' ).on('click', function(e){
+        $('.creatorId').val(userID);
         var sideBar = $('.createEventSideBar').hasClass('hideMe');
         if(sideBar) {
             $(this).text('hide event');
@@ -160,6 +161,8 @@ function hideEventInfo() {
     });
 }
 
+var attendeeNameString;
+
 function fillEventInfo(name, description, minAge, maxAge, genRestriction, attendees, eventID){
 
  $('.viewEventInfo_name').html(name);
@@ -177,17 +180,11 @@ function fillEventInfo(name, description, minAge, maxAge, genRestriction, attend
  var attendeeList = document.getElementById("attendees");
  attendeeList.innerHTML ="";
  for(var i=0; i < attendees.length; i++){
-    var attendee = document.createElement("p");
-    var attendeeName = document.createTextNode(getUserName(attendees[i]));
-    attendee.appendChild(attendeeName);
-
-    attendeeList.appendChild(attendee);
+    addAttendeeToList(attendees[i], attendeeList);
  }
 }
 
- function getUserName(userId) {
-    var name = ":(";
-        if(userId != "") {
+ function addAttendeeToList(userId, attendeeList) {
             $.ajax({
                 'url': 'http://localhost:8080/user/name',
                 'type': 'GET',
@@ -195,12 +192,17 @@ function fillEventInfo(name, description, minAge, maxAge, genRestriction, attend
                 'dateType': 'json',
                 'data': {"userID": userId},
                 'success': function (data) {
-                    name = data;
+                    createElementForAttendee(data, attendeeList);
                 }
             });
-        }
-        else alert("nothing happens");
     }
+
+function createElementForAttendee(name, attendeeList){
+        var attendee = document.createElement("p");
+        var attendeeName = document.createTextNode(name);
+        attendee.appendChild(attendeeName);
+        attendeeList.appendChild(attendee);
+}
 
 function attend(eventID){
 

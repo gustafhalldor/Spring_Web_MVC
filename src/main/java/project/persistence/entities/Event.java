@@ -31,7 +31,7 @@ public class Event {
     private float lgt;
     private float lat;
     //private ArrayList<String> type
-  //  private int creatorId;
+    private int creatorId;
     private Timestamp startDate;
     private Timestamp endDate;
 
@@ -55,7 +55,7 @@ public class Event {
         this.endDate = endDate;
       //  this.location = location;
         this.attendees = new ArrayList<Integer>();
-      //  this.creatorId = creatorId;
+        this.creatorId = creatorId;
        // this.type = type;
 
     }
@@ -135,11 +135,11 @@ public class Event {
 
     public void setEndDate(Timestamp date) { this.endDate = date; }
 
- /*
+
     public int getCreatorId() { return creatorId; }
 
     public void setCreatorId(int creatorId) { this.creatorId = creatorId; }
-
+ /*
     public Location getLocation() { return location; }
 
     public void setLocation(Location location) { this.location = location; }

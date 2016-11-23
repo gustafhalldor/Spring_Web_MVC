@@ -160,7 +160,7 @@ div #profilePic {
     visibility: visible;
 }
 
-.lat, .lgt {
+.lat, .lgt, .creatorId{
     display: none;
 }
 

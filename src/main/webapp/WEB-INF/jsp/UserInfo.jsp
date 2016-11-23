@@ -34,6 +34,18 @@
                    <a href="/event/${event.id}" class="">Show on map</a>
 
                 </div>
+        </c:forEach>
+        <p>Here are the events you created:</p>
+            <c:forEach items="${createdEvents}" var="event">
+
+                <div class="myEvents_eventInfo eventInfo">
+                   <div class="myEvents_text">
+                     <p>Name: ${event.name}</p>
+                     <p>Description: ${event.description}</p>
+                   </div>
+                   <a href="/event/${event.id}" class="">Show on map</a>
+
+                </div>
             </c:forEach>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script
