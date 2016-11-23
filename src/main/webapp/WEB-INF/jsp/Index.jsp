@@ -33,7 +33,7 @@
           <div class="rightSide">
               <img id="profilePic" src="">
               <span></span>
-              <button class="btn" type="button" id="logout">Logout</button>
+              <button class="btn" type="button" id="logout"></button>
           </div>
 
       </nav>
@@ -61,6 +61,6 @@
             <!--<h3><a href="/event">Create event</a></h3>-->
         </div>
     </div>
-  
+
   </body>
 </html>
