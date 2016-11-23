@@ -168,16 +168,33 @@ function fillEventInfo(name, description, minAge, maxAge, genRestriction, attend
 
  if(!attendees) return;
 
-/* var attendeeList = document.getElementById("attendees");
+ var attendeeList = document.getElementById("attendees");
  attendeeList.innerHTML ="";
  for(var i=0; i < attendees.length; i++){
     var attendee = document.createElement("p");
-    var attendeeName = document.createTextNode(attendees[i]);
+    var attendeeName = document.createTextNode(getUserName(attendees[i]));
     attendee.appendChild(attendeeName);
 
     attendeeList.appendChild(attendee);
- }*/
+ }
 }
+
+ function getUserName(userId) {
+    var name = ":(";
+        if(userId != "") {
+            $.ajax({
+                'url': 'http://localhost:8080/user/name',
+                'type': 'GET',
+                'contentType': 'application/json; charset=utf-8',
+                'dateType': 'json',
+                'data': {"userID": userId},
+                'success': function (data) {
+                    name = data;
+                }
+            });
+        }
+        else alert("nothing happens");
+    }
 
 function attend(eventID){
 
@@ -324,6 +341,9 @@ window.fbAsyncInit = function() {
         }
         else alert("nothing happens");
     }
+
+
+
 
     function userExistsHandler(data, userId) {
         if(data === false) {

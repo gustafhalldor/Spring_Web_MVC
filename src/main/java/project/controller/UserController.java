@@ -58,6 +58,18 @@ public class UserController {
         return true;
     }
 
+    // Check to see userName
+    @RequestMapping(value = "user/name", method = RequestMethod.GET)
+    public @ResponseBody String getUsername(@RequestParam int userID, HttpServletRequest request, HttpServletResponse response, Model model) {
+
+        User user = userService.findOne(userID);
+        if(user == null){
+            return "User does not exist";
+        }
+        return user.getName();
+    }
+
+
     //Display the user page for a user. This page will show the events that the user has created and is attending.
     @RequestMapping(value = "user/{userID}", method = RequestMethod.GET)
     public String userInfo(@ModelAttribute User userModel,

@@ -108,8 +108,9 @@ public class Event {
 
 
     public void setAttendee(Integer userID) {
-
-
+        if(this.attendees == null){
+            this.attendees = new ArrayList<Integer>();
+        }
         if(this.attendees.contains(userID)) return;
         else {
             this.attendees.add(userID);
@@ -118,7 +119,12 @@ public class Event {
 
     public void setAttendees(ArrayList<Integer> attendees) { this.attendees = attendees; }
 
-    public ArrayList<Integer> getAttendees() { return this.attendees;}
+    public ArrayList<Integer> getAttendees() {
+        if(this.attendees == null){
+            this.attendees = new ArrayList<Integer>();
+        }
+        return this.attendees;
+    }
 
 
     public Timestamp getStartDate() { return startDate; }

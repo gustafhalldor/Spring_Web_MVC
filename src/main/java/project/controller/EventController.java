@@ -97,13 +97,10 @@ public class EventController {
         Event event = eventService.findOne(eventID);
         int person = userService.findIdByString(user);
 
-        if(event.getAttendees() == null){
-            event.setAttendees(new ArrayList<Integer>());
-            event.setAttendee(person);
-        }
-        else{
-            event.setAttendee(person);
-        }
+
+        event.setAttendee(person);
+
+
 
         eventService.save(event);
 
@@ -123,7 +120,7 @@ public class EventController {
         // TODO: Have to add the event to the user's created events
         Event eventInfo = eventService.findOne(id2);
 
- /*       ArrayList attendees = eventInfo.getAttendees();
+        ArrayList attendees = eventInfo.getAttendees();
 
         ArrayList attendeeName = new ArrayList();
         ArrayList attendeeFbId = new ArrayList();
@@ -141,7 +138,7 @@ public class EventController {
                 String fbId = user.getfbId();
                 attendeeFbId.add(fbId);
             }
-        }*/
+        }
 
         // Displays the event information through the "info" attribute, which is sent to ViewEventInfo.jsp
         model.addAttribute("info", eventInfo);
@@ -155,6 +152,8 @@ public class EventController {
                             @PathVariable("id") Integer id2) throws IOException {
 
         Event eventInfo = eventService.findOne(id2);
+
+
         ArrayList attendees = eventInfo.getAttendees();
 
         ArrayList attendeeName = new ArrayList();
