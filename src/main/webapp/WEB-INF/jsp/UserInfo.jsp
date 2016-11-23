@@ -17,7 +17,7 @@
     <body>
     <div class="myEvents_wrapper">
          <nav class="myEventNavigationBar">
-              <a class="btn" href="/home">Back</a>
+              <a class="btn" href="/">Back</a>
               <h3>The Event Finder</h3>
               <div class="unUsed"></div>
         </nav>
