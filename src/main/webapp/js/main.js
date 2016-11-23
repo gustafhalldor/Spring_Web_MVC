@@ -123,7 +123,13 @@ function init() {
         showSecond: false
     });
 
-        $( '.toggle_createEvent_sideBar_btn' ).on('click', function(e){
+    $( '.toggle_createEvent_sideBar_btn' ).on('click', function(e){
+        var sideBar = $('.createEventSideBar').hasClass('hideMe');
+        if(sideBar) {
+            $(this).text('hide event');
+        } else {
+            $(this).text('create event');
+        }
         toggleMap();
     });
     hideEventInfo();
@@ -378,11 +384,11 @@ window.fbAsyncInit = function() {
 
     $('#login').click(function(event) {
         event.preventDefault();
-
+        console.log("hellooooo");
         FB.getLoginStatus(function(response) {
-
+            console.log(response);
             if(response.status !== 'connected'){
-
+                console.log("asdfasdfasds");
                 FB.login(function(response) {
                     var getInfo = $('#test');
                     if(response.authResponse) {

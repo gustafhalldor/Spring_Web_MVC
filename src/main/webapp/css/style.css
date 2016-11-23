@@ -47,6 +47,12 @@ p {
     z-index: 11;
 }
 */
+.toggle_createEvent_sideBar_btn {
+    width: 117.55px;
+    height: 33.33px;
+}
+
+
 #login {
     background: url('../images/fb_login_button.png') no-repeat;
     outline: none;
