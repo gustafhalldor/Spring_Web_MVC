@@ -2,7 +2,8 @@
 var sideBarOn = false;
 
 var userID;
-
+//Not the facebook userid
+var userIdNormal;
 
 function initMap() {
 
@@ -175,6 +176,12 @@ function fillEventInfo(name, description, minAge, maxAge, genRestriction, attend
  if(genRestriction) $('.viewEventInfo_genderRestriction').html("This is a gender restricted event.");
  else $('.viewEventInfo_genderRestriction').html("This is not a gender restricted event.");
 
+ if(attendees.indexOf(userIdNormal) >= 0){
+    $('.viewEventInfo_attendBtn').hide();
+ }
+ else{
+    $('.viewEventInfo_attendBtn').show();
+ }
  $('.viewEventInfo_attendBtn').on("click", function(){ attend(eventID)});
 
 
@@ -222,6 +229,7 @@ function createElementForAttendee(name, attendeeList){
 
 function addUserIDToBoxCallBack(data){
     $('.creatorId').val(data);
+    userIdNormal = data;
 }
 
 
