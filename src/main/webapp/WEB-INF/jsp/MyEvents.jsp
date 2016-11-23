@@ -43,22 +43,21 @@
 
             <div class="eventInfoSideBar">
                  <sf:form class="viewEventForm" commandName="info">
-                <h3>Name:</h3>
-                <p class="viewEventInfo_name">${info.name}</p>
+                <h3 class="viewEventInfo_name">${info.name}</h3>
 
-                <h3>Description:</h3>
                 <p class="viewEventInfo_description">${info.description}</p>
 
                 <h3>Minimum age:</h3>
-                <p class="viewEventInfo_ageMin">${info.ageMin}</p>
+                <p class="viewEventInfo_ageMin">${info.ageMin} - ${info.ageMax}</p>
 
-                <h3>Maximum age:</h3>
-                <p class="viewEventInfo_ageMax">${info.ageMax}</p>
+                <h4>Time:</h4>
+                <p class="viewEventInfo_date">${info.startDate} -</p>
+                <p class="viewEventInfo_date">${info.endDate}</p>
 
-                <h3>Gender restrict event?</h3>
+                <h4>Gender restrict event?</h4>
                 <p class="viewEventInfo_genderRestriction">${info.genderRestriction}</p>
 
-                <h3>Attendees</h3>
+                <h4>Attendees</h4>
                 <div id="attendees">
                     <c:choose>
                         <c:when test="${not empty attendeeNames}">
