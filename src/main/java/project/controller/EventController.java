@@ -172,10 +172,10 @@ public class EventController {
                 System.out.println(user);
                 String name = user.getName();
                 System.out.println(name);
-                attendeeName.add(i, name);
+                attendeeName.add(name);
 
                 String fbId = user.getfbId();
-                attendeeFbId.add(i, fbId);
+                attendeeFbId.add(fbId);
             }
         }
 
