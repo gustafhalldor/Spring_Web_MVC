@@ -169,8 +169,13 @@ function fillEventInfo(name, description, minAge, maxAge, genRestriction, attend
 
  $('.viewEventInfo_name').html(name);
  $('.viewEventInfo_description').html(description);
- $('.viewEventInfo_ageMin').html(minAge);
- $('.viewEventInfo_ageMax').html(maxAge);
+ if(maxAge === 99){
+     $('.viewEventInfo_ageMin').html(minAge + "+" );
+ }else {
+     $('.viewEventInfo_ageMin').html(minAge + " - " + maxAge);
+ }
+
+ //$('.viewEventInfo_ageMax').html(maxAge);
  if(genRestriction) $('.viewEventInfo_genderRestriction').html("This is a gender restricted event.");
  else $('.viewEventInfo_genderRestriction').html("This is not a gender restricted event.");
 
