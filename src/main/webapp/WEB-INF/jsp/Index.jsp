@@ -21,9 +21,9 @@
       <div class="welcomePage">
           <div class="wpDiv">
               <h1><img src="../images/logo.png">The Event Finder</h1>
-              <p>Want to spend time with your family? Your beloved one ? Make friends in town?
-                  Ever wondered whats happening around you in nowaday society ?
-                  Come and join us to find new passions and meet new people, only you can change it!</p>
+              <p>Want to spend time with your family? Your beloved one? Make friends in town?
+                  Ever wondered what's happening around you in nowaday society?</p>
+              <p>Come and join us today to find new passions and meet new people!</p>
               <div class="loginDiv">
                   <button type="button" id="login"></button>
               </div>
@@ -57,7 +57,7 @@
                 <div id="map"></div>
             </div>
 
-            <div class="eventInfoSideBar hideMe"><jsp:include page="${request.contextPath}/eventinfo/11"></jsp:include></div>
+            <div class="eventInfoSideBar hideMe"><jsp:include page="${request.contextPath}/eventinfo/1"></jsp:include></div>
           
           <script src="https://code.jquery.com/jquery-3.1.1.js"   integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="   crossorigin="anonymous"></script>
           <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>

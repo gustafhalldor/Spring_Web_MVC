@@ -31,11 +31,13 @@ $().ready(function(){
                 min: 18,
                 max: 110
             },
+
             ageMax: {
                 required: true,
                 number: true,
                 min: 18,
-                max: 110
+                max: 110,
+                maxMoreThanMin: "#ageMin"
             },
             lat: {
                 required: true,
@@ -64,6 +66,11 @@ $().ready(function(){
 
     });
 
+    jQuery.validator.addMethod("maxMoreThanMin", function(value, element, params) {
+
+        return value >= $(params).val();
+    }, "Max age must be greater or equal to min age");
+
     function getCurrentDateTime() {
         var d = new Date();
         var minutes = d.getMinutes();
@@ -87,7 +94,7 @@ $().ready(function(){
     jQuery.validator.addMethod("validLocation", function(value, element, params) {
         //need to implement logic
 
-        return (value != 0.0 && params != 0.0);
+        return (value != 0.0 && $(params).val() != 0.0);
     }, "The event must have a location ^_^");
 
 
